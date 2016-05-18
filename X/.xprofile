@@ -1,0 +1,4 @@
+xrandr --output eDP1 --primary 
+$HOME/./.fehbg
+dropbox &
+nm-applet &
