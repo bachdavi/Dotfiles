@@ -1,0 +1,1 @@
+{"url": "https://github.com/mriehl/sublime_pybuilder", "dependencies": [], "description": "Sublime text 3 plugin for PyBuilder", "platforms": ["*"], "version": "0.1.2", "sublime_text": ">=3000"}

@@ -1,0 +1,31 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"BracketHighlighter",
+		"C++ Snippets",
+		"C++ Starting Kit",
+		"Console Exec",
+		"Djaneiro",
+		"Git",
+		"GitGutter",
+		"IPython Notebook",
+		"Oasis Theme",
+		"Package Control",
+		"PyBuilder",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"Theme - Flatland",
+		"Theme - Otto",
+		"Theme - Soda",
+		"Theme - Soda SolarizedDark",
+		"Tomorrow Color Schemes",
+		"VvPHPDollar",
+		"Writing Color Scheme",
+		"zenburn"
+	]
+}

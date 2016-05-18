@@ -1,0 +1,2660 @@
+{
+	"folder_history":
+	[
+		"/home/david/Dropbox/Studium/Bachelor/6. Semester/Ex",
+		"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach",
+		"/home/david/Bachelorarbeit/pythia8215",
+		"/home/david/Arbeit",
+		"/home/david/Dropbox/Studium/Bachelor/Python-Routinen",
+		"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum",
+		"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12",
+		"/home/david/Geant/B1",
+		"/home/david/Geant/Test",
+		"/home/david/Geant/CosmicRay",
+		"/home/david/Geant/geant4.10.01.p02-install/share/Geant4-10.1.2/examples/advanced/air_shower",
+		"/home/david/Geant/geant4.10.01.p02-install/share/Geant4-10.1.2/examples/basic/B5",
+		"/home/david/Geant/geant4.10.01.p02-install/share/Geant4-10.1.2/examples/basic/B2",
+		"/home/david/Geant/geant4.10.01.p02-install/share/Geant4-10.1.2/examples/advanced/amsEcal"
+	],
+	"last_version": 3114,
+	"last_window_id": 16,
+	"log_indexing": false,
+	"settings":
+	{
+		"new_window_height": 0.0,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"rea",
+						"readString"
+					],
+					[
+						"Pyhi",
+						"Pythia"
+					],
+					[
+						"Pythi",
+						"Pythia"
+					],
+					[
+						"fil",
+						"file_base_name"
+					],
+					[
+						"b_in",
+						"b_inhom_error"
+					],
+					[
+						"curre",
+						"current〔variable〕"
+					],
+					[
+						"scale",
+						"scale_1〔variable〕"
+					],
+					[
+						"data",
+						"data_array"
+					],
+					[
+						"print",
+						"print〔function〕"
+					],
+					[
+						"u_02",
+						"u_0_2_errors"
+					],
+					[
+						"u_0",
+						"u_0_2"
+					],
+					[
+						"vol",
+						"voltage〔variable〕"
+					],
+					[
+						"m_bo",
+						"m_bohr_1"
+					],
+					[
+						"p_li",
+						"p_lin_1"
+					],
+					[
+						"u",
+						"u_0_errors"
+					],
+					[
+						"u_",
+						"u_0_2_errors"
+					],
+					[
+						"T",
+						"T14_Bilder"
+					],
+					[
+						"font",
+						"font_sizes〔argument〕"
+					],
+					[
+						"fon",
+						"font_sizes〔argument〕"
+					],
+					[
+						"u_o",
+						"u_0_errors"
+					],
+					[
+						"par",
+						"parameter_parabolic〔variable〕"
+					],
+					[
+						"cu",
+						"current_error〔variable〕"
+					],
+					[
+						"pri",
+						"print〔function〕"
+					],
+					[
+						"curr",
+						"current_error〔variable〕"
+					],
+					[
+						"la",
+						"lambda〔keyword〕"
+					],
+					[
+						"cur",
+						"current_error"
+					],
+					[
+						"dete",
+						"detector_current〔variable〕"
+					],
+					[
+						"u_0_",
+						"u_0_2"
+					],
+					[
+						"m_b",
+						"m_bohr"
+					],
+					[
+						"m_boh",
+						"m_bohr_2"
+					],
+					[
+						"m_borh",
+						"m_bohr_1"
+					],
+					[
+						"u_0_2",
+						"u_0_2_errors"
+					],
+					[
+						"b_inh",
+						"b_inhom_error"
+					],
+					[
+						"b_",
+						"b_field"
+					],
+					[
+						"b",
+						"b_field_error"
+					],
+					[
+						"to",
+						"to_db〔function〕"
+					],
+					[
+						"coil",
+						"coil_current"
+					],
+					[
+						"det",
+						"detector_current〔variable〕"
+					],
+					[
+						"de",
+						"detector_current〔variable〕"
+					],
+					[
+						"voltage",
+						"voltage_error〔variable〕"
+					],
+					[
+						"pos",
+						"pos_error〔variable〕"
+					],
+					[
+						"scal",
+						"scale_1〔variable〕"
+					],
+					[
+						"te",
+						"temperatur〔variable〕"
+					],
+					[
+						"curren",
+						"current_2"
+					],
+					[
+						"sc",
+						"scale_6〔variable〕"
+					],
+					[
+						"temp",
+						"temp_kali"
+					],
+					[
+						"pu",
+						"puls_länge〔variable〕"
+					],
+					[
+						"I",
+						"I_co"
+					],
+					[
+						"my",
+						"my_string_error"
+					],
+					[
+						"re",
+						"replace"
+					],
+					[
+						"ax",
+						"axvline〔function〕"
+					],
+					[
+						"plot",
+						"plot_syntax	plot_axes"
+					],
+					[
+						"ge",
+						"get_file_names"
+					],
+					[
+						"M",
+						"Molybdän"
+					],
+					[
+						"std",
+						"std_cobalt〔variable〕"
+					],
+					[
+						"par_",
+						"par_molybdan"
+					],
+					[
+						"p_op",
+						"p_opt_m"
+					],
+					[
+						"con",
+						"concentration〔variable〕"
+					],
+					[
+						"I_",
+						"I_mo"
+					],
+					[
+						"p_",
+						"p_std_c"
+					],
+					[
+						"da",
+						"data_c〔variable〕"
+					],
+					[
+						"dat",
+						"data_m〔variable〕"
+					],
+					[
+						"fu",
+						"func〔function〕"
+					],
+					[
+						"fol",
+						"folder_names"
+					],
+					[
+						"folder",
+						"folder_names"
+					],
+					[
+						"best",
+						"bestimmung"
+					],
+					[
+						"im",
+						"import_lib	methode_import"
+					],
+					[
+						"st",
+						"std_devs"
+					],
+					[
+						"y_",
+						"y_combined_error"
+					],
+					[
+						"pea",
+						"peak_magnet_energie〔variable〕"
+					],
+					[
+						"ener",
+						"energy_error_func〔function〕"
+					],
+					[
+						"peak_",
+						"peak_magnet_error〔variable〕"
+					],
+					[
+						"folde",
+						"folders〔variable〕"
+					],
+					[
+						"y",
+						"y_combined_error"
+					],
+					[
+						"no",
+						"nominal_values"
+					],
+					[
+						"elemn",
+						"elemente〔variable〕"
+					],
+					[
+						"elem",
+						"elemente〔variable〕"
+					],
+					[
+						"ele",
+						"element〔variable〕"
+					],
+					[
+						"eleme",
+						"element"
+					],
+					[
+						"elemen",
+						"elemente〔variable〕"
+					],
+					[
+						"dict",
+						"dict_con〔variable〕"
+					],
+					[
+						"mo",
+						"mo_results〔variable〕"
+					],
+					[
+						"co",
+						"cobalt〔variable〕"
+					],
+					[
+						"ref",
+						"ref_wolfram〔variable〕"
+					],
+					[
+						"res",
+						"result_ncs〔variable〕"
+					],
+					[
+						"resi",
+						"result_ncs〔variable〕"
+					],
+					[
+						"dic",
+						"dict_files〔variable〕"
+					],
+					[
+						"fold",
+						"folder_names〔variable〕"
+					],
+					[
+						"daat",
+						"data_path〔variable〕"
+					],
+					[
+						"y_d",
+						"y_data"
+					],
+					[
+						"y_da",
+						"y_data"
+					],
+					[
+						"x_da",
+						"x_data"
+					],
+					[
+						"dict_a",
+						"dict_all〔variable〕"
+					],
+					[
+						"y_dat",
+						"y_data_linie"
+					],
+					[
+						"x_",
+						"x_data_linie"
+					],
+					[
+						"di",
+						"dict_kupfer〔variable〕"
+					],
+					[
+						"un",
+						"untergrund〔function〕"
+					],
+					[
+						"l",
+						"l_bereich"
+					],
+					[
+						"x",
+						"x_data_linie"
+					],
+					[
+						"x_d",
+						"x_data_untergrund"
+					],
+					[
+						"x_Da",
+						"x_data_untergrund"
+					],
+					[
+						"y_Da",
+						"y_data_untergrund"
+					],
+					[
+						"list",
+						"list〔class〕"
+					],
+					[
+						"sort",
+						"sorted〔function〕"
+					],
+					[
+						"key",
+						"key_range〔variable〕"
+					],
+					[
+						"get",
+						"get_file_names〔function〕"
+					],
+					[
+						"path",
+						"path_to〔variable〕"
+					],
+					[
+						"is",
+						"isdir〔function〕"
+					],
+					[
+						"pa",
+						"path〔module〕"
+					],
+					[
+						"impo",
+						"import"
+					],
+					[
+						"fi",
+						"file_names"
+					],
+					[
+						"file",
+						"file_names〔variable〕"
+					],
+					[
+						"ene",
+						"energy_error〔function〕"
+					],
+					[
+						"enr",
+						"energy〔argument〕"
+					],
+					[
+						"energy",
+						"energy"
+					],
+					[
+						"RTD",
+						"RTD_data〔variable〕"
+					],
+					[
+						"en",
+						"energy〔variable〕"
+					],
+					[
+						"in",
+						"index〔variable〕"
+					],
+					[
+						"auf",
+						"auflösung〔variable〕"
+					],
+					[
+						"AN",
+						"Anpassung_Energieauflösung"
+					],
+					[
+						"Ene",
+						"Energie"
+					],
+					[
+						"Ener",
+						"Energieauflösung"
+					],
+					[
+						"plo",
+						"plot_syntax	plot_axes"
+					],
+					[
+						"brei",
+						"breite_error〔variable〕"
+					],
+					[
+						"sor",
+						"sorted〔function〕"
+					],
+					[
+						"lin",
+						"lin_func〔function〕"
+					],
+					[
+						"pat",
+						"path_to〔argument〕"
+					],
+					[
+						"ra",
+						"rausch_messung〔variable〕"
+					]
+				]
+			},
+			"build_system_choices":
+			[
+				[
+					[
+						[
+							"Packages/LaTeXing/LaTeX.sublime-build",
+							""
+						],
+						[
+							"Packages/LaTeXing/LaTeX.sublime-build",
+							"Clean up Files"
+						],
+						[
+							"Packages/LaTeXTools/LaTeX.sublime-build",
+							""
+						]
+					],
+					[
+						"Packages/LaTeXing/LaTeX.sublime-build",
+						""
+					]
+				],
+				[
+					[
+						[
+							"Packages/Makefile/Make.sublime-build",
+							""
+						],
+						[
+							"Packages/Makefile/Make.sublime-build",
+							"Clean"
+						]
+					],
+					[
+						"Packages/Makefile/Make.sublime-build",
+						""
+					]
+				],
+				[
+					[
+						[
+							"Packages/Python/Python.sublime-build",
+							""
+						],
+						[
+							"Packages/Python/Python.sublime-build",
+							"Syntax Check"
+						]
+					],
+					[
+						"Packages/Python/Python.sublime-build",
+						""
+					]
+				]
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 374.0,
+				"last_filter": "pa",
+				"selected_items":
+				[
+					[
+						"pa",
+						"Package Control: Install Package"
+					],
+					[
+						"git push",
+						"Git: Push"
+					],
+					[
+						"git",
+						"Git: Commit"
+					],
+					[
+						"git a",
+						"Git: Add All"
+					],
+					[
+						"git stat",
+						"Git: Status"
+					],
+					[
+						"git pus",
+						"Git: Push"
+					],
+					[
+						"git ",
+						"Git: Commit"
+					],
+					[
+						"git st",
+						"Git: Status"
+					],
+					[
+						"git stt",
+						"Git: Status"
+					],
+					[
+						"git co",
+						"Git: Commit"
+					],
+					[
+						"git ad",
+						"Git: Add Current File"
+					],
+					[
+						"git status",
+						"Git: Status"
+					],
+					[
+						"git pull",
+						"Git: Pull"
+					],
+					[
+						"git com	",
+						"Git: Commit"
+					],
+					[
+						"git comm",
+						"Git: Commit"
+					],
+					[
+						"git ad	",
+						"Git: Add Current File"
+					],
+					[
+						"git add",
+						"Git: Add Current File"
+					],
+					[
+						"git push ",
+						"Git: Push"
+					],
+					[
+						"git commi	",
+						"Git: Commit"
+					],
+					[
+						"git commit",
+						"Git: Commit"
+					],
+					[
+						"git pu",
+						"Git: Pull"
+					],
+					[
+						"git sta",
+						"Git: Status"
+					],
+					[
+						"git che",
+						"Git: Checkout Current File"
+					],
+					[
+						"git ps",
+						"Git: Push"
+					],
+					[
+						"git c",
+						"Git: Commit"
+					],
+					[
+						"pack",
+						"Package Control: Install Package"
+					],
+					[
+						"git s",
+						"Git: Status"
+					],
+					[
+						"#",
+						"Snippet: #!/usr/bin/env"
+					],
+					[
+						"git com",
+						"Git: Commit history"
+					],
+					[
+						"Snippet: im",
+						"Snippet: methode_import"
+					],
+					[
+						"Snippet: i",
+						"Snippet: methode_import"
+					],
+					[
+						"Snippet: ",
+						"Snippet: Form"
+					],
+					[
+						"Snipp",
+						"Snippet: init"
+					],
+					[
+						"sni",
+						"Snippet: Tabular Inline"
+					],
+					[
+						"dja",
+						"Set Syntax: Python (Django)"
+					],
+					[
+						"Packag",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 404.0
+			},
+			"console":
+			{
+				"height": 114.0,
+				"history":
+				[
+					"make main",
+					"ls",
+					"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/home/david/Bachelorarbeit/pythia8215/examples/main01.cc",
+				"/home/david/.config/sublime-text-3/Packages/User/Python Django.sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/User/C++.sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/User/Python.sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/User/Pythia.sublime-build",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Makefile",
+				"/home/david/Bachelorarbeit/pythia8215/examples/main01",
+				"/home/david/Bachelorarbeit/pythia8215/Project/main.cc",
+				"/home/david/Bachelorarbeit/pythia8215/src/Settings.cc",
+				"/home/david/Bachelorarbeit/pythia8215/src/Pythia.cc",
+				"/home/david/Bachelorarbeit/pythia8215/examples/main_test.cc",
+				"/home/david/Bachelorarbeit/pythia8215/examples/Makefile",
+				"/home/david/Bachelorarbeit/pythia8215/src/Event.cc",
+				"/home/david/Bachelorarbeit/pythia8215/examples/README",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/methode_lib.py",
+				"/home/david/Pythia/pythia8215/examples/main01.cc",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/Test.py",
+				"/home/david/Pythia/pythia8215/examples/main12.cc",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T14/Auswertung.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T14/Ergebnisse.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T14/peaks.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T14/.gitignore",
+				"/home/david/.config/ranger/commands.py",
+				"/home/david/.config/i3/config",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T14/Data.txt",
+				"/home/david/.config/sublime-text-3/Packages/User/plot_axes.sublime-snippet",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/README.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/Test.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/Con.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/Auswertung.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/Ergebnisse.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/proben.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Auswertung.py",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/Hallo.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/Latex.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Rohdaten/Rauschmessung.mca",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Rohdaten/Aluminium.mca",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Ergebnisse.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/.gitignore",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/Rohdaten/Spektrometer/Verwechslung/Kupfer/CPM3V_00.esf",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/Jan.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Rohdaten/Zink_RDT.mca",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/.gitignore",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Rohdaten/Kupfer_1.mca",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Rohdaten/Rauschmessung.txt",
+				"/home/david/Geant/CosmicRay/analysis.py",
+				"/home/david/Geant/CosmicRay/Gun.mac",
+				"/home/david/Geant/CosmicRay-build/Data/Data_1.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks/Tracks_1.csv",
+				"/home/david/Geant/CosmicRay-build/Makro.mac",
+				"/home/david/Geant/CosmicRay-build/Tracks/Tracks_2.csv",
+				"/home/david/Geant/CosmicRay-build/Data/Data_2.csv",
+				"/home/david/Geant/CosmicRay-build/Analyseoptionen.mac",
+				"/home/david/Geant/CosmicRay/Track_2.csv",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Auswertung_Energie.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Ergebnisse.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/.gitignore",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Auswertung.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Auswertung_Energie.log",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/T12.fls",
+				"/home/david/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+				"/home/david/.config/sublime-text-3/Packages/BracketHighlighter/Example.sublime-keymap",
+				"/home/david/.config/sublime-text-3/Packages/User/LaTeX.sublime-settings",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/T12.tex",
+				"/home/david/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Kalibrierung.txt",
+				"/home/david/.config/sublime-text-3/Packages/User/methode_import.sublime-snippet",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/LF/Auswertung.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/T12.synctex.gz",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Messung/Test.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Messung/Messung1.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Messung/Text.csv",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Messung/Rausch.txt",
+				"/home/david/.config/sublime-text-3/Packages/Emmet/Emmet.sublime-settings",
+				"/home/david/Geant/CosmicRay/src/RunAction.cc",
+				"/home/david/Geant/CosmicRay-build/Tracks/Tracks_15.csv",
+				"/home/david/Geant/CosmicRay/README.txt",
+				"/home/david/.config/sublime-text-3/Packages/User/GitGutter.sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/GitGutter/GitGutter.sublime-settings",
+				"/home/david/Geant/CosmicRay/ProjectY.cc",
+				"/home/david/Geant/CosmicRay-build/Tracks_14.csv",
+				"/home/david/Geant/CosmicRay/src/TrackingAction.cc",
+				"/home/david/Geant/CosmicRay/VerboseSettings.mac",
+				"/home/david/Geant/CosmicRay-build/Tracks_15.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_12.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_2.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_11.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_3.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_39.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_35.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_30.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_32.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_33.csv",
+				"/home/david/Geant/geant4.10.01.p02/source/track/src/G4Track.cc",
+				"/home/david/Geant/geant4.10.01.p02/source/track/G4Track.cc",
+				"/home/david/Geant/CosmicRay-build/Tracks_24.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_25.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_9.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_10.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_5.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_7.csv",
+				"/home/david/Geant/CosmicRay-build/Tracks_8.csv",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Test.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Messung/Hintergrundrauschen.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/sublime_text_3_settings.txt",
+				"/home/david/.config/sublime-text-3/Packages/Jedi - Python autocompletion/sublime_jedi.sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/User/sublime_jedi.sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/User/Anaconda.sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/User/env.sublime-snippet",
+				"/home/david/.config/sublime-text-3/Packages/Djaneiro/Settings/Python (Django).sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/User/Python (Django).sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/Alignment/Base File.sublime-settings",
+				"/home/david/.config/sublime-text-3/Packages/User/JSON.sublime-settings",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Energie/Sr90_Alu_0_5.TKA",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Energie/Rauschmessung.TKA",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Messung/Messung_Bereich150_300.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Energie/Test_Spektrum_Sr90.TKA",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Energie/Rauschmessung2.TKA",
+				"/home/david/.config/sublime-text-3/Packages/Pylinter/Pylinter.sublime-settings",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Winkel/RauschmessungWinkel.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Winkel/Sr90_OhneAbsorber.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Winkel/Test.py",
+				"/home/david/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Winkel/Sr90_OhneAbsorber",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Fit_Ergebnisse.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T12/Messdaten/Kalibrierung.txt"
+			],
+			"find":
+			{
+				"height": 21.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"pbar",
+					"pythia",
+					"pythia.ev",
+					"pythia",
+					"ProjectDir",
+					"workingDir",
+					"true",
+					"mymain",
+					"precision",
+					"voltage",
+					"precision",
+					"12",
+					"current",
+					"x_label",
+					"y_label",
+					"title",
+					"name",
+					"fontsize",
+					"\"{0:.3f}\"",
+					"12.8694",
+					"0.09",
+					"0.12",
+					"13.2476",
+					"0.1218",
+					"0.1223",
+					"0.12298",
+					"currents",
+					"position",
+					"m_bohr_2",
+					"p_cov_1",
+					"],",
+					"p_opt_1",
+					"parameter_1",
+					"scale",
+					"current",
+					"y_label",
+					"x_label",
+					"title",
+					"detector_current_list",
+					"enumeratedetector_current_list",
+					"name",
+					"scale_2",
+					"detector_current_2",
+					"scale_1",
+					"scale_2",
+					"scale_1",
+					"y_label",
+					"title",
+					"name",
+					"scale_2",
+					"i",
+					"title",
+					"y_label",
+					"x_label",
+					"name",
+					",",
+					"asd",
+					"scale_1",
+					"scale_0",
+					"detector_current_2",
+					"scale_0",
+					"scale_2",
+					"detector_current_5",
+					"scale_5",
+					"scale_2",
+					"detector_current_2",
+					"scale_2",
+					"detector_current_4",
+					"scale_4",
+					"scale",
+					",",
+					".",
+					"detector_current_4",
+					"title",
+					"y_label",
+					"x_label",
+					"name",
+					"Berillium",
+					"404.8",
+					"8",
+					"location",
+					"y_label",
+					"x_label",
+					"title",
+					"name",
+					"data_file",
+					"location",
+					"y_label",
+					"x_label",
+					"title",
+					"name",
+					"david",
+					"p_opt_m",
+					"Molybdän",
+					"p_opt_m",
+					"Molybdän",
+					"p_opt_m",
+					"I_mo",
+					"I_v",
+					"std",
+					"I_v",
+					"data",
+					"data_m",
+					"p_opt_m",
+					"data_m",
+					"p_opt_m",
+					"Wolfram",
+					"par_cobalt",
+					"3",
+					"count",
+					".",
+					"+/-",
+					"0002605698252841992",
+					": ",
+					":  ",
+					", ",
+					"Münze",
+					"peak_magnet_error",
+					"element",
+					"folders",
+					"element_linien",
+					"dict_profil",
+					"I_v",
+					"I_mo",
+					"referenz_linien",
+					"element_linien",
+					"I_mo",
+					"referenz_linien"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 21.0
+			},
+			"input":
+			{
+				"height": 31.0
+			},
+			"menu_visible": true,
+			"output.exec":
+			{
+				"height": 158.0
+			},
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"output.git":
+			{
+				"height": 98.0
+			},
+			"pinned_build_system": "Packages/User/Pythia.sublime-build",
+			"replace":
+			{
+				"height": 38.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 247.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			}
+		},
+		"new_window_width": 0.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"Anit",
+						"Anti-He"
+					],
+					[
+						"pro",
+						"proton_flag〔argument〕"
+					],
+					[
+						"prot",
+						"proton_flag"
+					],
+					[
+						"proto",
+						"proton_flux〔function〕"
+					],
+					[
+						"he",
+						"he_flux〔variable〕"
+					],
+					[
+						"energ",
+						"energy_bins"
+					],
+					[
+						"err",
+						"errorbar"
+					],
+					[
+						"bins_",
+						"bins_He〔variable〕"
+					],
+					[
+						"bins",
+						"bins_He"
+					],
+					[
+						"sig",
+						"sigma_run〔variable〕"
+					],
+					[
+						"ret",
+						"ret_list"
+					],
+					[
+						"flux",
+						"flux_data〔variable〕"
+					],
+					[
+						"cir",
+						"cirelli_data〔variable〕"
+					],
+					[
+						"dis",
+						"dis_energys〔variable〕"
+					],
+					[
+						"sca",
+						"scale_flag"
+					],
+					[
+						"num",
+						"number_of_protons〔variable〕"
+					],
+					[
+						"comapre",
+						"compare_flag"
+					],
+					[
+						"Anti",
+						"Anti_proton_cross_data_paper.txt"
+					],
+					[
+						"cros",
+						"cross_check_data"
+					],
+					[
+						"crss",
+						"crosssections"
+					],
+					[
+						"cross",
+						"cross_check_data〔variable〕"
+					],
+					[
+						"his",
+						"histogram_list〔variable〕"
+					],
+					[
+						"res",
+						"results〔argument〕"
+					],
+					[
+						"data",
+						"data_frame〔variable〕"
+					],
+					[
+						"n_",
+						"n_of_p"
+					],
+					[
+						"read",
+						"read_csv"
+					],
+					[
+						"daa",
+						"data_frame〔variable〕"
+					],
+					[
+						"co",
+						"columns"
+					],
+					[
+						"Ge",
+						"GeV"
+					],
+					[
+						"en",
+						"energy〔variable〕"
+					],
+					[
+						"bin",
+						"bins_proton〔variable〕"
+					],
+					[
+						"mas",
+						"mass_p〔variable〕"
+					],
+					[
+						"hia",
+						"histogram_list〔variable〕"
+					],
+					[
+						"path",
+						"path_to〔variable〕"
+					],
+					[
+						"mass",
+						"mass_p〔variable〕"
+					],
+					[
+						"cro",
+						"cross_section〔variable〕"
+					],
+					[
+						"log",
+						"log_bins〔variable〕"
+					],
+					[
+						"histo",
+						"histogram_list"
+					],
+					[
+						"d_e",
+						"d_E"
+					],
+					[
+						"ener",
+						"energys〔variable〕"
+					],
+					[
+						"cross_s",
+						"cross_section_list〔variable〕"
+					],
+					[
+						"scl",
+						"scale_flag"
+					],
+					[
+						"d",
+						"d_E"
+					],
+					[
+						"ene",
+						"energy_bins_up〔argument〕"
+					],
+					[
+						"hi",
+						"histogram_list〔argument〕"
+					],
+					[
+						"bi",
+						"bin_scaling"
+					],
+					[
+						"hist",
+						"histogram_list"
+					],
+					[
+						"draw",
+						"draw_flags"
+					],
+					[
+						"sa",
+						"save_show"
+					],
+					[
+						"n_h",
+						"n_H_density"
+					],
+					[
+						"val",
+						"values〔argument〕"
+					],
+					[
+						"boo",
+						"bool_array"
+					],
+					[
+						"int",
+						"int_energy〔variable〕"
+					],
+					[
+						"bool",
+						"bool_array〔variable〕"
+					],
+					[
+						"mass_",
+						"mass_p"
+					],
+					[
+						"rotbst",
+						"rotbst"
+					],
+					[
+						"Boo",
+						"Boost"
+					],
+					[
+						"Boos",
+						"Boost"
+					],
+					[
+						"Pr",
+						"Prim_2"
+					],
+					[
+						"set",
+						"set_particle_properties"
+					],
+					[
+						"Pc",
+						"PCount"
+					],
+					[
+						"cou",
+						"Counter"
+					],
+					[
+						"BOO",
+						"BoostVector"
+					],
+					[
+						"re",
+						"remain"
+					],
+					[
+						"Boost",
+						"BoostVector"
+					],
+					[
+						"a_e",
+						"a_einasto_med"
+					],
+					[
+						"fo",
+						"four_momentum"
+					],
+					[
+						"Matrix",
+						"MatrixSymbol〔module〕"
+					],
+					[
+						"im",
+						"import〔keyword〕"
+					],
+					[
+						"Mat",
+						"Matrix"
+					],
+					[
+						"if",
+						"ifmain	if __name__ == '__main__'"
+					],
+					[
+						"color",
+						"colors"
+					],
+					[
+						"Ant",
+						"AntiProtonStorage"
+					],
+					[
+						"ram",
+						"remain"
+					],
+					[
+						"sour",
+						"source_term〔variable〕"
+					],
+					[
+						"cr",
+						"cross4〔variable〕"
+					],
+					[
+						"crs",
+						"cross2〔variable〕"
+					],
+					[
+						"s",
+						"source_term"
+					],
+					[
+						"all",
+						"all_cross〔variable〕"
+					],
+					[
+						"print",
+						"print〔function〕"
+					],
+					[
+						"sou",
+						"source_term〔variable〕"
+					],
+					[
+						"hel",
+						"helium〔argument〕"
+					],
+					[
+						"cal",
+						"calc_crosssection〔function〕"
+					],
+					[
+						"to",
+						"to_sec〔variable〕"
+					],
+					[
+						"rers",
+						"results〔variable〕"
+					],
+					[
+						"n_he",
+						"n_He"
+					],
+					[
+						"energy",
+						"energy_bins〔variable〕"
+					],
+					[
+						"source",
+						"source_195〔variable〕"
+					],
+					[
+						"fl",
+						"flux_167〔variable〕"
+					],
+					[
+						"te",
+						"test_flux_2〔variable〕"
+					],
+					[
+						"gamm",
+						"gamma_1〔variable〕"
+					],
+					[
+						"gam",
+						"gamma_2〔variable〕"
+					],
+					[
+						"ga",
+						"gamma_2〔variable〕"
+					],
+					[
+						"kin",
+						"kin_p〔variable〕"
+					],
+					[
+						"pa",
+						"path_to〔variable〕"
+					],
+					[
+						"lo",
+						"log_bins"
+					],
+					[
+						"heliu",
+						"helium_analysis〔function〕"
+					],
+					[
+						"AntiPro",
+						"AntiProtonFlux"
+					],
+					[
+						"plot",
+						"plot_syntax	plot_axes"
+					],
+					[
+						"rand",
+						"randSeed"
+					],
+					[
+						"test",
+						"test_flux_3〔variable〕"
+					],
+					[
+						"tes",
+						"test_flux_1〔variable〕"
+					],
+					[
+						"n",
+						"n_H_density"
+					],
+					[
+						"dic",
+						"dict_label〔variable〕"
+					],
+					[
+						"an",
+						"anti_He_source〔function〕"
+					],
+					[
+						"st",
+						"std_devs"
+					],
+					[
+						"fol",
+						"folded_counts〔variable〕"
+					],
+					[
+						"enr",
+						"energys〔variable〕"
+					],
+					[
+						"plo",
+						"plot_syntax	plot_axes"
+					],
+					[
+						"ki",
+						"kin_energy〔argument〕"
+					],
+					[
+						"n_H",
+						"n_H_density"
+					],
+					[
+						"par",
+						"parsec"
+					],
+					[
+						"po",
+						"poisson_error〔function〕"
+					],
+					[
+						"result",
+						"results〔variable〕"
+					],
+					[
+						"dict",
+						"dict_runs〔variable〕"
+					],
+					[
+						"Run",
+						"Run_4"
+					],
+					[
+						"b",
+						"AUTHENTICATION_BACKENDS"
+					],
+					[
+						"fold",
+						"folded_counts_300"
+					],
+					[
+						"f",
+						"for	For Loop"
+					],
+					[
+						"p_",
+						"p_opt"
+					],
+					[
+						"log_",
+						"log_check〔variable〕"
+					],
+					[
+						"chec",
+						"check_flux〔variable〕"
+					],
+					[
+						"che",
+						"check_flux"
+					],
+					[
+						"P",
+						"PCount"
+					],
+					[
+						"al",
+						"alpha〔function〕"
+					],
+					[
+						"si",
+						"sig_2〔variable〕"
+					],
+					[
+						"prt",
+						"print〔function〕"
+					],
+					[
+						"powe",
+						"power_law〔function〕"
+					]
+				]
+			},
+			"buffers":
+			[
+				{
+					"file": "/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Project.cc",
+					"settings":
+					{
+						"buffer_size": 4853,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Analysis.py",
+					"settings":
+					{
+						"buffer_size": 19585,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Anti_He_bgk_R.txt",
+					"settings":
+					{
+						"buffer_size": 10439,
+						"line_ending": "Unix"
+					}
+				}
+			],
+			"build_system": "Packages/User/Pythia.sublime-build",
+			"build_system_choices":
+			[
+				[
+					[
+						[
+							"Packages/C++/C++ Single File.sublime-build",
+							""
+						],
+						[
+							"Packages/C++/C++ Single File.sublime-build",
+							"Run"
+						],
+						[
+							"Packages/C++ Starting Kit/C++ - Starting Kit.sublime-build",
+							""
+						],
+						[
+							"Packages/C++ Starting Kit/C++ - Starting Kit.sublime-build",
+							"Run"
+						],
+						[
+							"Packages/User/Pythia.sublime-build",
+							""
+						]
+					],
+					[
+						"Packages/User/Pythia.sublime-build",
+						""
+					]
+				],
+				[
+					[
+						[
+							"Packages/LaTeXing/LaTeX.sublime-build",
+							""
+						],
+						[
+							"Packages/LaTeXing/LaTeX.sublime-build",
+							"Clean up Files"
+						],
+						[
+							"Packages/LaTeXTools/LaTeX.sublime-build",
+							""
+						]
+					],
+					[
+						"Packages/LaTeXing/LaTeX.sublime-build",
+						""
+					]
+				],
+				[
+					[
+						[
+							"Packages/Makefile/Make.sublime-build",
+							""
+						],
+						[
+							"Packages/Makefile/Make.sublime-build",
+							"Clean"
+						]
+					],
+					[
+						"Packages/Makefile/Make.sublime-build",
+						""
+					]
+				],
+				[
+					[
+						[
+							"Packages/Python/Python.sublime-build",
+							""
+						],
+						[
+							"Packages/Python/Python.sublime-build",
+							"Syntax Check"
+						]
+					],
+					[
+						"Packages/Python/Python.sublime-build",
+						""
+					]
+				],
+				[
+					[
+						[
+							"Packages/Python/Python.sublime-build",
+							""
+						],
+						[
+							"Packages/Python/Python.sublime-build",
+							"Syntax Check"
+						],
+						[
+							"Packages/User/Pythia.sublime-build",
+							""
+						]
+					],
+					[
+						"Packages/Python/Python.sublime-build",
+						""
+					]
+				]
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 356.0,
+				"last_filter": "op",
+				"selected_items":
+				[
+					[
+						"op",
+						"Open IPython Notebook"
+					],
+					[
+						"pac",
+						"Package Control: Install Package"
+					],
+					[
+						"v",
+						"View: Toggle Menu"
+					],
+					[
+						"pa",
+						"Package Control: Install Package"
+					],
+					[
+						"vm",
+						"View: Toggle Menu"
+					],
+					[
+						"vmenu",
+						"View: Toggle Menu"
+					],
+					[
+						"vmen",
+						"View: Toggle Menu"
+					],
+					[
+						"git s",
+						"Git: Status"
+					],
+					[
+						"git push",
+						"Git: Push"
+					],
+					[
+						"git com",
+						"Git: Commit"
+					],
+					[
+						"git ad",
+						"Git: Add All"
+					],
+					[
+						"git st",
+						"Git: Status"
+					],
+					[
+						"git",
+						"Git: Commit"
+					],
+					[
+						"git a",
+						"Git: Add All"
+					],
+					[
+						"git stat",
+						"Git: Status"
+					],
+					[
+						"git pus",
+						"Git: Push"
+					],
+					[
+						"git ",
+						"Git: Commit"
+					],
+					[
+						"git stt",
+						"Git: Status"
+					],
+					[
+						"git co",
+						"Git: Commit"
+					],
+					[
+						"git status",
+						"Git: Status"
+					],
+					[
+						"git pull",
+						"Git: Pull"
+					],
+					[
+						"git com	",
+						"Git: Commit"
+					],
+					[
+						"git comm",
+						"Git: Commit"
+					],
+					[
+						"git ad	",
+						"Git: Add Current File"
+					],
+					[
+						"git add",
+						"Git: Add Current File"
+					],
+					[
+						"git push ",
+						"Git: Push"
+					],
+					[
+						"git commi	",
+						"Git: Commit"
+					],
+					[
+						"git commit",
+						"Git: Commit"
+					],
+					[
+						"git pu",
+						"Git: Pull"
+					],
+					[
+						"git sta",
+						"Git: Status"
+					],
+					[
+						"git che",
+						"Git: Checkout Current File"
+					],
+					[
+						"git ps",
+						"Git: Push"
+					],
+					[
+						"git c",
+						"Git: Commit"
+					],
+					[
+						"pack",
+						"Package Control: Install Package"
+					],
+					[
+						"#",
+						"Snippet: #!/usr/bin/env"
+					],
+					[
+						"Snippet: im",
+						"Snippet: methode_import"
+					],
+					[
+						"Snippet: i",
+						"Snippet: methode_import"
+					],
+					[
+						"Snippet: ",
+						"Snippet: Form"
+					],
+					[
+						"Snipp",
+						"Snippet: init"
+					],
+					[
+						"sni",
+						"Snippet: Tabular Inline"
+					],
+					[
+						"dja",
+						"Set Syntax: Python (Django)"
+					],
+					[
+						"Packag",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 575.0
+			},
+			"console":
+			{
+				"height": 114.0,
+				"history":
+				[
+					"open IPython Notebook",
+					"show menu",
+					"make main",
+					"ls",
+					"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"expanded_folders":
+			[
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach"
+			],
+			"file_history":
+			[
+				"/home/david/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Anti_proton_data_paper_2.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Anti_proton_cross_data_paper.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/ParticleStorageClass.cc",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Output_Test/results_01234_Proton.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Analysis.py",
+				"/home/david/.config/sublime-text-3/Packages/User/C++.sublime-settings",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/Test.py",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Project_4.cc",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Project_1.cc",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Project_2.cc",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Project_3.cc",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Output_Test/results_00004.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Project.cmnd",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Output_Test/results_00002.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Output_Test/results_00001.txt",
+				"/tmp/mozilla_david0/piece for David Bach on prop function for secondary antiHe-1.nb",
+				"/tmp/mozilla_david0/piece for David Bach on prop function for secondary antiHe.nb",
+				"/home/david/Dropbox/Studium/Bachelor/6. Semester/Ex/Ex_Blatt4.py",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Project.cc",
+				"/home/david/Bachelorarbeit/pythia8215/Makefile.inc",
+				"/home/david/Bachelorarbeit/pythia8215/Makefile",
+				"/home/david/Old.txt",
+				"/home/david/New.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Cross_Results.txt",
+				"/home/david/Dropbox/AMS_HeliumFlux_R_2015.dat",
+				"/home/david/.i3/config",
+				"/home/david/Dropbox/Studium/Bachelor/6. Semester/Ex/Ex_Blatt2.py",
+				"/home/david/Dropbox/Studium/Bachelor/6. Semester/Ex_Blatt1.py",
+				"/home/david/Dropbox/Studium/Bachelor/6. Semester/Ex/Ex_Blatt3.py",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Output_Test/results_00066.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Output_Test/results_00066_Proton.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/ParticleStorageClass.h",
+				"/home/david/Pythia_Simulation.cbk",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/Hallo.py",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/results/Run_Cluster.txt",
+				"/home/david/.vimrc",
+				"/home/david/.i3/i3blocks.conf",
+				"/home/david/.Xresources",
+				"/home/david/.i3/lemonbar/i3_lemonbar_config",
+				"/home/david/.config/i3_backup_real/config",
+				"/home/david/.i3/lemonbar/i3_lemonbar_conky",
+				"/home/david/.i3/battery",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Makefile",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/.gitignore",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Makefile.inc",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/results/Merged_result_100.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/results/Result.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/results/Merged_result_10000.txt",
+				"/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Merge.py",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Analysis.py",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Makefile",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Makefile.inc",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Project.cmnd",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/results_00007.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Project.cc",
+				"/home/david/.config/sublime-text-3/Packages/User/Pythia.sublime-build",
+				"/home/david/Bachelorarbeit/pythia8215/Project/ParticleStorageClass.h",
+				"/home/david/Bachelorarbeit/pythia8215/Project/ParticleStorageClass.cc",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/Output3He.txt",
+				"/tmp/Nachrichtenteil als Anhang",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/OutputHe.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/OutputMultiRunn.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/CountN.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/CountP.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/OutputMultiRun1n.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Test.cc",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/OutputMultiRun6.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/OutputMultiRun1.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/OutputSingleRun.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/OutputMultiRun2.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/OutputMultiRun3.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output/OutputMultiRun4.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/OutputMultiRun1.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/OutputMultiRun4.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/OutputMultiRun3.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/OutputMultiRun2.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/OutputMultiRun.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/OutputSingleRun.txt",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Project",
+				"/home/david/Bachelorarbeit/pythia8215/Project/Output.txt",
+				"/home/david/.config/sublime-text-3/Packages/User/plot_axes.sublime-snippet",
+				"/home/david/.config/sublime-text-3/Packages/User/methode_import.sublime-snippet",
+				"/home/david/.config/sublime-text-3/Packages/User/Python Django.sublime-settings",
+				"/home/david/.histfile",
+				"/home/david/Bachelorarbeit/pythia8215/examples/main25.cc",
+				"/home/david/Bachelorarbeit/pythia8215/examples/main08.cc",
+				"/home/david/Bachelorarbeit/pythia8215/examples/main02.cc",
+				"/home/david/Bachelorarbeit/pythia8215/examples/main01.cc",
+				"/home/david/.config/sublime-text-3/Packages/User/Python.sublime-settings",
+				"/home/david/Bachelorarbeit/pythia8215/examples/main01",
+				"/home/david/Bachelorarbeit/pythia8215/Project/main.cc",
+				"/home/david/Bachelorarbeit/pythia8215/src/Settings.cc",
+				"/home/david/Bachelorarbeit/pythia8215/src/Pythia.cc",
+				"/home/david/Bachelorarbeit/pythia8215/examples/main_test.cc",
+				"/home/david/Bachelorarbeit/pythia8215/examples/Makefile",
+				"/home/david/Bachelorarbeit/pythia8215/src/Event.cc",
+				"/home/david/Bachelorarbeit/pythia8215/examples/README",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/methode_lib.py",
+				"/home/david/Pythia/pythia8215/examples/main01.cc",
+				"/home/david/Pythia/pythia8215/examples/main12.cc",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T14/Auswertung.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T14/Ergebnisse.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T14/peaks.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T14/.gitignore",
+				"/home/david/.config/ranger/commands.py",
+				"/home/david/.config/i3/config",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T14/Data.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/README.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/Test.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/Con.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/Auswertung.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/Ergebnisse.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/proben.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Auswertung.py",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/Hallo.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Python-Routinen/Latex.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Rohdaten/Rauschmessung.mca",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Rohdaten/Aluminium.mca",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Ergebnisse.txt",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/.gitignore",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/Rohdaten/Spektrometer/Verwechslung/Kupfer/CPM3V_00.esf",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/PUL/Jan.py",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Rohdaten/Zink_RDT.mca",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/.gitignore",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Rohdaten/Kupfer_1.mca",
+				"/home/david/Dropbox/Studium/Bachelor/Fortgeschrittenen Praktikum/T6/Rohdaten/Rauschmessung.txt",
+				"/home/david/Geant/CosmicRay/analysis.py"
+			],
+			"find":
+			{
+				"height": 26.0
+			},
+			"find_in_files":
+			{
+				"height": 89.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"Anti",
+					"Anti_He",
+					"True",
+					"he_flux",
+					"bins_He",
+					"he_flux",
+					"bins_He",
+					"he_flux",
+					"plot",
+					"[:-15]",
+					":-15",
+					"bins_He",
+					"14",
+					"upper_bin_he",
+					"False",
+					"he_flux",
+					"False",
+					"True",
+					"energy_bins",
+					"astro_solution",
+					"plot",
+					"True",
+					"he_flux",
+					"upper_bin_he",
+					"source_term",
+					"flux_data",
+					"16",
+					"bins_He",
+					"False",
+					"True",
+					"upper_bin_he",
+					"energy_bins",
+					"False",
+					"astr",
+					"astro_solution",
+					"kin_energy",
+					"energy_bins",
+					"initial_energys",
+					"False",
+					"errorbar",
+					"cross_check_data",
+					"x",
+					"columns",
+					"4",
+					"all_cross",
+					"4",
+					"all_cross",
+					"3",
+					"all_cross",
+					"data",
+					"textstr",
+					"name",
+					"labels",
+					"energys",
+					"Test",
+					"True",
+					"False",
+					"True",
+					"source",
+					"Tscho",
+					"Hallo",
+					"data_frame",
+					"index",
+					"energy",
+					"histogram_list",
+					"col",
+					"float",
+					"- mass_p",
+					"False",
+					"1",
+					"index",
+					"n_lists",
+					"read_csv",
+					"d_E",
+					"total_crosssection",
+					"energy_bins_up",
+					"np.logspace(-2, 4, bins)",
+					"np",
+					"cross_section_list",
+					"all_cross",
+					"cross",
+					"energys",
+					"195",
+					"source",
+					"crosssection",
+					"runs",
+					"*0.981 )/3.",
+					"flux",
+					"energy_bins",
+					"d_E",
+					"300",
+					"195",
+					"True",
+					"False",
+					"int_energy",
+					"bins_proton_low",
+					"energy_bins_low",
+					"energy_bins_u",
+					"energy_0bins_low",
+					"False",
+					"True",
+					"False",
+					"True",
+					"compare",
+					"all",
+					"n_of_p",
+					"results",
+					"n_He",
+					"energy_array",
+					"/he_flux[:-15]",
+					"source",
+					"const",
+					"values",
+					"range",
+					"log_bins",
+					"path_to_results",
+					"ParticleAnalysis",
+					"path_to_results",
+					"ParticleAnalysis",
+					"bins",
+					"name",
+					"np",
+					"energy_bins",
+					"log_bins",
+					"NCount",
+					"AntiNeutronStorage",
+					"bst",
+					"BoostVector"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"folders":
+			[
+				{
+					"path": "/home/david/Dropbox/Studium/Bachelor/Python-Routinen"
+				},
+				{
+					"path": "/home/david/Dropbox/Studium/Bachelor/6. Semester/Ex"
+				},
+				{
+					"path": "/home/david/Bachelorarbeit/pythia8215/bachelor-dbach"
+				}
+			],
+			"groups":
+			[
+				{
+					"selected": 1,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Project.cc",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 4853,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										2520,
+										2520
+									]
+								],
+								"settings":
+								{
+									"BracketHighlighterBusy": false,
+									"bh_regions":
+									[
+										"bh_default",
+										"bh_default_center",
+										"bh_default_open",
+										"bh_default_close",
+										"bh_default_content",
+										"bh_angle",
+										"bh_angle_center",
+										"bh_angle_open",
+										"bh_angle_close",
+										"bh_angle_content",
+										"bh_round",
+										"bh_round_center",
+										"bh_round_open",
+										"bh_round_close",
+										"bh_round_content",
+										"bh_regex",
+										"bh_regex_center",
+										"bh_regex_open",
+										"bh_regex_close",
+										"bh_regex_content",
+										"bh_curly",
+										"bh_curly_center",
+										"bh_curly_open",
+										"bh_curly_close",
+										"bh_curly_content",
+										"bh_single_quote",
+										"bh_single_quote_center",
+										"bh_single_quote_open",
+										"bh_single_quote_close",
+										"bh_single_quote_content",
+										"bh_tag",
+										"bh_tag_center",
+										"bh_tag_open",
+										"bh_tag_close",
+										"bh_tag_content",
+										"bh_double_quote",
+										"bh_double_quote_center",
+										"bh_double_quote_open",
+										"bh_double_quote_close",
+										"bh_double_quote_content",
+										"bh_square",
+										"bh_square_center",
+										"bh_square_open",
+										"bh_square_close",
+										"bh_square_content",
+										"bh_c_define",
+										"bh_c_define_center",
+										"bh_c_define_open",
+										"bh_c_define_close",
+										"bh_c_define_content",
+										"bh_unmatched",
+										"bh_unmatched_center",
+										"bh_unmatched_open",
+										"bh_unmatched_close",
+										"bh_unmatched_content"
+									],
+									"syntax": "Packages/C++/C++.sublime-syntax",
+									"tab_size": 2,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 195.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 2,
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Analysis.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 19585,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										19015,
+										19015
+									]
+								],
+								"settings":
+								{
+									"BracketHighlighterBusy": false,
+									"auto_complete": false,
+									"bh_regions":
+									[
+										"bh_unmatched",
+										"bh_unmatched_center",
+										"bh_unmatched_open",
+										"bh_unmatched_close",
+										"bh_unmatched_content",
+										"bh_single_quote",
+										"bh_single_quote_center",
+										"bh_single_quote_open",
+										"bh_single_quote_close",
+										"bh_single_quote_content",
+										"bh_angle",
+										"bh_angle_center",
+										"bh_angle_open",
+										"bh_angle_close",
+										"bh_angle_content",
+										"bh_regex",
+										"bh_regex_center",
+										"bh_regex_open",
+										"bh_regex_close",
+										"bh_regex_content",
+										"bh_c_define",
+										"bh_c_define_center",
+										"bh_c_define_open",
+										"bh_c_define_close",
+										"bh_c_define_content",
+										"bh_double_quote",
+										"bh_double_quote_center",
+										"bh_double_quote_open",
+										"bh_double_quote_close",
+										"bh_double_quote_content",
+										"bh_round",
+										"bh_round_center",
+										"bh_round_open",
+										"bh_round_close",
+										"bh_round_content",
+										"bh_tag",
+										"bh_tag_center",
+										"bh_tag_open",
+										"bh_tag_close",
+										"bh_tag_content",
+										"bh_default",
+										"bh_default_center",
+										"bh_default_open",
+										"bh_default_close",
+										"bh_default_content",
+										"bh_curly",
+										"bh_curly_center",
+										"bh_curly_open",
+										"bh_curly_close",
+										"bh_curly_content",
+										"bh_square",
+										"bh_square_center",
+										"bh_square_open",
+										"bh_square_close",
+										"bh_square_content"
+									],
+									"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 5200.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"type": "text"
+						},
+						{
+							"buffer": 2,
+							"file": "/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/Anti_He_bgk_R.txt",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 10439,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"BracketHighlighterBusy": false,
+									"bh_regions":
+									[
+										"bh_default",
+										"bh_default_center",
+										"bh_default_open",
+										"bh_default_close",
+										"bh_default_content",
+										"bh_angle",
+										"bh_angle_center",
+										"bh_angle_open",
+										"bh_angle_close",
+										"bh_angle_content",
+										"bh_round",
+										"bh_round_center",
+										"bh_round_open",
+										"bh_round_close",
+										"bh_round_content",
+										"bh_regex",
+										"bh_regex_center",
+										"bh_regex_open",
+										"bh_regex_close",
+										"bh_regex_content",
+										"bh_curly",
+										"bh_curly_center",
+										"bh_curly_open",
+										"bh_curly_close",
+										"bh_curly_content",
+										"bh_single_quote",
+										"bh_single_quote_center",
+										"bh_single_quote_open",
+										"bh_single_quote_close",
+										"bh_single_quote_content",
+										"bh_tag",
+										"bh_tag_center",
+										"bh_tag_open",
+										"bh_tag_close",
+										"bh_tag_content",
+										"bh_double_quote",
+										"bh_double_quote_center",
+										"bh_double_quote_open",
+										"bh_double_quote_close",
+										"bh_double_quote_content",
+										"bh_square",
+										"bh_square_center",
+										"bh_square_open",
+										"bh_square_close",
+										"bh_square_content",
+										"bh_c_define",
+										"bh_c_define_center",
+										"bh_c_define_open",
+										"bh_c_define_close",
+										"bh_c_define_content",
+										"bh_unmatched",
+										"bh_unmatched_center",
+										"bh_unmatched_open",
+										"bh_unmatched_close",
+										"bh_unmatched_content"
+									],
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 26.0
+			},
+			"input":
+			{
+				"height": 31.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.exec":
+			{
+				"height": 161.0
+			},
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"output.git":
+			{
+				"height": 98.0
+			},
+			"pinned_build_system": "",
+			"position": "0,0,0,0,0,0,19,1366,768,1366,768",
+			"project": "",
+			"replace":
+			{
+				"height": 108.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 374.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 480.0
+			},
+			"selected_group": 0,
+			"settings":
+			{
+			},
+			"show_minimap": false,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 207.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			},
+			"window_id": 7,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+		]
+	}
+}

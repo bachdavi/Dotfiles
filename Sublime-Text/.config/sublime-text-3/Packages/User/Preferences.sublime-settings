@@ -1,0 +1,47 @@
+{
+	"auto_complete_commit_on_tab": true,
+	"auto_complete_triggers":
+	[
+		{
+			"characters": ".",
+			"selector": "source.python"
+		},
+		{
+			"characters": "\\",
+			"selector": "text.tex.latex"
+		}
+	],
+	"caret_style": "solid",
+	"color_scheme": "Packages/Theme - Otto/schemes/Otto Monokai.tmTheme",
+	"file_exclude_patterns":
+	[
+		".DS_Store",
+		"*.pid",
+		"*.pyc"
+	],
+	"folder_exclude_patterns":
+	[
+		".git",
+		"__pycache__",
+		"env",
+		"env3"
+	],
+	"font_face": "Consolas",
+	"font_options":
+	[
+		"subpixel_antialias",
+		"no_bold"
+	],
+	"font_size": 8,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_padding_bottom": 0,
+	"line_padding_top": 0,
+	"sublimelinter": false,
+	"tab_size": 2,
+	"theme": "Otto Tomorrow.sublime-theme",
+	"wide_caret": true,
+	"word_wrap": true
+}

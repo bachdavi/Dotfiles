@@ -1,0 +1,27 @@
+[
+    { "keys": ["super+alt+l"], "command": "reindent"},
+    { "keys": ["ctrl+shift+c"], "command": "exec", "args": {"kill": true} },
+    {"keys":["ctrl+shift+h"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
+    { "keys": ["ctrl+7"], "command": "toggle_comment", "args": { "block": false } },
+    { "keys": ["ctrl+shift+7"], "command": "toggle_comment", "args": { "block": true } },
+    { "keys": ["shift+ctrl+g"], "command": "goto_definition" },
+    { "keys": ["shift+ctrl+9"], "command": "unfold"},
+    { "keys": ["shift+ctrl+8"], "command": "fold"},
+    { "keys": ["shift+ctrl+0"], "command": "fold_all"},
+        {
+        "no_outside_adj": null,
+        "keys": ["ctrl+alt+super+s"],
+        "command": "bh_key",
+        "args":
+        {
+            "lines" : true,
+            "plugin":
+            {
+                "type": ["__all__"],
+                "command": "bh_modules.bracketselect"
+            }
+        }
+    },
+
+
+]

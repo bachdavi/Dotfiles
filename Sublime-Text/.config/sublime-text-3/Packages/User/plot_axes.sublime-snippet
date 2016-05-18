@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+plt.figure("name", figsize=(12, 9))
+ax = plt.subplot(111)
+ax.spines["top"].set_visible(False)
+ax.spines["right"].set_visible(False)
+ax.get_xaxis().tick_bottom()
+ax.get_yaxis().tick_left()
+plt.title("title", fontsize=22)
+plt.xlabel("x_label", fontsize=16)
+plt.ylabel("y_label", fontsize=16)
+plt.legend(loc="best")
+plt.show()
+# plt.savefig(location, bbox_inches="tight")
+]]></content>
+	<tabTrigger>plot_syntax</tabTrigger>
+	<scope>source.python</scope>
+</snippet>
