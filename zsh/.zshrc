@@ -36,7 +36,7 @@ COL="$COLC"           # Usuario normal
     GIT_PS1_SHOWUPSTREAM="auto"
 
     # Prompt final
-    PS1="$COLV--[$COL\u$COLV]-[$COLC\h$COLV]-[$COLA\w$COLV]\$(__git_ps1)\n$COL \\$ $COLN"
+    PS1="$COLR--[$COL\u$COLV]-[$COLC\h$COLV]-[$COLA\w$COLV]\$(__git_ps1)\n$COL \\$ $COLN"
     ;
 
 
@@ -65,10 +65,9 @@ export PATH="$PATH:$HOME/bin"
 export PYTHIA="/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/"
 
 #----------------------------------------------------------------------#
-# Variables variadas
+# Variables 
 #----------------------------------------------------------------------#
 
-# Por defecto.
 export EDITOR="vim"
 export BROWSER="firefox"
 
@@ -81,15 +80,6 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias texclean='rm -f *.toc *.aux *.log *.cp *.fn *.tp *.vr *.pg *.ky'
-alias clean='echo -n "¿Desea borrar todos los ficheros temporales (s/N)? ";
-	read si;
-	if test "$si" = "y" -o "$si" = "s" ; then
-    rm -f \#* *~ .*~ *.bak .*.bak  *.tmp .*.tmp core a.out;
-    echo "Hecho.";
-	else
-    echo "Cancelado.";
-	fi'
 
 alias h='history'
 alias ls='ls --color=auto'
@@ -119,17 +109,13 @@ alias gia="git add"
 alias gcm="git commit -a -m"
 alias gp="git push"
 
-alias chuleta="vim ~/.vim/doc/chuletario.txt"
 
 alias col_dark="sh ~/.config/termcolours/dark.sh"
 alias col_light="sh ~/.config/termcolours/light.sh"
 alias col_default="sh ~/.config/termcolours/default.sh"
 
-# Wifi on/off
-alias wifi_on="nmcli nm wifi on"
-alias wifi_off="nmcli nm wifi off"
 
-
+sh ~/.config/termcolours/solarized.sh
 
 man() {
 	env \
