@@ -31,6 +31,9 @@ export PYTHIA="/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/"
 # Alias
 #----------------------------------------------------------------------#
 
+alias juams='ssh -Y vsk1045@juams01.fz-juelich.de'
+alias cluster='ssh -Y db957752@cluster.rz.rwth-aachen.de'
+alias portal='ssh -Y dbach@portal.rz.rwth-aachen.de'
 
 alias rm='rm -i'
 alias cp='cp -i'
@@ -58,7 +61,7 @@ alias col_light="sh ~/.config/termcolours/light.sh"
 alias col_default="sh ~/.config/termcolours/default.sh"
 
 #----------------------------------------------------------------------#
-# SSH KEY
+# SSH
 #----------------------------------------------------------------------#
 
 # Init ssg-agent if not exist
@@ -70,4 +73,5 @@ fi
 if [[ -n $(ssh-add -l | grep 'The agent has no identities') ]] ; then
   ssh-add 2> /dev/null
 fi
+
 
