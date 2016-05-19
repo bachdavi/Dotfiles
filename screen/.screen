@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+IN="eDP1"
+EXT="HDMI1"
+
+if (xrandr | grep "$EXT disconnected"); then
+	xrandr --output $IN --auto --output $EXT --off 
+else
+	xrandr --output $EXT --auto --left-of $IN
+fi
+$HOME/.fehbg

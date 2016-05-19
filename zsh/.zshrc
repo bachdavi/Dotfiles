@@ -50,6 +50,7 @@ alias 'cd..'='cd ..'
 alias gia="git add"
 alias gcm="git commit -a -m"
 alias gp="git push"
+alias gs="git status"
 
 # Themes
 alias col_dark="sh ~/.config/termcolours/dark.sh"
