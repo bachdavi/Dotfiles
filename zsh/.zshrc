@@ -9,7 +9,7 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 
-prompt grml-large
+prompt grml
 #----------------------------------------------------------------------#
 # Colors
 #----------------------------------------------------------------------#
