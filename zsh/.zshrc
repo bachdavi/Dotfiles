@@ -10,6 +10,11 @@ compinit
 promptinit
 
 prompt grml
+
+#Browser
+
+#$BROWSER='google-chrome-stable'
+
 #----------------------------------------------------------------------#
 # Colors
 #----------------------------------------------------------------------#
@@ -33,7 +38,7 @@ export PYTHIA="/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/"
 
 alias juams='ssh -Y vsk1045@juams01.fz-juelich.de'
 alias cluster='ssh -Y db957752@cluster.rz.rwth-aachen.de'
-alias portal='ssh -Y dbach@portal.rz.rwth-aachen.de'
+alias portal='ssh -Y dbach@portal.physik.rwth-aachen.de'
 
 alias rm='rm -i'
 alias cp='cp -i'
@@ -59,19 +64,4 @@ alias gs="git status"
 alias col_dark="sh ~/.config/termcolours/dark.sh"
 alias col_light="sh ~/.config/termcolours/light.sh"
 alias col_default="sh ~/.config/termcolours/default.sh"
-
-#----------------------------------------------------------------------#
-# SSH
-#----------------------------------------------------------------------#
-
-# Init ssg-agent if not exist
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s`
-fi
-
-# Add identities if not exist
-if [[ -n $(ssh-add -l | grep 'The agent has no identities') ]] ; then
-  ssh-add 2> /dev/null
-fi
-
 
