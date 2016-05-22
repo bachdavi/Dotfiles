@@ -206,20 +206,19 @@ exec xset fp+ $HOME/.fonts/ohsnap
 
 # My bar
 bar {
- # i3bar_command ~/.i3/lemonbar/i3_lemonbar.sh
- 	
- 	status_command i3blocks -c ~/.i3/i3blocks.conf
- 	font pango:Terminus 8
- 	position top
-	tray_output primary
-	colors{
-	background $bg-color
-	separator #75757
-	focused_workspace $bg-color $bg-color $text-color
-	inactive_workspace $inactive-bg-color $inactive-bg-color  $inactive-text-color
-	urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
-		}
 
-	
+ 	status_command i3blocks -c ~/.i3/i3blocks.conf
+      position top
+      font pango:terminus 8
+      colors {
+        background #00000066 
+        statusline #ffffff66
+        separator #888888ff
+        focused_workspace #00000088 #00000088 #ffffffbb
+        active_workspace #00000088 #00000088 #aaaaaabb
+        inactive_workspace #00000088 #00000088 #999999bb
+        urgent_workspace #88888888 #08080888 #EA4C59bb
+   }
+ 
 }
 
