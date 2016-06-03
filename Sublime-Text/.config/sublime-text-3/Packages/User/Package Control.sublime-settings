@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"Alignment",
+		"Boxy Theme",
 		"BracketHighlighter",
 		"C++ Snippets",
 		"C++ Starting Kit",
@@ -20,7 +21,6 @@
 		"SideBarEnhancements",
 		"SublimeCodeIntel",
 		"Theme - Flatland",
-		"Theme - Otto",
 		"Theme - Soda",
 		"Theme - Soda SolarizedDark",
 		"Tomorrow Color Schemes",

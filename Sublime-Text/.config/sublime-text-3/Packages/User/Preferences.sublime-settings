@@ -12,7 +12,7 @@
 		}
 	],
 	"caret_style": "solid",
-	"color_scheme": "Packages/Theme - Otto/schemes/Otto Monokai.tmTheme",
+	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Tomorrow.tmTheme",
 	"file_exclude_patterns":
 	[
 		".DS_Store",
@@ -32,7 +32,7 @@
 		"subpixel_antialias",
 		"no_bold"
 	],
-	"font_size": 8,
+	"font_size": 10,
 	"ignored_packages":
 	[
 		"Vintage"
@@ -41,7 +41,7 @@
 	"line_padding_top": 0,
 	"sublimelinter": false,
 	"tab_size": 2,
-	"theme": "Otto Tomorrow.sublime-theme",
+	"theme": "Flatland Dark.sublime-theme",
 	"wide_caret": true,
 	"word_wrap": true
 }

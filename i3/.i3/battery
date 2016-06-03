@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+b#!/usr/bin/perl
 #
 # Copyright 2014 Pierre Mavro <deimos@deimos.fr>
 # Copyright 2014 Vivien Didelot <vivien@didelot.org>
@@ -8,7 +8,10 @@
 # This script is meant to use with i3blocks. It parses the output of the "acpi"
 # command (often provided by a package of the same name) to read the status of
 # the battery, and eventually its remaining time (to full charge or discharge).
-#
+#[battery]
+command=~/.i3/battery.py
+markup=pango
+interval=30
 # The color will gradually change for a percentage below 85%, and the urgency
 # (exit code 33) is set if there is less that 5% remaining.
 
@@ -23,7 +26,10 @@ my $full_text;
 my $short_text;
 
 # print utf-8 chars directly and redirect stderr to stdout
-binmode STDOUT, ':encoding(UTF-8)';
+binmode STDOUT, [battery]
+command=~/.i3/battery.py
+markup=pango
+interval=30':encoding(UTF-8)';
 *STDERR = *STDOUT;
 
 # read the first line of the "acpi" command output
