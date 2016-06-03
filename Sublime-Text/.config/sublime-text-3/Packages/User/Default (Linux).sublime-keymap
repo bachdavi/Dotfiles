@@ -1,5 +1,7 @@
 [
     { "keys": ["super+alt+l"], "command": "reindent"},
+    // { "keys": ["alt+o"], "command": "moveTo" , "args"  :{"to": "eol", "extend": false}},
+    // { "keys": ["alt+i"], "command": "insert", "args":{"characters": "\n"}  }, 
     { "keys": ["ctrl+shift+c"], "command": "exec", "args": {"kill": true} },
     {"keys":["ctrl+shift+h"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
     { "keys": ["ctrl+7"], "command": "toggle_comment", "args": { "block": false } },
@@ -7,6 +9,16 @@
     { "keys": ["shift+ctrl+g"], "command": "goto_definition" },
     { "keys": ["shift+ctrl+9"], "command": "unfold"},
     { "keys": ["shift+ctrl+8"], "command": "fold"},
+    {
+  "keys": ["alt+o"], 
+  "command": "chain", 
+  "args": {
+    "commands": [
+      ["move_to", {"to": "eol", "extend": false} ],
+      ["insert", {"characters": "\n"}],
+        ]
+    }
+    },
     { "keys": ["shift+ctrl+0"], "command": "fold_all"},
         {
         "no_outside_adj": null,
