@@ -1,23 +1,19 @@
 # ZSH RC File
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+
+source ./.zprezto/init.zsh
+
 #----------------------------------------------------------------------#
 # Autocompletion and prompt
 #----------------------------------------------------------------------#
 
-autoload -Uz compinit promptinit
+autoload -Uz compinit
 compinit
-promptinit
 
-prompt grml
+zstyle ':completion:*' menu select
 
-#Browser
-
-#$BROWSER='google-chrome-stable'
-
-#----------------------------------------------------------------------#
-# Colors
-#----------------------------------------------------------------------#
 
 
 alias lsmp3='ls -1 --indicator-style=none *.mp3'
@@ -60,8 +56,12 @@ alias gcm="git commit -a -m"
 alias gp="git push"
 alias gs="git status"
 
-# Themes
-alias col_dark="sh ~/.config/termcolours/dark.sh"
-alias col_light="sh ~/.config/termcolours/light.sh"
-alias col_default="sh ~/.config/termcolours/default.sh"
+# History Search
+
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "${key[Up]}"   ]] && bindkey "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
 
