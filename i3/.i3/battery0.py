@@ -31,6 +31,8 @@ state = status.split(": ")[1].split(", ")[0]
 commasplitstatus = status.split(", ")
 if state=="Unknown":
     percentleft = int(commasplitstatus[1].split("%")[0].rstrip("%\n"))
+if state=="Full":
+    percentleft = int(commasplitstatus[1].split("B")[0].rstrip("%\n"))
 else:
     percentleft = int(commasplitstatus[1].rstrip("%\n"))
 

@@ -34,7 +34,7 @@ client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-col
 client.unfocused   $inactive-bg-color  $inactive-bg-color $inactive-text-color  #00ff00
 client.urgent           $urgent-bg-color   $urgent-bg-color        $text-color      #00ff00
 
-hide_edge_borders both
+#hide_edge_borders both
 
 #..........
 # Applications
@@ -51,7 +51,7 @@ set $mod Mod4
 floating_modifier $mod
 
 # Terminal (mod+Enter)
-bindcode $mod+36 exec terminator
+bindcode $mod+36 exec xfce4-terminal --hide-menubar
 bindsym $mod+d  exec dmenu_run
 # Layout
 for_window [class="(?i)feh"] floating enable
@@ -151,6 +151,9 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
+# switch to last workspace
+bindsym $mod+b workspace back_and_forth
+
 # reload the configuration file (mod+shitf+c)
 bindcode $mod+Shift+54 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3) (mod+shitf+r)
@@ -204,21 +207,23 @@ exec xset fp+ $HOME/.fonts/misc
 exec xset fp+ $HOME/.fonts/ohsnap
 
 
-# My bar
-bar {
 
- 	status_command i3blocks -c ~/.i3/i3blocks.conf
-      position top
-      font pango:terminus 8
-      colors {
-        background #00000066 
-        statusline #ffffff66
-        separator #888888ff
-        focused_workspace #00000088 #00000088 #ffffffbb
-        active_workspace #00000088 #00000088 #aaaaaabb
-        inactive_workspace #00000088 #00000088 #999999bb
-        urgent_workspace #88888888 #08080888 #EA4C59bb
-   }
- 
+bar {
+ 	font pango:Source Sans Pro-10 10
+	status_command i3blocks -c ~/.i3/i3blocks.conf
+      	position top
+  colors {
+    separator #268bd2
+    background #002b36
+    statusline #839496
+    focused_workspace #fdf6e3 #6c71c4 #fdf6e3
+    active_workspace #fdf6e3 #6c71c4 #fdf6e3
+    inactive_workspace #002b36 #586e75 #002b36
+    urgent_workspace #d33682 #d33682 #fdf6e3
+  }
 }
+client.focused #6c71c4 #6c71c4 #fdf6e3 #6c71c4
+client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
+client.unfocused #073642 #073642 #93a1a1 #586e75
+client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 

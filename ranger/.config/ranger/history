@@ -1,1 +1,14 @@
+rename Pbar_Production_Rate.pdf
+open_with 
+shell 
+rename Arbeit
+rename Anti_Deut.pdf
+rename Anti_Deut_scaled.pdf
+search B
+open_with zathura
+cd ..
+cd  --
+cd  ^^
 delete
+cd  -
+cd -
