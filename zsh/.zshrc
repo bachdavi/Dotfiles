@@ -2,6 +2,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# History
+
+HISTFILE=./.zsh_history
+setopt APPEND_HISTORY
 
 source ./.zprezto/init.zsh
 
