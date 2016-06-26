@@ -2,10 +2,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# History
+zstyle :compinstall filename '/home/david/.zshrc'
 
-HISTFILE=./.zsh_history
+# History
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=9000
 setopt APPEND_HISTORY
+bindkey -e
 
 source ./.zprezto/init.zsh
 
@@ -62,10 +66,10 @@ alias gs="git status"
 
 # History Search
 
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
+#autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+#zle -N up-line-or-beginning-search
+#zle -N down-line-or-beginning-search
 
-[[ -n "${key[Up]}"   ]] && bindkey "${key[Up]}"   up-line-or-beginning-search
-[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
+#[[ -n "${key[Up]}"   ]] && bindkey "${key[Up]}"   up-line-or-beginning-search
+#[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
 

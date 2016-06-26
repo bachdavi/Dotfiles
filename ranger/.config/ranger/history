@@ -10,5 +10,6 @@ cd ..
 cd  --
 cd  ^^
 delete
-cd  -
+rename Bildungsfonds_Bewerbung_David_Bach.pdf
 cd -
+cd  -
