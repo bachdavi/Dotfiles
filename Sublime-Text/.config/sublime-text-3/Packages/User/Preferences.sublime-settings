@@ -12,7 +12,8 @@
 		}
 	],
 	"caret_style": "solid",
-	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Tomorrow.tmTheme",
+	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Ocean.tmTheme",
+	"theme": "Boxy Ocean.sublime-theme",
 	"file_exclude_patterns":
 	[
 		".DS_Store",
@@ -41,7 +42,6 @@
 	"line_padding_top": 0,
 	"sublimelinter": false,
 	"tab_size": 2,
-	"theme": "Flatland Dark.sublime-theme",
 	"wide_caret": true,
 	"word_wrap": true
 }
