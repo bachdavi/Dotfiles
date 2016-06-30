@@ -1,7 +1,6 @@
-# i3 config file (v4.8)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-# 22 jul 2015 - E7
+
+# i3 config file
+# Eoxxs
 
 #.......
 # Font
@@ -52,7 +51,8 @@ floating_modifier $mod
 
 # Terminal (mod+Enter)
 bindcode $mod+36 exec xfce4-terminal --hide-menubar
-bindsym $mod+d  exec dmenu_run
+bindsym $mod+d  exec dmenu_run 
+#bindsym $mod+d exec rofi -dmenu
 # Layout
 for_window [class="(?i)feh"] floating enable
 for_window [class="(?i)gcolor2"] floating enable
@@ -187,9 +187,8 @@ mode "resize" {
 bindcode $mod+27 mode "resize"
 
 bindsym $mod+c exec google-chrome-stable
-#bindsym $mod+f exec firefox
-#bindsym $mod+t exec thunderbird
 
+# Backlight and audio buttons
 bindcode 232 exec xbacklight -10
 bindcode 233 exec xbacklight +10
 
