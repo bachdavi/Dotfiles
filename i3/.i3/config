@@ -62,6 +62,9 @@ for_window [instance="(?i)TeamViewer.exe"] floating enable
 for_window [class="(?i)VirtualBox"] floating enable
 for_window [class="(?i)mplayer2"] floating enable
 for_window [instance="(?i)mplayer2"] floating enable
+for_window [instance="(?i)thunderbird"] floating enable
+
+popup_during_fullscreen smart
 
 #...........
 # Keybinds i3

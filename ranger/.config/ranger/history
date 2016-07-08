@@ -9,7 +9,8 @@ open_with zathura
 cd ..
 cd  --
 cd  ^^
-delete
 rename Bildungsfonds_Bewerbung_David_Bach.pdf
-cd -
 cd  -
+cd .
+cd -
+delete
