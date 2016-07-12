@@ -209,8 +209,8 @@ exec xset fp+ $HOME/.fonts/terminesspowerline
 exec xset fp+ $HOME/.fonts/misc
 exec xset fp+ $HOME/.fonts/ohsnap
 
-
-
+gaps inner 10
+gaps outer 10
 bar {
  	font pango:Source Sans Pro-10 10
 	status_command i3blocks -c ~/.i3/i3blocks.conf

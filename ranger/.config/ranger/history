@@ -15,3 +15,5 @@ cd .
 cd -
 delete
 rename Bachelorarbeit_David_Bach.pdf
+open_with q
+rename Bachlor_Talk_David_Bach.pdf
