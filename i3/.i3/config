@@ -193,7 +193,7 @@ mode "resize" {
 }
 bindcode $mod+27 mode "resize"
 
-bindsym $mod+c exec google-chrome-stable
+bindsym $mod+c exec chromium
 
 # Backlight and audio buttons
 bindcode 232 exec xbacklight -10

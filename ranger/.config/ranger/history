@@ -13,7 +13,16 @@ rename Bildungsfonds_Bewerbung_David_Bach.pdf
 cd  -
 cd .
 cd -
-delete
 rename Bachelorarbeit_David_Bach.pdf
 open_with q
 rename Bachlor_Talk_David_Bach.pdf
+rename UntermietvertragStand2016-WGOG_David_Tebbe.pdf
+rename UntermietvertragStand2016-WGOG_David_Tebbe.doc
+rename UntermietvertragStand2016-WGOG_Christopher_Weber.pdf
+rename UntermietvertragStand2016-WGOG_Christopher_Weber.doc
+rename UntermietvertragStand2016-WGOG.doc
+mkdir Untermiete
+delete
+rename Passport_D_Bach.pdf
+mdkir Personal
+mkdir Personal
