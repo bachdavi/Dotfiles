@@ -7,11 +7,11 @@
 #.......
 
 #set $ft xft:DroidSans:size=8
-set $ft pango:Inconsolata:size=10
+#set $ft pango:Inconsolata:size=8
 #set $ft -xos4-terminesspowerline-medium-r-normal--12-120-72-72-c-60-iso10646-1
-#font pango:Terminus  
-#set $ft terminus20
-font $ft
+font pango:Terminus 8
+set $ft terminus12
+#font $ft
 
 #..........
 # Look
@@ -212,17 +212,13 @@ exec xset fp+ $HOME/.fonts/terminesspowerline
 exec xset fp+ $HOME/.fonts/misc
 exec xset fp+ $HOME/.fonts/ohsnap
 
-smart_borders on
-smart_gaps on
-
 gaps inner 10
-gaps outer 15
+gaps outer 10
 
 
 bar {
       i3bar_command i3bar -t
- 	font pango:Source Sans Pro-10 10.5
-      #font pango:Inconsolata:size=5
+ 	font pango:Source Sans Pro-10 10
 	status_command i3blocks -c  ~/.i3/i3blocks.conf
       	position top
   colors {
