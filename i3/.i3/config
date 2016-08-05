@@ -131,7 +131,7 @@ set $workspace3 "3  "
 set $workspace8 "8   "
 set $workspace9 "9 "
 # zero width space so it is sorted last
-set $workspace10 "​0 "
+set $workspace10 "​0 "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -208,9 +208,9 @@ bindsym $mod+x move workspace to output left
 bindsym $mod+Shift+x move workspace to output primary 
 
 
-exec xset fp+ $HOME/.fonts/terminesspowerline
-exec xset fp+ $HOME/.fonts/misc
-exec xset fp+ $HOME/.fonts/ohsnap
+#exec xset fp+ $HOME/.fonts/terminesspowerline
+#exec xset fp+ $HOME/.fonts/misc
+#exec xset fp+ $HOME/.fonts/ohsnap
 
 gaps inner 10
 gaps outer 10

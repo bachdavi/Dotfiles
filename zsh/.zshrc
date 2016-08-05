@@ -11,6 +11,10 @@ SAVEHIST=9000
 setopt APPEND_HISTORY
 bindkey -e
 
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+bindkey    "^[[3~"          delete-char
+bindkey    "^[3;5~"         delete-char
 source ./.zprezto/init.zsh
 
 #----------------------------------------------------------------------#

@@ -22,7 +22,12 @@ rename UntermietvertragStand2016-WGOG_Christopher_Weber.pdf
 rename UntermietvertragStand2016-WGOG_Christopher_Weber.doc
 rename UntermietvertragStand2016-WGOG.doc
 mkdir Untermiete
-delete
 rename Passport_D_Bach.pdf
 mdkir Personal
 mkdir Personal
+delete
+open_with un^
+
+unzip
+rename 04 - What It Feels Like.mp3
+search Kavinsky
