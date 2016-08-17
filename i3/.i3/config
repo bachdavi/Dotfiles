@@ -212,8 +212,8 @@ bindsym $mod+Shift+x move workspace to output primary
 #exec xset fp+ $HOME/.fonts/misc
 #exec xset fp+ $HOME/.fonts/ohsnap
 
-gaps inner 10
-gaps outer 10
+gaps inner 5
+gaps outer 5
 
 
 bar {
