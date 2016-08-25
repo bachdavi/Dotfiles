@@ -10,9 +10,7 @@ cd ..
 cd  --
 cd  ^^
 rename Bildungsfonds_Bewerbung_David_Bach.pdf
-cd  -
 cd .
-cd -
 rename Bachelorarbeit_David_Bach.pdf
 open_with q
 rename Bachlor_Talk_David_Bach.pdf
@@ -25,9 +23,16 @@ mkdir Untermiete
 rename Passport_D_Bach.pdf
 mdkir Personal
 mkdir Personal
-delete
 open_with un^
 
 unzip
 rename 04 - What It Feels Like.mp3
 search Kavinsky
+cd  .
+cd  -
+mkdir Fertig
+rename Untermietvertrag_Christoph_Wever_all.pdf
+cd -
+rename Vertrag Mailand.pdf
+rename Tmp
+delete
