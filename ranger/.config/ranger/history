@@ -1,6 +1,5 @@
 rename Pbar_Production_Rate.pdf
 open_with 
-shell 
 rename Arbeit
 rename Anti_Deut.pdf
 rename Anti_Deut_scaled.pdf
@@ -24,15 +23,26 @@ rename Passport_D_Bach.pdf
 mdkir Personal
 mkdir Personal
 open_with un^
-
 unzip
 rename 04 - What It Feels Like.mp3
 search Kavinsky
-cd  .
-cd  -
 mkdir Fertig
 rename Untermietvertrag_Christoph_Wever_all.pdf
-cd -
 rename Vertrag Mailand.pdf
 rename Tmp
+shell 
+mkdir Bafög
+search Bafög
+search Bafoeg
+rename ERASMUS-Stipendium_david_bach.pdf
+cd-
+search stu
+cd 
+cd  .
+cd  -
+cd -1
+mkdir Beurlaubung
+
+mkdir Asta
 delete
+cd -
