@@ -16,18 +16,37 @@ font pango:Terminus 8
 new_window pixel 2
 new_float pixel 2
 
-# Hybrid colors
-set $bg-color                 #002b36
-set $inactive-bg-color	#002b36
-set $text-color 		      #93a1a1
-set $inactive-text-color	#586e75
-set $urgent-bg-color	#E53935
 
-#class                            border                      backgr.                    text                           indicator
-client.focused         	      $bg-color                 $bg-color                 $text-color                 #00ff00	
-client.focused_inactive $inactive-bg-color   $inactive-bg-color  $inactive-text-color   #00ff00
-client.unfocused            $inactive-bg-color   $inactive-bg-color  $inactive-text-color   #00ff00
-client.urgent                  $urgent-bg-color     $urgent-bg-color      $text-color                 #00ff00
+# Base16 Default colors
+set $base00 "#151515"
+set $base01 "#202020"
+set $base02 "#303030"
+set $base03 "#505050"
+set $base04 "#b0b0b0"
+set $base05 "#d0d0d0"
+set $base06 "#e0e0e0"
+set $base07 "#f5f5f5"
+set $base08 "#ac4142"
+set $base09 "#d28445"
+set $base0A "#f4bf75"
+set $base0B "#90a959"
+set $base0C "#75b5aa"
+set $base0D "#6a9fb5"
+set $base0E "#aa759f"
+set $base0F "#8f5536"
+
+set $focusc "#4592B1"
+
+
+
+# Colors
+# name                   border   background  font_color
+client.focused           $focusc  $focusc     $base07
+client.focused_inactive  $base00  $base00     $base07
+client.unfocused         $base00  $base00     $base07
+client.urgent            $base08  $base08     $base00
+
+
 
 hide_edge_borders both
 
@@ -113,6 +132,14 @@ bindcode $mod+38 focus parent
 
 # focus the child container (mod+z)
 bindcode $mod+52 focus child
+
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
 
 
 set $workspace1 "1  "
@@ -208,25 +235,30 @@ bindsym $mod+Shift+x move workspace to output primary
 gaps inner 5
 gaps outer 5
 
-
 bar {
       i3bar_command i3bar -t
- 	font pango:Source Sans Pro-10 10
-	status_command i3blocks -c  ~/.i3/i3blocks.conf
-      	position top
+      font pango:Source Sans Pro-10 10
+      status_command i3blocks -c  ~/.i3/i3blocks.conf
+      position top
   colors {
-    separator     #268bd2
-    background #002b36
-    statusline    #839496
-    focused_workspace   #fdf6e3     #6c71c4   #fdf6e3
-    active_workspace      #6c71c4    #fdf6e3
-    inactive_workspace   #002b36    #586e75   #002b36
-    urgent_workspace      #d33682   #d33682   #fdf6e3
+    background $base00
+    statusline $base07
+    separator  $base02
+    # name               border   background  font_color
+    focused_workspace    $base0D  $base0D     $base07
+    active_workspace     $base00  $base00     $base0D
+    inactive_workspace   $base00  $base00     $base05
+    urgent_workspace     $base08  $base08     $base07
+    binding_mode         $base0E  $base0E     $base01
   }
 }
 
-client.focused #6c71c4 #6c71c4 #fdf6e3 #6c71c4
-client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
-client.unfocused #073642 #073642 #93a1a1 #586e75
-client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+
+
+# Colors
+# name                   border   background  font_color
+client.focused           $focusc  $focusc     $base07
+client.focused_inactive  $base00  $base00     $base07
+client.unfocused         $base00  $base00     $base07
+client.urgent            $base08  $base08     $base00
 
