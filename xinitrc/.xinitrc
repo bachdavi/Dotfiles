@@ -4,7 +4,7 @@
 xrandr --output eDP1 --primary 
 $HOME/./.fehbg
 dropbox &
-clutter &
+unclutter &
 xscreensaver  -no-splash&
 ~/.scripts/screensaver_script &
 xflux -l 45 -g 9.2

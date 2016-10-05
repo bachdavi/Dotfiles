@@ -12,7 +12,7 @@
 		}
 	],
 	"caret_style": "solid",
-	"color_scheme": "Packages/Base16 Color Schemes/Themes/base16-eighties.tmTheme",
+	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Monokai.tmTheme",
 	"file_exclude_patterns":
 	[
 		".DS_Store",
