@@ -1,6 +1,3 @@
-rename Pbar_Production_Rate.pdf
-open_with 
-rename Arbeit
 rename Anti_Deut.pdf
 rename Anti_Deut_scaled.pdf
 search B
@@ -44,5 +41,10 @@ cd -1
 mkdir Beurlaubung
 
 mkdir Asta
-delete
+rename Bilder^^
+find gh
+rename Co-creation upload.pdf
+mkdir Aachen Promo
+mkdir Bilder
 cd -
+delete
