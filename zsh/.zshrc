@@ -11,8 +11,8 @@ SAVEHIST=9000
 setopt APPEND_HISTORY
 bindkey -e
 
-bindkey "^[[F" beginning-of-line
-bindkey "^[[H" end-of-line
+bindkey "^[[F" end-of-line
+bindkey "^[[H" beginning-of-line
 bindkey    "^[[3~"          delete-char
 bindkey    "^[3;5~"         delete-char
 source ./.zprezto/init.zsh

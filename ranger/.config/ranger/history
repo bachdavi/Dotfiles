@@ -1,12 +1,3 @@
-rename Anti_Deut.pdf
-rename Anti_Deut_scaled.pdf
-search B
-open_with zathura
-cd ..
-cd  --
-cd  ^^
-rename Bildungsfonds_Bewerbung_David_Bach.pdf
-cd .
 rename Bachelorarbeit_David_Bach.pdf
 open_with q
 rename Bachlor_Talk_David_Bach.pdf
@@ -36,7 +27,6 @@ cd-
 search stu
 cd 
 cd  .
-cd  -
 cd -1
 mkdir Beurlaubung
 
@@ -46,5 +36,15 @@ find gh
 rename Co-creation upload.pdf
 mkdir Aachen Promo
 mkdir Bilder
+rename Unitech_Promo_Aachen_New.pdf
+rename Unitech_Promo_Aachen_Correct.pdf
+rename Unitech_Promo_Aachen_New.pptx
+rename Unitech_Promo_Aachen_Correct.pptx
+mkdir PDF
+mkdir PTX
+rename 36 Fragen zur Annäherung - Übersetzung.docx
+cd .
+cd  _
+cd  -
 cd -
 delete
