@@ -12,7 +12,7 @@
 		}
 	],
 	"caret_style": "solid",
-	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Monokai.tmTheme",
+	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Solarized Dark.tmTheme",
 	"file_exclude_patterns":
 	[
 		".DS_Store",
@@ -41,7 +41,24 @@
 	"line_padding_top": 0,
 	"sublimelinter": false,
 	"tab_size": 2,
-	"theme": "Boxy Monokai.sublime-theme",
+	"theme": "Boxy Solarized Dark.sublime-theme",
+	"theme_accent_cyan": true,
+	"theme_bar": true,
+	"theme_bar_logo_atomized": true,
+	"theme_bar_shadow_hidden": true,
+	"theme_button_rounded": true,
+	"theme_dirty_colored_always": true,
+	"theme_icons_materialized": true,
+	"theme_scrollbar_rounded": true,
+	"theme_sidebar_highlight_selected_text_only": true,
+	"theme_sidebar_highlight_text_only": true,
+	"theme_sidebar_indent_top_level_disabled": true,
+	"theme_size_md": true,
+	"theme_tab_highlight_text_only": true,
+	"theme_tab_selected_transparent": true,
+	"theme_tab_selected_underlined": true,
+	"theme_tab_size_xxl": true,
+	"theme_unified": true,
 	"wide_caret": true,
 	"word_wrap": true
 }

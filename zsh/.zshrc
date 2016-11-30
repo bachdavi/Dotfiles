@@ -39,6 +39,7 @@ export LESS="-R"
 #----------------------------------------------------------------------#
 export PATH="$PATH:$HOME/bin"
 export PYTHIA="/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/"
+export TMOUT=0
 
 #----------------------------------------------------------------------#
 # Alias

@@ -4,6 +4,7 @@
 xrandr --output eDP1 --primary 
 $HOME/./.fehbg
 dropbox &
+unclutter &
 xscreensaver  -no-splash&
 ~/.scripts/screensaver_script &
 xflux -l 45 -g 9.2
@@ -12,6 +13,8 @@ xmodmap -e "pointer = 1 25 3 4 5 6 7 8 9" &
 xrdb ~/.Xresources 
 xinput --set-prop "TPPS/2 IBM TrackPoint" 'Device Accel Velocity Scaling' 50
 xinput --set-prop 11 138 0
+clipit &
+
 
 # Windowmanager
 exec i3

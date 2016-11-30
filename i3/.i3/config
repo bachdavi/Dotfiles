@@ -213,7 +213,7 @@ mode "resize" {
 }
 bindcode $mod+27 mode "resize"
 
-bindsym $mod+c exec chromium
+bindsym $mod+c exec firejail chromium
 
 #..........
 # Stuff
