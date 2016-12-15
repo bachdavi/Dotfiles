@@ -56,9 +56,6 @@ hide_edge_borders both
 
 # Using bindcode for compatibility
 
-# Principal mod key (Super = Win key)
-# mod1 = Alt (xmodmap to show)
-# mod4 = Winkey (xmodmap to show)
 set $mod Mod4
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -141,14 +138,14 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-
+# Workspace icons
 set $workspace1 "1  "
 set $workspace2 "2 "
 set $workspace3 "3  "
 set $workspace4 "4 "
 set $workspace5 "5   "
 set $workspace6 "6 "
-set $workspace7 "7  "
+set $workspace7 "7  "
 set $workspace8 "8   "
 set $workspace9 "9 "
 set $workspace10 "​0 "
@@ -180,6 +177,10 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # switch to last workspace
 bindsym $mod+b workspace back_and_forth
+
+# Switch between the workspaces
+bindsym $mod+Tab exec i3-msg workspace next
+bindsym $mod+Shift+Tab exec i3-msg workspace prev
 
 # reload the configuration file (mod+shitf+c)
 bindcode $mod+Shift+54 reload
@@ -220,7 +221,6 @@ bindsym $mod+c exec firejail chromium
 #..........
 
 # Backlight and audio buttons
-
 bindcode 232 exec xbacklight -10
 bindcode 233 exec xbacklight +10
 
@@ -228,30 +228,31 @@ bindsym XF86AudioRaiseVolume exec "amixer sset Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer sset Master 5%-"
 
 # External Monitor
-
 bindsym $mod+x move workspace to output left
 bindsym $mod+Shift+x move workspace to output primary 
 
+# gaps settings
 gaps inner 5
 gaps outer 5
 
-bar {
-      i3bar_command i3bar -t
-      font pango:Source Sans Pro-10 10
-      status_command i3blocks -c  ~/.i3/i3blocks.conf
-      position top
-  colors {
-    background $base00
-    statusline $base07
-    separator  $base02
-    # name               border   background  font_color
-    focused_workspace    $base0D  $base0D     $base07
-    active_workspace     $base00  $base00     $base0D
-    inactive_workspace   $base00  $base00     $base05
-    urgent_workspace     $base08  $base08     $base07
-    binding_mode         $base0E  $base0E     $base01
-  }
-}
+#1^bar {
+      #i3bar_command i3bar -t
+      #font pango:Source Sans Pro-10 10
+      #status_command i3blocks -c  ~/.i3/i3blocks.conf
+     # position top
+  #colors {
+    #background $base00
+    #statusline $base07
+    #separator  $base02
+    ## name               border   background  font_color
+    #focused_workspace    $base0D  $base0D     $base07
+    #active_workspace     $base00  $base00     $base0D
+    #inactive_workspace   $base00  $base00     $base05
+    #urgent_workspace     $base08  $base08     $base07
+    #binding_mode         $base0E  $base0E     $base01
+
+  #}
+#}
 
 
 
@@ -262,3 +263,6 @@ client.focused_inactive  $base00  $base00     $base07
 client.unfocused         $base00  $base00     $base07
 client.urgent            $base08  $base08     $base00
 
+for_window [class="^.*"] border pixel 3px
+
+exec polybar example
