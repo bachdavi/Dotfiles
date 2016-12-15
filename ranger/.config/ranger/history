@@ -1,8 +1,3 @@
-rename Passport_D_Bach.pdf
-mdkir Personal
-mkdir Personal
-open_with un^
-unzip
 rename 04 - What It Feels Like.mp3
 search Kavinsky
 mkdir Fertig
@@ -37,7 +32,6 @@ cd .
 cd  _
 cd  -
 mkdir Profile
-cd -
 open gimp
 
 e gimp
@@ -47,4 +41,10 @@ search U
 search S
 search St
 mkdir Tmp
+rename Rulex instructionr.pdf
+mkdir FlighDelay
+mkdir Passport
 delete
+search rocket
+cd -
+mkdir Project
