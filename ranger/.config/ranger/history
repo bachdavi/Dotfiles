@@ -1,27 +1,3 @@
-rename 04 - What It Feels Like.mp3
-search Kavinsky
-mkdir Fertig
-rename Untermietvertrag_Christoph_Wever_all.pdf
-rename Vertrag Mailand.pdf
-rename Tmp
-shell 
-mkdir Bafög
-search Bafög
-search Bafoeg
-rename ERASMUS-Stipendium_david_bach.pdf
-cd-
-search stu
-cd 
-cd  .
-cd -1
-mkdir Beurlaubung
-mkdir Asta
-rename Bilder^^
-find gh
-rename Co-creation upload.pdf
-mkdir Aachen Promo
-mkdir Bilder
-rename Unitech_Promo_Aachen_New.pdf
 rename Unitech_Promo_Aachen_Correct.pdf
 rename Unitech_Promo_Aachen_New.pptx
 rename Unitech_Promo_Aachen_Correct.pptx
@@ -29,8 +5,6 @@ mkdir PDF
 mkdir PTX
 rename 36 Fragen zur Annäherung - Übersetzung.docx
 cd .
-cd  _
-cd  -
 mkdir Profile
 open gimp
 
@@ -44,7 +18,33 @@ mkdir Tmp
 rename Rulex instructionr.pdf
 mkdir FlighDelay
 mkdir Passport
-delete
 search rocket
-cd -
 mkdir Project
+search Zü
+search airc
+cd 
+search sta
+rename Load_curve_forecast_typical_california_day.png
+search ener
+search energy
+search stor
+mkdir Paper
+search stat
+cd  _
+cd  -
+search err
+search mobi
+search acc
+search fla
+search ora
+search ris
+search are
+cd -
+Poli_Mid_tmp
+mkdir poli_mid_tmp
+search .gif
+search tar
+search zip
+search .zip
+ unzip 
+delete

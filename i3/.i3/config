@@ -235,6 +235,9 @@ bindsym $mod+Shift+x move workspace to output primary
 gaps inner 5
 gaps outer 5
 
+# screenshoot keybind
+bindsym $mod+p exec xfce4-screenshooter
+
 bar {
       i3bar_command i3bar -t
       font pango:Source Sans Pro-10 10
