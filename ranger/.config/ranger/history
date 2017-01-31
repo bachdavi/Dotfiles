@@ -1,50 +1,50 @@
-rename Unitech_Promo_Aachen_Correct.pdf
-rename Unitech_Promo_Aachen_New.pptx
-rename Unitech_Promo_Aachen_Correct.pptx
-mkdir PDF
-mkdir PTX
-rename 36 Fragen zur Annäherung - Übersetzung.docx
-cd .
-mkdir Profile
-open gimp
+open_with 
+rename Multichannel_Project_new.pdf
+rename 19_report.pdf
+rename 19_presentation.pptx
+rename David_Bach_Bachelorvortrag.pdf
+search My
+shell 
+mkdir Notes
+mkdir Books
+mkdir Sport
+search Foc
+rename Ego_is_the_Enemy.pdf
+rename Ego_is_the_Enemy.html
+mkdir Links
+mkdir Markdown
+mkdir Images
+search ht
+search gg
+search HT
+search Eg
+search .sc
+rename Lambda\ Share
+rename Lambda Share
 
-e gimp
-open_with gimp
-search Dropbox/Uni
-search U
-search S
-search St
-mkdir Tmp
-rename Rulex instructionr.pdf
-mkdir FlighDelay
-mkdir Passport
-search rocket
-mkdir Project
-search Zü
-search airc
-cd 
-search sta
-rename Load_curve_forecast_typical_california_day.png
-search ener
-search energy
-search stor
-mkdir Paper
-search stat
-cd  _
+rename Lambda_Share
+mkdir Physik
+rename Physics
+rename VirtualBox VMs_test
+rename VirtualBox VMs
+rename ramjet_mars_presentation_final_.pptx
+rename ramjet_mars_presentation_final_4.pptx
+rename Task_7_ILab1distance.xlsx
+rename Task_7_latex.zip
+rename Task_7_Comparison.py
+rename Task_7_sub_orbital.py
+search tas
+rename Task_7_presentation.pdf
+rename Task_7_presentation.pptx
+mkdir Launch_Control
+rename ownCloudc
+rename Abi_flight.jpg
+rename 10 Co-creation upload.pdf
+rename 13 CRM.pdf
+mkdir Final
+mkdir Menergy
 cd  -
-search err
-search mobi
-search acc
-search fla
-search ora
-search ris
-search are
-cd -
-Poli_Mid_tmp
-mkdir poli_mid_tmp
-search .gif
-search tar
-search zip
-search .zip
- unzip 
+cd 
 delete
+cd -
+search .dot

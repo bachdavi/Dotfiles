@@ -62,7 +62,7 @@ set $mod Mod4
 floating_modifier $mod
 
 # Terminal (mod+Enter)
-bindcode $mod+36 exec xfce4-terminal --hide-menubar
+bindcode $mod+36 exec  terminator
 
 bindsym $mod +d exec rofi -show run
 
@@ -214,7 +214,8 @@ mode "resize" {
 }
 bindcode $mod+27 mode "resize"
 
-bindsym $mod+c exec firejail chromium
+bindsym $mod+c exec chromium
+
 
 #..........
 # Stuff
@@ -230,6 +231,8 @@ bindsym XF86AudioLowerVolume exec "amixer sset Master 5%-"
 # External Monitor
 bindsym $mod+x move workspace to output left
 bindsym $mod+Shift+x move workspace to output primary 
+bindsym $mod+m focus output left
+bindsym $mod+Shift+m focus workspace primary
 
 # gaps settings
 gaps inner 5
