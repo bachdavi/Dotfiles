@@ -148,7 +148,7 @@ set $workspace6 "6 "
 set $workspace7 "7  "
 set $workspace8 "8   "
 set $workspace9 "9 "
-set $workspace10 "​0 "
+set $workspace10 "​0 "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -230,7 +230,7 @@ bindsym XF86AudioLowerVolume exec "amixer sset Master 5%-"
 
 # External Monitor
 bindsym $mod+x move workspace to output left
-bindsym $mod+Shift+x move workspace to output primary 
+bindsym $mod+Shift+x move workspace to output primary
 bindsym $mod+m focus output left
 bindsym $mod+Shift+m focus workspace primary
 
@@ -270,4 +270,3 @@ client.unfocused         $base00  $base00     $base07
 client.urgent            $base08  $base08     $base00
 
 for_window [class="^.*"] border pixel 3px
-

@@ -33,6 +33,8 @@ alias lsepub='ls -1 -R --indicator-style=none | grep epub'
 export GREP_COLOR="1;31"
 alias grep='grep --color=auto'
 export LESS="-R"
+alias c='cd'
+alias l='ls'
 
 #----------------------------------------------------------------------#
 # PATH

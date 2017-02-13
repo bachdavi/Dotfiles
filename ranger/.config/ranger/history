@@ -1,11 +1,3 @@
-open_with 
-rename Multichannel_Project_new.pdf
-rename 19_report.pdf
-rename 19_presentation.pptx
-rename David_Bach_Bachelorvortrag.pdf
-search My
-shell 
-mkdir Notes
 mkdir Books
 mkdir Sport
 search Foc
@@ -21,7 +13,6 @@ search Eg
 search .sc
 rename Lambda\ Share
 rename Lambda Share
-
 rename Lambda_Share
 mkdir Physik
 rename Physics
@@ -45,6 +36,15 @@ mkdir Final
 mkdir Menergy
 cd  -
 cd 
-delete
-cd -
 search .dot
+vim 
+delete
+mkdir Unitech
+mkdir Praktikum
+mkdir Belimo
+Vertrag
+mkdir Vertrag
+mkdir RWTH
+
+search Antr
+cd -

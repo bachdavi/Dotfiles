@@ -1,5 +1,5 @@
 [global_config]
-  title_font = Terminess Powerline 12
+  title_font = Terminess Powerline 11
   title_inactive_bg_color = "#323232"
   title_receive_bg_color = "#1793d1"
   title_transmit_bg_color = "#212121"
@@ -28,7 +28,7 @@
   [[default]]
     background_color = "#212121"
     cursor_color = "#aaaaaa"
-    font = Source Code Pro 12
+    font = Source Code Pro 11
     icon_bell = False
     palette = "#31373a:#cc0000:#4e9a06:#d64937:#1793d1:#10ea8a:#06989a:#d2d2d2:#555753:#ef2929:#8ae234:#1793d1:#1793d1:#ad7fa8:#34e2e2:#ffffff"
     scroll_background = False
@@ -38,7 +38,7 @@
     use_system_font = False
   [[termninja]]
     background_color = "#002b36"
-    background_type = image
+    cursor_color = "#839496"
     cursor_shape = ibeam
     font = Terminess Powerline 11
     foreground_color = "#839496"

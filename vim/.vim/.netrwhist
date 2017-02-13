@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/david/.xournal'
 let g:netrw_dirhist_2='/home/david'
 let g:netrw_dirhist_3='/etc/acpi'
 let g:netrw_dirhist_4='/etc/pm/sleep.d'
 let g:netrw_dirhist_5='/home/david/.ssh'
 let g:netrw_dirhist_6='/home/david/LambdaShare/Notes/Markdown'
+let g:netrw_dirhist_7='/home/david/.ssh'
+let g:netrw_dirhist_8='/home/david/scripts_backup'
