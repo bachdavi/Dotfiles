@@ -98,13 +98,27 @@ bindcode $mod+Shift+116 move down
 bindcode $mod+Shift+111 move up
 bindcode $mod+Shift+114 move right
 
+# Vim Like moving
+
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+h focus left
+
+# Vim like moving the windows
+
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
+
 # split in horizontal orientation (mod+h)
-bindcode $mod+43 split h
+bindsym  $mod+Mod1+h   split h
 bindcode $mod+Mod1+113 split h
 bindcode $mod+Mod1+114 split h
 
 # split in vertical orientation (mod+v)
-bindcode $mod+55 split v
+bindsym  $mod+v split v
 bindcode $mod+Mod1+116 split v
 bindcode $mod+Mod1+111 split v
 
@@ -139,16 +153,16 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Workspace icons
-set $workspace1 "1  "
-set $workspace2 "2 "
-set $workspace3 "3  "
-set $workspace4 "4 "
-set $workspace5 "5   "
-set $workspace6 "6 "
-set $workspace7 "7  "
-set $workspace8 "8   "
-set $workspace9 "9 "
-set $workspace10 "​0 "
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "​0"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -241,6 +255,8 @@ gaps outer 5
 # screenshoot keybind
 bindsym $mod+p exec xfce4-screenshooter
 
+
+#exec_always --no-startup-id polybar example
 bar {
       i3bar_command i3bar -t
       font pango:Source Sans Pro-10 10

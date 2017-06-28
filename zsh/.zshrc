@@ -6,9 +6,10 @@ zstyle :compinstall filename '/home/david/.zshrc'
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=9000
-setopt APPEND_HISTORY
+HISTSIZE=100000
+SAVEHIST=90000
+#setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
 bindkey -e
 
 bindkey "^[[F" end-of-line
