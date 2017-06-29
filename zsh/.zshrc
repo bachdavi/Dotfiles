@@ -37,12 +37,16 @@ export LESS="-R"
 alias c='cd'
 alias l='ls'
 
+alias vim='nvim'
+alias vi='nvim'
 #----------------------------------------------------------------------#
 # PATH
 #----------------------------------------------------------------------#
 export PATH="$PATH:$HOME/bin"
 export PYTHIA="/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/"
 export TMOUT=0
+export VISUAL='nvim'
+export EDITOR=$VISUAL 
 
 #----------------------------------------------------------------------#
 # Alias
