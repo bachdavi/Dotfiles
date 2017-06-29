@@ -1,7 +1,8 @@
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
-set t_Co=256
+set number
+set cursorline
 
 set omnifunc=syntaxcomplete#Complete
 
@@ -201,15 +202,13 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
-let g:neodark_visibility = "high"
-let g:neodark_contrast = "high"
 
-"set termguicolors
-let g:neodark#background = '#202020'
-let g:neodark#use_256color = 1 " default: 0
-let g:neodark#solid_vertsplit = 1 " default: 0
-colorscheme neodark 
+set t_Co=256
+set background=dark
+colorscheme deus 
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
+
 
 " Set extra options when running in GUI mode
 if has("gui_running")

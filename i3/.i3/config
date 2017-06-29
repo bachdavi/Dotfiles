@@ -64,7 +64,7 @@ floating_modifier $mod
 # Terminal (mod+Enter)
 bindcode $mod+36 exec  terminator
 
-bindsym $mod +d exec rofi -show run
+bindsym $mod+d exec rofi -show run
 
 # Layout
 for_window [class="(?i)feh"] floating enable
@@ -118,7 +118,7 @@ bindcode $mod+Mod1+113 split h
 bindcode $mod+Mod1+114 split h
 
 # split in vertical orientation (mod+v)
-bindsym  $mod+v split v
+bindsym  $mod+Mod1+v split v
 bindcode $mod+Mod1+116 split v
 bindcode $mod+Mod1+111 split v
 
