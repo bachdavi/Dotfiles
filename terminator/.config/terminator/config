@@ -47,3 +47,8 @@
     use_system_font = False
   [[termninja]]
     cursor_color = "#aaaaaa"
+    font = Source Code Pro 11
+    icon_bell = False
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
