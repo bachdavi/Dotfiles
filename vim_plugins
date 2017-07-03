@@ -1,6 +1,8 @@
+ack.vim
 AfterColors.vim
 async-clj-omni
 base16-vim
+ctrlp.vim
 deoplete-jedi
 deoplete.nvim
 jedi
@@ -9,10 +11,15 @@ mru.vim
 neodark.vim
 nerdtree
 numbers.vim
+nvim-ipy
+open_file_under_cursor.vim
 tcomment_vim
 vim-airline
+vim-bufferline
 vim-colors-solarized
 vim-deus
 vim-easymotion
 vim-fireplace
+vim-fugitive
+vim-repeat
 vim-surround
