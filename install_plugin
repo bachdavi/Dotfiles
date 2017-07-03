@@ -1,0 +1,50 @@
+#!/bin/bash
+# Simple script that curls all the vim plugins and installs them in the correct folder
+
+TAR_DIR="~/.vim/bundle"
+
+# Check if the directory exsist
+if [ ! -d "$TAR_DIR" ]; then
+    echo "Installing pathogen first..."
+
+    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+fi
+
+cd $TAR_DIR
+
+ack=
+AfterColors=
+async_clj_omni=
+base16=
+ctrlp=
+deoplete_jedi=
+deoplete.=
+jedi=
+limelight=
+mru=
+neodark=
+nerdtree=
+numbers=
+ipy=
+open_file_under_cursor=
+tcomment=
+vim_airline=
+vim_bufferline=
+vim_colors_solarized=
+vim_deus=
+vim_easymotion=
+vim_fireplace=
+vim_fugitive=
+vim_repeat=
+vim_surround=
+
+
+plugins=("https://github.com/mileszs/ack.vim.git" "https://github.com/vim-scripts/AfterColors.vim.git" "https://github.com/clojure-vim/async-clj-omni.git" "https://github.com/chriskempson/base16-vim.git" "https://github.com/ctrlpvim/ctrlp.vim.git" "https://github.com/zchee/deoplete-jedi.git" "https://github.com/Shougo/deoplete.nvim.git" "https://github.com/davidhalter/jedi-vim.git" "https://github.com/junegunn/limelight.vim.git" "https://github.com/vim-scripts/mru.vim.git"
+"https://github.com/KeitaNakamura/neodark.vim.git" "https://github.com/scrooloose/nerdtree.git" "https://github.com/myusuf3/numbers.vim.git" "https://github.com/bfredl/nvim-ipy.git" "https://github.com/vim-scripts/tComment.git" "https://github.com/vim-airline/vim-airline.git" "https://github.com/bling/vim-bufferline.git" "https://github.com/easymotion/vim-easymotion.git" "https://github.com/tpope/vim-fireplace.git" "https://github.com/tpope/vim-fugitive.git"
+"https://github.com/tpope/vim-repeat.git" "https://github.com/tpope/vim-surround.git")
+
+for plug in plugins
+do
+    git clone plug 
+done
