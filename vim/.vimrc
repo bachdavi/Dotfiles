@@ -287,7 +287,7 @@ map <space> /
 map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
-map <leader><cr> :noh<cr>
+map <leader>cr :noh<cr>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
