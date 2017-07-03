@@ -41,6 +41,7 @@ done
 echo "Installing zshprezto done!"
 
 echo "Stowing the .dotfiles ..."
+rm -rf ~/.zpreztorc
 stow ~/.dotfiles/vim
 stow ~/.dotfiles/zprezto
 stow ~/.dotfiles/zsh
