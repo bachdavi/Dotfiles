@@ -7,3 +7,7 @@ Sublime-Text/.config/sublime-text-3/Packages/User/Package Control.merged-ca-bund
 Sublime-Text/.config/sublime-text-3/Packages/User/Package Control.user-ca-bundle
 Sublime-Text/.config/sublime-text-3/Packages/User/Package Control.sublime-settings
 Sublime-Text/.config/sublime-text-3/Packages/User/Package Control.last-run
+ranger/.config/ranger/tagged
+ranger/.config/ranger/history
+ranger/.config/ranger/bookmarks
+ranger/.config/ranger/scope.sh

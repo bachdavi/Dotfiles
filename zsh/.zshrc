@@ -27,8 +27,6 @@ compinit
 
 zstyle ':completion:*' menu select
 
-
-
 alias lsmp3='ls -1 --indicator-style=none *.mp3'
 alias lsepub='ls -1 -R --indicator-style=none | grep epub'
 export GREP_COLOR="1;31"
@@ -78,10 +76,10 @@ alias gs="git status"
 
 # History Search
 
-#autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-#zle -N up-line-or-beginning-search
-#zle -N down-line-or-beginning-search
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 
-#[[ -n "${key[Up]}"   ]] && bindkey "${key[Up]}"   up-line-or-beginning-search
-#[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
+[[ -n "${key[Up]}"   ]] && bindkey "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
 
