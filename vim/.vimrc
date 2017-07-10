@@ -2,7 +2,9 @@
 " ################# Vimrc ##################
 " ##########################################
 " ###############  David Bach ##############
-
+" ##########################################
+" ##########################################
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -44,6 +46,9 @@ nmap <leader>w :w!<cr>
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
+
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -121,9 +126,6 @@ vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ack and put the cursor in the right position
 map <leader>g :Ack
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
@@ -507,3 +509,4 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
