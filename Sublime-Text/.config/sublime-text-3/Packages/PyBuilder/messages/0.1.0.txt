@@ -1,2 +1,0 @@
-* Added new command, "PyBuilder: Custom run" which allows specifying any tasks 
-  or PyBuilder options, like `verify package --verbose`
