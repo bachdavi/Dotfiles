@@ -27,7 +27,7 @@ esac
 
 echo "Installing the necessary packages ...."
 
-$install_command vim zsh stow ranger
+$install_command vim stow ranger rofi terminator conky
 
 cd ~
 
@@ -42,10 +42,16 @@ echo "Installing zshprezto done!"
 
 echo "Stowing the .dotfiles ..."
 rm -rf ~/.zpreztorc
-stow ~/.dotfiles/vim
-stow ~/.dotfiles/zprezto
-stow ~/.dotfiles/zsh
-stow ~/.dotfiles/ranger
+
+cd ~/.dotfiles
+
+stow vim
+stow zprezto
+stow zsh
+stow ranger
+stow terminator
+stow Xresources
+stow i3
 
 echo "Installing the fonts ...."
 $install_command ttf-dejavu
@@ -57,4 +63,4 @@ cd fonts
 cd ..
 rm -rf fonts
 
-echo "Please try using zsh now, if everything is working correctly you may choose to use it as your default shell vi chsh -s /bin/zsh"
+echo "The Installation is done! Please enjoy your fabulous system"
