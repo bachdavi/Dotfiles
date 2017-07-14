@@ -14,7 +14,7 @@ cd $TAR_DIR
 
 plugins=("https://github.com/mileszs/ack.vim.git" "https://github.com/vim-scripts/AfterColors.vim.git" "https://github.com/clojure-vim/async-clj-omni.git" "https://github.com/chriskempson/base16-vim.git" "https://github.com/ctrlpvim/ctrlp.vim.git" "https://github.com/zchee/deoplete-jedi.git" "https://github.com/Shougo/deoplete.nvim.git" "https://github.com/davidhalter/jedi-vim.git" "https://github.com/junegunn/limelight.vim.git" "https://github.com/vim-scripts/mru.vim.git"
 "https://github.com/KeitaNakamura/neodark.vim.git" "https://github.com/scrooloose/nerdtree.git" "https://github.com/myusuf3/numbers.vim.git" "https://github.com/bfredl/nvim-ipy.git" "https://github.com/vim-scripts/tComment.git" "https://github.com/vim-airline/vim-airline.git" "https://github.com/bling/vim-bufferline.git" "https://github.com/easymotion/vim-easymotion.git" "https://github.com/tpope/vim-fireplace.git" "https://github.com/tpope/vim-fugitive.git"
-"https://github.com/tpope/vim-repeat.git" "https://github.com/tpope/vim-surround.git")
+"https://github.com/tpope/vim-repeat.git" "https://github.com/tpope/vim-surround.git" "https://github.com/SirVer/ultisnips.git" "git://github.com/honza/vim-snippets.git https://github.com/matze/vim-move.git")
 
 for plug in ${plugins}[*]
 do
