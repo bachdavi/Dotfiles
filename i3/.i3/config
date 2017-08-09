@@ -56,7 +56,7 @@ set $mod Mod4
 floating_modifier $mod
 
 # Terminal (mod+Enter)
-bindcode $mod+36 exec  terminator
+bindcode $mod+36 exec  kitty --config ~/kitty.config
 
 # Rofi (Application Launcher)
 bindsym $mod+d exec rofi -show run
