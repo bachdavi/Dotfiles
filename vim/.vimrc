@@ -8,6 +8,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocp
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -22,6 +23,7 @@ set splitright
 set omnifunc=syntaxcomplete#Complete
 let mapleader = ","
 let g:mapleader = ","
+let g:jedi#force_py_version=3
 
 " Force yourself to not use arrow keys
 noremap <Up> <NOP>
@@ -36,7 +38,8 @@ set history=500
 set autoread
 
 " Deoplete runtime path
-set runtimepath+=~/.config/nvim/bundle/deoplete.nvim
+set runtimepath+=~/.config/nvim/bundle/deoplete.nvim/
+set runtimepath+=~/.config/nvim/bundle/deoplete-jedi/
 set completeopt+=noinsert,noselect
 set completeopt-=preview
 
@@ -76,12 +79,13 @@ au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
-
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
+" let g:deoplete#keyword_patterns = {}
+" let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+"
+" if !exists('g:deoplete#omni#input_patterns')
+"   let g:deoplete#omni#input_patterns = {}
+" endif
+" let g:deoplete#sources#jedi#server_timeout = 1
 
 " Nerdtree
 let g:NERDTreeWinPos = "right"
