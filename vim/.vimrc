@@ -14,6 +14,9 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 set backspace=indent,eol,start
+let g:deoplete#enable_profile = 1
+call deoplete#enable_logging('DEBUG', 'deoplete.log')
+call deoplete#custom#set('jedi', 'debug_enabled', 1)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Standart Settings
@@ -22,10 +25,15 @@ set number
 set cursorline
 set splitbelow
 set splitright
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 let mapleader = ","
 let g:mapleader = ","
-let g:jedi#force_py_version=3
+let g:jedi#force_py_version=3 
+inoremap <A-o> <Esc>o
+inoremap <A-j> <Esc>j
+inoremap <A-k> <Esc>k
+inoremap <A-l> <Esc>l
+inoremap <A-h> <Esc>h
 
 " Force yourself to not use arrow keys
 noremap <Up> <NOP>
@@ -40,8 +48,8 @@ set history=500
 set autoread
 
 " Deoplete runtime path
-set runtimepath+=~/.config/nvim/bundle/deoplete.nvim/
-set runtimepath+=~/.config/nvim/bundle/deoplete-jedi/
+"set runtimepath+=~/.config/nvim/bundle/deoplete.nvim/
+"set runtimepath+=~/.config/nvim/bundle/deoplete-jedi/
 set completeopt+=noinsert,noselect
 set completeopt-=preview
 
@@ -121,7 +129,7 @@ autocmd VimEnter * if exists(':AirlineToggle') | call AirlineInit()
 "   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 "   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 "   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 "   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " augroup end
 
