@@ -8,10 +8,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Manager
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf8
 set nocp
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+set backspace=indent,eol,start
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Standart Settings
@@ -79,6 +81,8 @@ au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+let g:clang_c_options = '-std=gnu11'
+let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 " let g:deoplete#keyword_patterns = {}
 " let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 "
@@ -95,6 +99,8 @@ let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
+
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 
 " MRU
 map <leader>f :MRU<CR>

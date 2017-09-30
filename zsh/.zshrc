@@ -1,8 +1,8 @@
 # ZSH RC File
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+#[[ $- != *i* ]] && return
 
-zstyle :compinstall filename '/home/david/.zshrc'
+zstyle :compinstall filename '/User/david/.zshrc'
 
 # History
 HISTFILE=~/.histfile
@@ -10,13 +10,13 @@ HISTSIZE=100000
 SAVEHIST=90000
 #setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
-bindkey -e
+#bindkey -e
 
 bindkey "^[[F" end-of-line
 bindkey "^[[H" beginning-of-line
 bindkey    "^[[3~"          delete-char
 bindkey    "^[3;5~"         delete-char
-source ./.zprezto/init.zsh
+source ~/.zprezto/init.zsh
 
 #----------------------------------------------------------------------#
 # Autocompletion and prompt
@@ -37,11 +37,13 @@ alias l='ls'
 
 alias vim='nvim'
 alias vi='nvim'
+alias tmux="TERM=screen-256color-bce tmux"
+alias python=python3
 #----------------------------------------------------------------------#
 # PATH
 #----------------------------------------------------------------------#
 export PATH="$PATH:$HOME/bin"
-export PYTHIA="/home/david/Bachelorarbeit/pythia8215/bachelor-dbach/"
+export HPC="${HOME}/Projects/ETH/HPC/"
 export TMOUT=0
 export VISUAL='nvim'
 export EDITOR=$VISUAL 
@@ -60,7 +62,7 @@ alias mv='mv -i'
 
 
 alias h='history'
-alias ls='ls --color=auto'
+#alias ls='ls --color=auto'
 alias v='vi'
 alias gv='gvim'
 alias j="jobs -l"
