@@ -14,9 +14,6 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 set backspace=indent,eol,start
-let g:deoplete#enable_profile = 1
-call deoplete#enable_logging('DEBUG', 'deoplete.log')
-call deoplete#custom#set('jedi', 'debug_enabled', 1)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Standart Settings
@@ -25,15 +22,14 @@ set number
 set cursorline
 set splitbelow
 set splitright
-"set omnifunc=syntaxcomplete#Complete
 let mapleader = ","
 let g:mapleader = ","
-let g:jedi#force_py_version=3 
 inoremap <A-o> <Esc>o
 inoremap <A-j> <Esc>j
 inoremap <A-k> <Esc>k
 inoremap <A-l> <Esc>l
 inoremap <A-h> <Esc>h
+inoremap <A-u> <Esc>u
 
 " Force yourself to not use arrow keys
 noremap <Up> <NOP>
@@ -46,12 +42,6 @@ set history=500
 
 " Set to auto read when a file is changed from the outside
 set autoread
-
-" Deoplete runtime path
-"set runtimepath+=~/.config/nvim/bundle/deoplete.nvim/
-"set runtimepath+=~/.config/nvim/bundle/deoplete-jedi/
-set completeopt+=noinsert,noselect
-set completeopt-=preview
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -67,6 +57,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clojure
+let g:clj_fmt_autosave = 0
 au Filetype clojure nmap <c-c><c-k> :Require<cr>
 au Filetype clojure let g:clojure_fuzzy_indent = 1
 au Filetype clojure let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
@@ -86,18 +77,23 @@ endfunction
 au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
 
 " Deoplete
+set runtimepath+=~/.config/nvim/bundle/deoplete.nvim/
+set runtimepath+=~/.config/nvim/bundle/deoplete-jedi/
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_completion_start_length = 0
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
 let g:clang_c_options = '-std=gnu11'
 let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
-" let g:deoplete#keyword_patterns = {}
-" let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
-"
-" if !exists('g:deoplete#omni#input_patterns')
-"   let g:deoplete#omni#input_patterns = {}
-" endif
-" let g:deoplete#sources#jedi#server_timeout = 1
+set completeopt+=noinsert,noselect
+set completeopt-=preview
+let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
+let g:jedi#force_py_version=3
+let g:deoplete#sources#jedi#server_timeout = 20
+inoremap <expr><C-n> deoplete#mappings#manual_complete()
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = 0
 
 " Nerdtree
 let g:NERDTreeWinPos = "right"
@@ -107,7 +103,6 @@ let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
-
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 
 " MRU
@@ -122,16 +117,6 @@ function! AirlineInit()
     let g:airline_section_warning = airline#section#create(['syntastic'])
 endfunction
 autocmd VimEnter * if exists(':AirlineToggle') | call AirlineInit()
-
-" Omnicomplete
-" augroup omnifuncs
-"   autocmd!
-"   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" augroup end
 
 " Ack
 " Use the the_silver_searcher if possible (much faster than Ack)
@@ -256,9 +241,18 @@ let g:limelight_default_coefficient = 0.7
 "
  " Number of preceding/following paragraphs to include (default: 0)
 let g:limelight_paragraph_span = 1
-set t_Co=256
+
+" let ayucolor="dark"   " for dark version of theme
 set background=dark
-colorscheme onedark 
+colorscheme deus
+set termguicolors     " enable true colors support
+
+" IndentLine {{
+let g:indentLine_char = '|'
+let g:indentLine_first_char = '|'
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 0
+" }}
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
