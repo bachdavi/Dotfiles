@@ -12,3 +12,4 @@ ranger/.config/ranger/history
 ranger/.config/ranger/bookmarks
 ranger/.config/ranger/scope.sh
 Sublime-Text/
+.DS_Store
