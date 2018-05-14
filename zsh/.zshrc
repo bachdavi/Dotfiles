@@ -2,6 +2,7 @@
 # If not running interactively, don't do anything
 #[[ $- != *i* ]] && return
 
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 zstyle :compinstall filename '/User/david/.zshrc'
 
 # History
@@ -18,6 +19,8 @@ bindkey    "^[[3~"          delete-char
 bindkey    "^[3;5~"         delete-char
 source ~/.zprezto/init.zsh
 
+eval $( dircolors -b $HOME/.dir_colors )
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 #----------------------------------------------------------------------#
 # Autocompletion and prompt
 #----------------------------------------------------------------------#
@@ -27,23 +30,30 @@ compinit
 
 zstyle ':completion:*' menu select
 
+# Jupyter executable
+alias jupyter='python3 ~/Library/Python/3.6/bin/jupyter-notebook' 
 alias lsmp3='ls -1 --indicator-style=none *.mp3'
 alias lsepub='ls -1 -R --indicator-style=none | grep epub'
-export GREP_COLOR="1;31"
-alias grep='grep --color=auto'
+# export GREP_COLOR="1;31"
+# alias grep='grep --color=auto'
 export LESS="-R"
 alias c='cd'
 alias l='ls'
 
 alias vim='nvim'
 alias vi='nvim'
-alias tmux="TERM=screen-256color-bce tmux"
-alias python=python3
+# alias tmux="TERM=screen-256color-bce tmux"
+# export TERM=screen-256color
+# alias python=python3
+# export TERM=xterm-256color
+
 #----------------------------------------------------------------------#
 # PATH
 #----------------------------------------------------------------------#
 export PATH="$PATH:$HOME/bin"
 export HPC="${HOME}/Projects/ETH/HPC/"
+export CQP="${HOME}/Projects/ETH/CQP/"
+export VW="${HOME}/Projects/Vorwerk/"
 export TMOUT=0
 export VISUAL='nvim'
 export EDITOR=$VISUAL 
@@ -62,7 +72,7 @@ alias mv='mv -i'
 
 
 alias h='history'
-#alias ls='ls --color=auto'
+alias ls='ls --color'
 alias v='vi'
 alias gv='gvim'
 alias j="jobs -l"
