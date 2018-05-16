@@ -53,6 +53,9 @@ command W w !sudo tee % > /dev/null
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
+" Virtualenvs
+let g:python3_host_prog = '/Users/david/Envs/neovim/bin/python'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
