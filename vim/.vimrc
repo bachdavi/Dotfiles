@@ -15,6 +15,8 @@ syntax on
 filetype plugin indent on
 set backspace=indent,eol,start
 
+" set omnifunc=syntaxcomplete#Complete
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Standart Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -24,6 +26,8 @@ set splitbelow
 set splitright
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader=","
+let g:sexp_insert_after_wrap = 0
 inoremap <A-o> <Esc>o
 inoremap <A-j> <Esc>j
 inoremap <A-k> <Esc>k
@@ -37,11 +41,18 @@ noremap <Left> <NOP>
 noremap <Down> <NOP>
 noremap <Right> <NOP>
 
+" Tabmove mappings
+nnoremap <A-;> :call MoveToNextTab()<CR><C-w>H
+nnoremap <A-,> :call MoveToPrevTab()<CR><C-w>H
+" map <C-m> :call MoveToNextTab()<CR><C-w>H
+" map <C-n> :call MoveToPrevTab()<CR><C-w>H
+
 " Sets how many lines of history VIM has to remember
 set history=500
 
 " Set to auto read when a file is changed from the outside
 set autoread
+au CursorHold * checktime  
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -62,41 +73,41 @@ let g:python3_host_prog = '/Users/david/Envs/neovim/bin/python'
 " Clojure
 let g:clj_fmt_autosave = 0
 au Filetype clojure nmap <c-c><c-k> :Require<cr>
-au Filetype clojure let g:clojure_fuzzy_indent = 1
-au Filetype clojure let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
-au BufNewFile,BufRead *.edn set filetype=clojure
-" au Filetype clojure autocmd BufWritePre * :%s/\s\+$//e
-function! TestToplevel() abort
-    "Eval the toplevel clojure form (a deftest) and then test-var the
-    "result."
-    normal! ^
-    let line1 = searchpair('(','',')', 'bcrn', g:fireplace#skip)
-    let line2 = searchpair('(','',')', 'rn', g:fireplace#skip)
-    let expr = join(getline(line1, line2), "\n")
-    let var = fireplace#session_eval(expr)
-    let result = fireplace#echo_session_eval("(clojure.test/test-var " . var . ")")
-    return result
-endfunction
-au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
+" au Filetype clojure let g:clojure_fuzzy_indent = 1
+" au Filetype clojure let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
+" au BufNewFile,BufRead *.edn set filetype=clojure
+" " au Filetype clojure autocmd BufWritePre * :%s/\s\+$//e
+" function! TestToplevel() abort
+"     "Eval the toplevel clojure form (a deftest) and then test-var the
+"     "result."
+"     normal! ^
+"     let line1 = searchpair('(','',')', 'bcrn', g:fireplace#skip)
+"     let line2 = searchpair('(','',')', 'rn', g:fireplace#skip)
+"     let expr = join(getline(line1, line2), "\n")
+"     let var = fireplace#session_eval(expr)
+"     let result = fireplace#echo_session_eval("(clojure.test/test-var " . var . ")")
+"     return result
+" endfunction
+" au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
 
 " Deoplete
 set runtimepath+=~/.config/nvim/bundle/deoplete.nvim/
 set runtimepath+=~/.config/nvim/bundle/deoplete-jedi/
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_completion_start_length = 0
+" let g:deoplete#auto_completion_start_length = 0
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-let g:clang_c_options = '-std=gnu11'
-let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+" let g:clang_c_options = '-std=gnu11'
+" let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 set completeopt+=noinsert,noselect
 set completeopt-=preview
-let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
-let g:jedi#force_py_version=3
-let g:deoplete#sources#jedi#server_timeout = 20
+" let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
+" let g:jedi#force_py_version=3
+" let g:deoplete#sources#jedi#server_timeout = 20
 inoremap <expr><C-n> deoplete#mappings#manual_complete()
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#show_call_signatures = 0
+" let g:jedi#completions_enabled = 0
+" let g:jedi#auto_vim_configuration = 0
+" let g:jedi#smart_auto_mappings = 0
+" let g:jedi#show_call_signatures = 0
 
 " Nerdtree
 let g:NERDTreeWinPos = "right"
@@ -247,7 +258,9 @@ let g:limelight_paragraph_span = 1
 
 " let ayucolor="dark"   " for dark version of theme
 set background=dark
-colorscheme deus
+colorscheme gruvbox
+
+let g:gruvbox_contrast_dark = 'hard'
 set termguicolors     " enable true colors support
 
 " IndentLine {{
@@ -529,3 +542,61 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+function MoveToPrevTab()
+  "there is only one window
+  if tabpagenr('$') == 1 && winnr('$') == 1
+    return
+  endif
+  "preparing new window
+  let l:tab_nr = tabpagenr('$')
+  let l:cur_buf = bufnr('%')
+  if tabpagenr() != 1
+    close!
+    if l:tab_nr == tabpagenr('$')
+      tabprev
+    endif
+    sp
+  else
+    close!
+    exe "0tabnew"
+  endif
+  "opening current buffer in new window
+  exe "b".l:cur_buf
+endfunc
+
+function MoveToNextTab()
+  "there is only one window
+  if tabpagenr('$') == 1 && winnr('$') == 1
+    return
+  endif
+  "preparing new window
+  let l:tab_nr = tabpagenr('$')
+  let l:cur_buf = bufnr('%')
+  if tabpagenr() < tab_nr
+    close!
+    if l:tab_nr == tabpagenr('$')
+      tabnext
+    endif
+    sp
+  else
+    close!
+    tabnew
+  endif
+  "opening current buffer in new window
+  exe "b".l:cur_buf
+endfunc
+
+command! CloseHiddenBuffers call s:CloseHiddenBuffers()
+function! s:CloseHiddenBuffers()
+  let open_buffers = []
+
+  for i in range(tabpagenr('$'))
+    call extend(open_buffers, tabpagebuflist(i + 1))
+  endfor
+
+  for num in range(1, bufnr("$") + 1)
+    if buflisted(num) && index(open_buffers, num) == -1
+      exec "bdelete ".num
+    endif
+  endfor
+endfunction
