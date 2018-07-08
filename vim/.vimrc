@@ -15,8 +15,6 @@ syntax on
 filetype plugin indent on
 set backspace=indent,eol,start
 
-" set omnifunc=syntaxcomplete#Complete
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Standart Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -52,7 +50,7 @@ set history=500
 
 " Set to auto read when a file is changed from the outside
 set autoread
-au CursorHold * checktime  
+au CursorHold * checktime
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -67,34 +65,47 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " Virtualenvs
 let g:python3_host_prog = '/Users/david/Envs/neovim/bin/python'
 
+set wildchar=<Tab> wildmenu wildmode=full
+map <leader>b :b
+
+" Splits
+nmap <leader>vs :vsp \| b<Space>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clojure
 let g:clj_fmt_autosave = 0
 au Filetype clojure nmap <c-c><c-k> :Require<cr>
-" au Filetype clojure let g:clojure_fuzzy_indent = 1
-" au Filetype clojure let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
-" au BufNewFile,BufRead *.edn set filetype=clojure
-" " au Filetype clojure autocmd BufWritePre * :%s/\s\+$//e
-" function! TestToplevel() abort
-"     "Eval the toplevel clojure form (a deftest) and then test-var the
-"     "result."
-"     normal! ^
-"     let line1 = searchpair('(','',')', 'bcrn', g:fireplace#skip)
-"     let line2 = searchpair('(','',')', 'rn', g:fireplace#skip)
-"     let expr = join(getline(line1, line2), "\n")
-"     let var = fireplace#session_eval(expr)
-"     let result = fireplace#echo_session_eval("(clojure.test/test-var " . var . ")")
-"     return result
-" endfunction
-" au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
+au Filetype clojure let g:clojure_fuzzy_indent = 1
+au Filetype clojure let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
+au BufNewFile,BufRead *.edn set filetype=clojure
+au Filetype clojure autocmd BufWritePre * :%s/\s\+$//e
+let g:slime_target = "tmux"
+
+autocmd Syntax clojure RainbowParenthesesLoadRound
+autocmd BufEnter *.clj RainbowParenthesesToggle
+autocmd BufLeave *.clj RainbowParenthesesToggle
+
+let g:rbpt_colorpairs = [
+    \ ['magenta',     'purple1'],
+    \ ['cyan',        'magenta1'],
+    \ ['green',       'slateblue1'],
+    \ ['yellow',      'cyan1'],
+    \ ['red',         'springgreen1'],
+    \ ['magenta',     'green1'],
+    \ ['cyan',        'greenyellow'],
+    \ ['green',       'yellow1'],
+    \ ['yellow',      'orange1'],
+    \ ]
+let g:rbpt_max = 9
 
 " Deoplete
 set runtimepath+=~/.config/nvim/bundle/deoplete.nvim/
 set runtimepath+=~/.config/nvim/bundle/deoplete-jedi/
 let g:deoplete#enable_at_startup = 1
-" let g:deoplete#auto_completion_start_length = 0
+let g:deoplete#auto_completion_start_length = 0
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " let g:clang_c_options = '-std=gnu11'
 " let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
@@ -118,6 +129,9 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
+
+" CTRLP
+let g:ctrlp_show_hidden = 1
 
 " MRU
 map <leader>f :MRU<CR>
@@ -221,6 +235,7 @@ set magic
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -258,9 +273,9 @@ let g:limelight_paragraph_span = 1
 
 " let ayucolor="dark"   " for dark version of theme
 set background=dark
-colorscheme gruvbox
+colorscheme deus
 
-let g:gruvbox_contrast_dark = 'hard'
+" let g:gruvbox_contrast_dark = 'hard'
 set termguicolors     " enable true colors support
 
 " IndentLine {{
@@ -426,7 +441,7 @@ map <leader>s? z=
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+noremap <Leader>m mmHmt:%s/<C-V><cr>/ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
 map <leader>q :e ~/buffer<cr>
