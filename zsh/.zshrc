@@ -21,6 +21,10 @@ source ~/.zprezto/init.zsh
 
 eval $( dircolors -b $HOME/.dir_colors )
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Direnv
+eval "$(direnv hook zsh)"
+
 #----------------------------------------------------------------------#
 # Autocompletion and prompt
 #----------------------------------------------------------------------#
