@@ -145,6 +145,7 @@ function! AirlineInit()
     let g:airline_section_warning = airline#section#create(['syntastic'])
 endfunction
 autocmd VimEnter * if exists(':AirlineToggle') | call AirlineInit()
+let g:airline#extensions#tabline#tab_nr_type = 1
 
 " Ack
 " Use the the_silver_searcher if possible (much faster than Ack)
