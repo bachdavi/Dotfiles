@@ -5,6 +5,10 @@
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 zstyle :compinstall filename '/User/david/.zshrc'
 
+# export FZF_DEFAULT_COMMAND='ag --ignore *.class -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # History
 HISTFILE=~/.histfile
 HISTSIZE=100000
@@ -17,6 +21,7 @@ bindkey "^[[F" end-of-line
 bindkey "^[[H" beginning-of-line
 bindkey    "^[[3~"          delete-char
 bindkey    "^[3;5~"         delete-char
+bindkey '^R' history-incremental-pattern-search-backward
 source ~/.zprezto/init.zsh
 
 eval $( dircolors -b $HOME/.dir_colors )
@@ -34,8 +39,6 @@ compinit
 
 zstyle ':completion:*' menu select
 
-# Jupyter executable
-alias jupyter='python3 ~/Library/Python/3.6/bin/jupyter-notebook' 
 alias lsmp3='ls -1 --indicator-style=none *.mp3'
 alias lsepub='ls -1 -R --indicator-style=none | grep epub'
 # export GREP_COLOR="1;31"
@@ -60,7 +63,7 @@ export CQP="${HOME}/Projects/ETH/CQP/"
 export VW="${HOME}/Projects/Vorwerk/"
 export TMOUT=0
 export VISUAL='nvim'
-export EDITOR=$VISUAL 
+export EDITOR=$VISUAL
 
 #----------------------------------------------------------------------#
 # Alias
@@ -84,7 +87,7 @@ alias psl='ps -aux | less'
 alias ..='cd ..'
 alias 'cd..'='cd ..'
 
-# Git 
+# Git
 alias gia="git add"
 alias gcm="git commit -a -m"
 alias gp="git push"
@@ -103,3 +106,9 @@ zle -N down-line-or-beginning-search
 export WORKON_HOME=~/Envs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
+
+# FZF
+
+# fh - repeat history
+fh() {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//') }
