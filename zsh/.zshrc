@@ -61,6 +61,7 @@ alias vi='nvim'
 export PATH="$PATH:$HOME/bin"
 export HPC="${HOME}/Projects/ETH/HPC/"
 export CQP="${HOME}/Projects/ETH/CQP/"
+export QUGEN="${HOME}/ownCloud/University/ETH/Master/Semesterproject/"
 export VW="${HOME}/Projects/Vorwerk/"
 export TMOUT=0
 export VISUAL='nvim'
