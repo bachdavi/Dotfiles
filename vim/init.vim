@@ -39,6 +39,17 @@ inoremap <silent> jj <ESC>:stopinsert<cr>
 " inoremap <A-h> <Esc>hi
 " inoremap <A-u> <Esc>u
 
+nnoremap <Left> :vertical resize -1<CR>
+nnoremap <Right> :vertical resize +1<CR>
+nnoremap <Up> :resize -1<CR>
+nnoremap <Down> :resize +1<CR>
+
+
+" nmap <Leader><Leader> <c-^>
+"
+" nnoremap <Tab> :bnext!<CR>
+" nnoremap <S-Tab> :bprev!<CR><Paste>
+
 " Force yourself to not use arrow keys
 noremap <Up> <NOP>
 noremap <Left> <NOP>
@@ -64,7 +75,7 @@ command W w !sudo tee % > /dev/null
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Virtualenvs
-let g:python3_host_prog = '/Users/david/Envs/neovim/bin/python'
+let g:python3_host_prog = '/Users/david/Envs/neovim-2/bin/python'
 
 set wildchar=<Tab> wildmenu wildmode=full
 map <leader>b :b
@@ -73,11 +84,19 @@ map <leader>b :b
 " nmap <leader>vs :vsp \| b<Space>
 " nmap <leader>hs :vsp \| b<Space>
 
+" Rust
+let g:racer_cmd = "/Users/david/.cargo/bin/racer"
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
 " Clojure
 " autocmd Syntax clojure EnableSyntaxExtension
 let g:clojure_align_multiline_strings = 1
 let g:clj_fmt_autosave = 0
-nmap <leader>cl :Cljfmt<cr>
+au FileType clojure nmap <leader>cl :Cljfmt<cr>
+au FileType clojure nmap <leader>e :Eval!<cr>
 au Filetype clojure nmap <c-c><c-k> :Require<cr>
 au Filetype clojure let g:clojure_fuzzy_indent = 1
 au Filetype clojure let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
@@ -115,6 +134,18 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 9
 
 " autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
+
+" CIDER like stuff
+autocmd FileType clojure nnoremap <buffer> <leader>ce :Eval<cr>
+autocmd FileType clojure vnoremap <buffer> <leader>ce :Eval<cr>
+autocmd FileType clojure nnoremap <buffer> <leader>cf :%Eval<cr>
+autocmd FileType clojure nnoremap <buffer> <silent> <leader>cx :Eval (do (require 'clojure.tools.namespace.repl) (bounce.system/stop!) (clojure.tools.namespace.repl/set-refresh-dirs "src/clj" "src/cljc") (clojure.tools.namespace.repl/refresh :after 'bounce.system/start!))<cr>
+"
+" " Start a repl
+autocmd FileType clojure nnoremap <buffer> <silent> <leader>cs :Start! clojure -Sdeps '{:deps {cider/cider-nrepl {:mvn/version "0.18.0"}, org.clojure/tools.namespace {:mvn/version "0.2.11"} cljfmt {:mvn/version "0.6.1"} com.bhauman/rebel-readline {:mvn/version "0.1.4"}}}' -e '(require (quote cider-nrepl.main)) (cider-nrepl.main/init ["cider.nrepl/cider-middleware"])' -m rebel-readline.main<cr>
+" Start repl cljs
+autocmd FileType clojure nnoremap <buffer> <silent> <leader>ca :Start! clojure -A:dev -Sdeps '{:deps {com.bhauman/figwheel-main {:mvn/version "0.1.9"} com.bhauman/rebel-readline {:mvn/version "0.1.4"} com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"} org.clojure/tools.nrepl {:mvn/version "0.2.13"} cider/cider-nrepl {:mvn/version "0.17.0"} cider/piggieback {:mvn/version "0.3.8"}}}' -e '(require (quote [clojure.tools.nrepl.server :as nrepl-server])) (require (quote [clojure.java.io :as io])) (def nrepl-port 7888) (defonce nrepl-server (atom nil)) (defn nrepl-handler [] (require (quote cider.nrepl)) (ns-resolve (quote cider.nrepl) (quote cider-nrepl-handler))) (defn start-nrepl-server! [] (reset!  nrepl-server (nrepl-server/start-server :port nrepl-port :handler (nrepl-handler))) (println "Cider nREPL server started on port" nrepl-port) (spit ".nrepl-port" nrepl-port)) (defn stop-nrepl-server! [] (when (not (nil? @nrepl-server)) (nrepl-server/stop-server @nrepl-server) (println "Cider nREPL server on port" nrepl-port "stopped") (reset! nrepl-server nil) (io/delete-file ".nrepl-port" true))) (start-nrepl-server!) (require (quote figwheel.main.api)) (figwheel.main.api/start {:mode :serve} "dev")' -m rebel-readline.main<cr>
+autocmd FileType clojure nnoremap <buffer> gd :normal [<c-d><cr>
 
 " Deoplete
 " set runtimepath+=~/.config/nvim/bundle/deoplete.nvim/
@@ -173,13 +204,24 @@ nmap <leader>d :Files<cr>
 nmap <leader>s :Buffers<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>t :Tags<cr>
-nmap <leader>f :History<cr>
-nmap <leader>a :Line<cr>
+nmap <leader>f :FZFMru<cr>
+nmap <leader>a :Ag<cr>
 nmap <leader>h :History:<cr>
 nmap <space> :BLine<cr>
 
 
-nmap <Leader>q <Plug>(fzf-quickfix)
+" nmap <Leader>q <Plug>(fzf-quickfix)
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+ function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+ let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 set rtp+=/usr/local/opt/fzf
 
@@ -223,8 +265,8 @@ map <leader>g :Ack
 "
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+map <leader>j :cn<cr>
+map <leader>k :cp<cr>
 
 " Height of the command bar
 set cmdheight=2
@@ -250,6 +292,7 @@ set incsearch
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
+set ttyfast
 
 " For regular expressions turn magic on
 set magic
@@ -490,3 +533,13 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
   \   <bang>0)
+
+function! s:append_dir_with_fzf(line)
+  call fzf#run(fzf#wrap({
+    \ 'options': ['--prompt', a:line.'> '],
+    \ 'source': 'find . -type d',
+    \ 'sink': {line -> feedkeys("\<esc>:".a:line.line, 'n')}}))
+  return ''
+endfunction
+
+cnoremap <expr> <c-x><c-d> <sid>append_dir_with_fzf(getcmdline())
