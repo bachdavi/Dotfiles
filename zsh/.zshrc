@@ -7,6 +7,7 @@ zstyle :compinstall filename '/User/david/.zshrc'
 
 # export FZF_DEFAULT_COMMAND='ag --ignore *.class -g ""'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export RUST_SRC_PATH="/Users/david/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 # export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # History
