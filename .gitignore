@@ -30,4 +30,7 @@ emacs/.emacs.d/ac-comphist.dat
 .python-environments/
 .mc-lists.el
 .recentf
-places/
+places
+.smex-items
+bookmarks
+projectile.cache
