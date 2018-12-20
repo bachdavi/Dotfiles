@@ -1,6 +1,6 @@
 ;; set up package repositories
 (require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") )
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
 (package-initialize)
@@ -15,15 +15,17 @@
 
 (require 'use-package)
 (require 'evil-mc)
+(setq create-lockfiles nil)
 
 (setq use-package-always-ensure t)
 
 (setq auto-save-default nil) 
 
-(load-theme 'material t) ;; load material theme
+;; (load-theme 'tango-plus t) ;; load material theme
+;; (set-cursor-color "#00ff7f") 
 
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "Source Code Pro for Powerline-15"))
+  (set-frame-parameter frame 'font "Operator Mono Lig-17"))
 
 ;; Fontify current frame
 (fontify-frame nil)
@@ -31,7 +33,6 @@
 (push 'fontify-frame after-make-frame-functions) 
 
 (setq cider-clojure-cli-global-options "-A:dev")
-
 
 (menu-bar-mode -1)
 (scroll-bar-mode 0)
@@ -86,8 +87,10 @@
 (define-key key-translation-map [(meta ?7)] [?\|])
 (define-key key-translation-map [(meta ?3)] [?\#])
 (define-key key-translation-map [(meta ?n)] [?\~])
+(define-key key-translation-map [(meta ?g)] [?\@])
 (global-set-key (kbd "s-7") "\\")
 
+(global-hl-line-mode +1)
 
 (setq show-paren-delay 0)
 (show-paren-mode 1)
@@ -107,6 +110,7 @@
 :ensure t
 :config
 (global-evil-leader-mode))
+
 
 (use-package evil-surround
 :ensure t
@@ -140,6 +144,7 @@
 (abort-recursive-edit)))
 
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [tab] 'aggressive-indent-indent-region-and-on)
 (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
@@ -148,7 +153,7 @@
 
 (evil-leader/set-leader ",")
 (evil-leader/set-key
-  "d" 'counsel-projectile-find-file
+  "d" 'counsel-projectile
   "f" 'counsel-recentf
   "s" 'ivy-switch-buffer
   "y" 'counsel-find-file
@@ -161,6 +166,7 @@
   ",b" 'avy-goto-word-1-above
   "e" 'emojify-insert-emoji
   "g" 'magit)
+
 
 (setq ein:completion-backend 'ein:use-ac-jedi-backend)
 
@@ -197,18 +203,18 @@
 
 (define-key evil-normal-state-map (kbd "SPC") 'counsel-grep-or-swiper)
 
-(use-package helm
-  :ensure t
-  :config (helm-mode t))
+;; (use-package helm
+;;   :ensure t
+;;   :config (helm-mode t))
 (use-package projectile
   :ensure projectile
   :config
   (setq projectile-indexing-method 'git)
   (projectile-mode +1))
-(use-package helm-projectile
-  :ensure t)
-(use-package helm-ag
-  :ensure t)
+;; (use-package helm-projectile
+;;   :ensure t)
+;; (use-package helm-ag
+;;   :ensure t)
 
 (use-package neotree :ensure t)
 
@@ -225,6 +231,8 @@
   :init
     (add-hook 'web-mode-hook #'rainbow-delimiters-mode)
     (add-hook 'rust-mode-hook #'rainbow-delimiters-mode))
+
+(add-hook 'rust-mode-hook 'linum-mode)
 
 (defvar my-packages '(better-defaults
                        multiple-cursors
@@ -247,6 +255,7 @@
                       markdown-mode
                       rainbow-mode
                       elpy
+                      evil-cleverparens
                       material-theme
                       ))
 
@@ -258,12 +267,39 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
+
+(global-set-key (kbd "C-M-i") 'flyspell-auto-correct-word)
+
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 (recentf-mode 1)
-(setq recentf-max-menu-items 100)
 (setq-default recent-save-file "~/.emacs.d/recentf") 
+(setq recentf-max-menu-items 100)
+(setq recentf-max-saved-items 100)
+
+(with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol))
+
+(setq ein:console-executable "/usr/local/bin/ipython3")
+
+;; (add-hook
+;;  'rust-mode-hook
+;;  (lambda ()
+;;    (racer-mode)
+;;    (setq-local eldoc-documentation-function #'ignore)))
+
+ ;; Automatically reload files was modified by external program
+(global-auto-revert-mode 1)
+;; and display "half modal" warning about it
+; (require 'w32-msgbox)
+; (defun inform-revert-modified-file (&optional p1 p2)
+;   "bdimych custom function"
+;   (let ((revert-buffer-function nil))
+;     (revert-buffer p1 p2)
+;     (w32-msgbox (buffer-file-name) "Emacs: Modified file automatically reverted" 'vb-ok-only 'vb-information nil t)))
+;
+;; (setq revert-buffer-function 'inform-revert-modified-file)
 
 ;; set up ivy completion
 (use-package ivy :ensure t
@@ -287,8 +323,6 @@
 
 (counsel-projectile-mode)
 
-
-
 ;; set up markdown mode
 (use-package markdown-mode
   :ensure t
@@ -301,11 +335,12 @@
 ;; set up org mode
 (setq org-startup-indented t)
 (setq org-startup-folded "overview")
-;; (setq org-directory "~/ownCloud/nvALT")
+(setq org-directory "~/Dropbox/org/")
 (setq org-hide-emphasis-markers t)
 (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
+(add-hook 'org-mode-hook 'org-bullets-mode)
 
-;; (setq org-agenda-files '("~/ownCloud/nvALT"))
+;; (setq org-agenda-files '("~/gtd"))
 (setq org-agenda-files '("~/gtd/inbox.org"
                          "~/gtd/gtd.org"
                          "~/gtd/tickler.org"))
@@ -366,43 +401,10 @@
 ;; Set the default comment column to 70
 (setq-default comment-column 70)
 
-(add-hook 'clojure-mode-hook 'paredit-mode)
+;; (add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'evil-cleverparens-mode)
 (add-hook 'clojure-mode-hook 'linum-mode)
 
-;; (use-package parinfer
-;;   :ensure t
-;;   :config (parinfer-strategy-add 'default 'newline-and-indent)
-;;   :bind
-;;   (:map parinfer-mode-map
-;; 	("<tab>" . parinfer-smart-tab:dwim-right)
-;; 	("S-<tab>" . parinfer-smart-tab:dwim-left)
-;; 	("C-u" . parinfer--reindent-sexp)
-;; 	("C-M-i" . parinfer-auto-fix)
-;; 	("C-," . parinfer-toggle-mode))
-;;   (:map parinfer-region-mode-map
-;; 	("C-i" . indent-for-tab-command)
-;; 	("<tab>" . parinfer-smart-tab:dwim-right)
-;; 	("S-<tab>" . parinfer-smart-tab:dwim-left))
-;;   :init
-;;   (progn
-;;     (setq parinfer-extensions
-;; 	  '(defaults       ; should be included.
-;; 	     paredit
-;; 	     pretty-parens  ; different paren styles for different modes.
-;; 	     smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
-;; 	     smart-yank     ; Yank behavior depend on mode.
-;; 	     one))
-;;     (add-hook 'clojure-mode-hook #'parinfer-mode)
-;;     (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
-;;     (add-hook 'common-lisp-mode-hook #'parinfer-mode)
-;;     (add-hook 'scheme-mode-hook #'parinfer-mode)
-;;     (add-hook 'lisp-mode-hook #'parinfer-mode)))
-
-;; (setq parinfer-auto-switch-indent-mode t)
-
-
-;; This is useful for working with camel-case tokens, like names of
-;; Java classes (e.g. JavaClassName)
 (add-hook 'clojure-mode-hook 'subword-mode)
 
 ;; A little more syntax highlighting
@@ -447,6 +449,7 @@
 (global-company-mode)
 (add-hook 'cider-repl-mode-hook #'company-mode)
 (add-hook 'cider-mode-hook #'company-mode)
+(global-company-mode)
 
 (setq company-minimum-prefix-length 1)
 
@@ -469,10 +472,9 @@
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 (key-chord-mode 1)
 
-(define-key evil-insert-state-map "$1" "(")
-(define-key evil-insert-state-map "$2" "[")
-(define-key evil-insert-state-map "$3" "{")
-
+(key-chord-define evil-insert-state-map "$1" "(")
+(key-chord-define evil-insert-state-map "$2" "[")
+(key-chord-define evil-insert-state-map "$3" "{")
 
 ;; provides minibuffer documentation for the code you're typing into the repl
 (add-hook 'cider-mode-hook #'eldoc-mode)
@@ -511,22 +513,16 @@
     (cider-interactive-eval (format "(def server (%s/start)) (println server)" ns))))
 
 
-(defun cider-refresh ()
-  (interactive)
-  (cider-interactive-eval (format "(user/reset)")))
-
-(defun cider-user-ns ()
-  (interactive)
-  (cider-repl-set-ns "user"))
 
 (eval-after-load 'cider
   '(progn
      (define-key clojure-mode-map (kbd "C-c C-v") 'cider-start-http-server)
-     (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)
+     (define-key clojure-mode-map (kbd "C-c C-k") 'cider-refresh)
      (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
 
 (add-hook 'cider-repl-mode-hook #'eldoc-mode)
+
 
 ;; better figwheel integration
 (setq cider-cljs-lein-repl
@@ -534,53 +530,8 @@
            (figwheel-sidecar.repl-api/start-figwheel!)
            (figwheel-sidecar.repl-api/cljs-repl))")
 
-;; (bind-keys
-;;  :map smartparens-mode-map
-;;  ("C-M-a" . sp-beginning-of-sexp)
-;;  ("C-M-e" . sp-end-of-sexp)
 
-;;  ("C-<down>" . sp-down-sexp)
-;;  ("C-<up>"   . sp-up-sexp)
-;;  ("M-<down>" . sp-backward-down-sexp)
-;;  ("M-<up>"   . sp-backward-up-sexp)
-
-;;  ("C-M-f" . sp-forward-sexp)
-;;  ("C-M-b" . sp-backward-sexp)
-
-;;  ("C-M-n" . sp-next-sexp)
-;;  ("C-M-p" . sp-previous-sexp)
-
-;;  ("C-S-f" . sp-forward-symbol)
-;;  ("C-S-b" . sp-backward-symbol)
-
-;;  ("C-<right>" . sp-forward-slurp-sexp)
-;;  ("M-<right>" . sp-forward-barf-sexp)
-;;  ("C-<left>"  . sp-backward-slurp-sexp)
-;;  ("M-<left>"  . sp-backward-barf-sexp)
-
-;;  ("C-M-t" . sp-transpose-sexp)
-;;  ("C-M-k" . sp-kill-sexp)
-;;  ("C-k"   . sp-kill-hybrid-sexp)
-;;  ("M-k"   . sp-backward-kill-sexp)
-;;  ("C-M-w" . sp-copy-sexp)
-;;  ("C-M-d" . delete-sexp)
-
-;;  ("M-<backspace>" . backward-kill-word)
-;;  ("C-<backspace>" . sp-backward-kill-word)
-;;  ([remap sp-backward-kill-word] . backward-kill-word)
-
-;;  ("M-[" . sp-backward-unwrap-sexp)
-;;  ("M-]" . sp-unwrap-sexp)
-
-;;  ("C-x C-t" . sp-transpose-hybrid-sexp)
-
-;;  ("C-c ("  . wrap-with-parens)
-;;  ("C-c ["  . wrap-with-brackets)
-;;  ("C-c {"  . wrap-with-braces)
-;;  ("C-c '"  . wrap-with-single-quotes)
-;;  ("C-c \"" . wrap-with-double-quotes)
-;;  ("C-c _"  . wrap-with-underscores)
-;;  ("C-c `"  . wrap-with-back-quotes))
+(evil-cleverparens-mode 1)
 
 (defun paredit-wiggle-back ()
   (paredit-forward)
@@ -620,22 +571,68 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   (vector "#ffffff" "#f36c60" "#8bc34a" "#fff59d" "#4dd0e1" "#b39ddb" "#81d4fa" "#262626"))
+ '(compilation-message-face (quote default))
  '(custom-safe-themes
    (quote
     ("62c81ae32320ceff5228edceeaa6895c029cc8f43c8c98a023f91b5b339d633f" "a5956ec25b719bf325e847864e16578c61d8af3e8a3d95f60f9040d02497e408" "f27c3fcfb19bf38892bc6e72d0046af7a1ded81f54435f9d4d09b3bff9c52fc1" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default)))
  '(elpy-modules
    (quote
     (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
+ '(fci-rule-color "#3a3a3a")
+ '(highlight-changes-colors (quote ("#EF5350" "#7E57C2")))
+ '(highlight-tail-colors
+   (quote
+    (("#010F1D" . 0)
+     ("#B44322" . 20)
+     ("#34A18C" . 30)
+     ("#3172FC" . 50)
+     ("#B49C34" . 60)
+     ("#B44322" . 70)
+     ("#8C46BC" . 85)
+     ("#010F1D" . 100))))
+ '(hl-sexp-background-color "#121212")
+ '(magit-diff-use-overlays nil)
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-velocity)))
  '(package-selected-packages
    (quote
-    (company-ycmd ycmd jedi ipython aggressive-indent deadgrep github-theme pyenv-mode autopair evil-mc xclip use-package rust-mode rainbow-mode rainbow-delimiters powerline parinfer neotree multiple-cursors monokai-theme material-theme markdown-mode hlinum highlight-symbol helm-projectile helm-ag gruvbox-theme gruber-darker-theme flx flatland-theme evil-visual-mark-mode evil-terminal-cursor-changer evil-surround evil-smartparens evil-paredit evil-magit evil-leader evil-indent-textobject evil-easymotion evil-commentary evil-cleverparens drag-stuff dracula-theme counsel-projectile company color-theme-sanityinc-tomorrow clojure-mode-extra-font-locking cider better-defaults auto-complete ag ace-jump-mode ace-jump-buffer))))
+    (dash-functional pretty-symbols pretty-mode-plus pretty-mode oceanic-theme night-owl-theme tango-2-theme tango-plus-theme sublime-themes sublime flatui-dark-theme org-bullets evil-org groovy-mode rg geiser hl-todo racer company-ycmd ycmd jedi ipython aggressive-indent deadgrep github-theme pyenv-mode autopair evil-mc xclip use-package rust-mode rainbow-mode rainbow-delimiters powerline parinfer neotree multiple-cursors monokai-theme material-theme markdown-mode hlinum highlight-symbol helm-projectile helm-ag gruvbox-theme gruber-darker-theme flx flatland-theme evil-visual-mark-mode evil-terminal-cursor-changer evil-surround evil-smartparens evil-paredit evil-magit evil-leader evil-indent-textobject evil-easymotion evil-commentary evil-cleverparens drag-stuff dracula-theme counsel-projectile company color-theme-sanityinc-tomorrow clojure-mode-extra-font-locking cider better-defaults auto-complete ag ace-jump-mode ace-jump-buffer)))
+ '(pos-tip-background-color "#FFF9DC")
+ '(pos-tip-foreground-color "#011627")
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#f36c60")
+     (40 . "#ff9800")
+     (60 . "#fff59d")
+     (80 . "#8bc34a")
+     (100 . "#81d4fa")
+     (120 . "#4dd0e1")
+     (140 . "#b39ddb")
+     (160 . "#f36c60")
+     (180 . "#ff9800")
+     (200 . "#fff59d")
+     (220 . "#8bc34a")
+     (240 . "#81d4fa")
+     (260 . "#4dd0e1")
+     (280 . "#b39ddb")
+     (300 . "#f36c60")
+     (320 . "#ff9800")
+     (340 . "#fff59d")
+     (360 . "#8bc34a"))))
+ '(vc-annotate-very-old-color nil)
+ '(weechat-color-list
+   (quote
+    (unspecified "#011627" "#010F1D" "#DC2E29" "#EF5350" "#D76443" "#F78C6C" "#D8C15E" "#FFEB95" "#5B8FFF" "#82AAFF" "#AB69D7" "#C792EA" "#AFEFE2" "#7FDBCA" "#D6DEEB" "#FFFFFF"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:background nil)))))
 
