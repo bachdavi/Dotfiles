@@ -1,42 +1,15 @@
+;; Clojure config file
 ;; UTF-8 as default encoding
 (set-language-environment "UTF-8")
 
 ;; Set the default comment column to 70
 (setq-default comment-column 70)
 
-(add-hook 'clojure-mode-hook 'paredit-mode)
+;; Cleverparens
+(add-hook 'clojure-mode-hook 'evil-cleverparens-mode)
 
-;; (use-package parinfer
-;;   :ensure t
-;;   :config (parinfer-strategy-add 'default 'newline-and-indent)
-;;   :bind
-;;   (:map parinfer-mode-map
-;; 	("<tab>" . parinfer-smart-tab:dwim-right)
-;; 	("S-<tab>" . parinfer-smart-tab:dwim-left)
-;; 	("C-u" . parinfer--reindent-sexp)
-;; 	("C-M-i" . parinfer-auto-fix)
-;; 	("C-," . parinfer-toggle-mode))
-;;   (:map parinfer-region-mode-map
-;; 	("C-i" . indent-for-tab-command)
-;; 	("<tab>" . parinfer-smart-tab:dwim-right)
-;; 	("S-<tab>" . parinfer-smart-tab:dwim-left))
-;;   :init
-;;   (progn
-;;     (setq parinfer-extensions
-;; 	  '(defaults       ; should be included.
-;; 	     paredit
-;; 	     pretty-parens  ; different paren styles for different modes.
-;; 	     smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
-;; 	     smart-yank     ; Yank behavior depend on mode.
-;; 	     one))
-;;     (add-hook 'clojure-mode-hook #'parinfer-mode)
-;;     (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
-;;     (add-hook 'common-lisp-mode-hook #'parinfer-mode)
-;;     (add-hook 'scheme-mode-hook #'parinfer-mode)
-;;     (add-hook 'lisp-mode-hook #'parinfer-mode)))
-
-;; (setq parinfer-auto-switch-indent-mode t)
-
+;; Line numbers
+(add-hook 'clojure-mode-hook 'linum-mode)
 
 ;; This is useful for working with camel-case tokens, like names of
 ;; Java classes (e.g. JavaClassName)
@@ -72,16 +45,16 @@
 ;; Cider
 ;;;;
 
-(require 'cider)
+(global-set-key [f9] 'cider-jack-in)
+(global-set-key [f10] 'cider-jack-in-clojurescript)
 
 ;; Enter cider mode when entering the clojure major mode
 (add-hook 'clojure-mode-hook 'cider-mode)
 
-(global-set-key [f9] 'cider-jack-in)
-(global-set-key [f10] 'cider-jack-in-clojurescript)
+;; Use dev 
+(setq cider-clojure-cli-global-options "-A:dev")
 
 ;; Turn on auto-completion with Company-Mode
-(global-company-mode)
 (add-hook 'cider-repl-mode-hook #'company-mode)
 (add-hook 'cider-mode-hook #'company-mode)
 
@@ -110,7 +83,6 @@
 (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojurescript-mode))
 (add-to-list 'auto-mode-alist '("lein-env" . enh-ruby-mode))
 
-
 ;; key bindings
 ;; these help me out with the way I usually develop web apps
 (defun cider-start-http-server ()
@@ -121,24 +93,79 @@
     (cider-interactive-eval (format "(println '(def server (%s/start))) (println 'server)" ns))
     (cider-interactive-eval (format "(def server (%s/start)) (println server)" ns))))
 
-
-(defun cider-refresh ()
-  (interactive)
-  (cider-interactive-eval (format "(user/reset)")))
-
-(defun cider-user-ns ()
-  (interactive)
-  (cider-repl-set-ns "user"))
-
 (eval-after-load 'cider
   '(progn
      (define-key clojure-mode-map (kbd "C-c C-v") 'cider-start-http-server)
-     (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)
+     (define-key clojure-mode-map (kbd "C-c C-k") 'cider-refresh)
      (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
+
+(add-hook 'cider-repl-mode-hook #'eldoc-mode)
 
 ;; better figwheel integration
 (setq cider-cljs-lein-repl
       "(do (require 'figwheel-sidecar.repl-api)
            (figwheel-sidecar.repl-api/start-figwheel!)
            (figwheel-sidecar.repl-api/cljs-repl))")
+
+;; Repl evaluation
+(add-hook 'cider-repl-mode-hook
+      '(lambda () (define-key cider-repl-mode-map (kbd "C-c M-o")
+            'cider-repl-clear-buffer)))
+
+(defun cider-direct-doc ()
+	(interactive)
+	(cider-doc-lookup (cider-symbol-at-point)))
+
+
+(evil-leader/set-key-for-mode 'clojure-mode   "." 'cider-find-dwim
+                                                "e" 'cider-eval-sexp-at-point
+                                                "b" 'cider-eval-buffer
+                                                "r" 'cider-eval-region
+                                                "k" 'cider-direct-doc) 
+
+(evil-leader/set-key-for-mode 'clojurec-mode "." 'cider-find-dwim
+                                                "e" 'cider-eval-sexp-at-point
+                                                "b" 'cider-eval-buffer
+                                                "r" 'cider-eval-region
+                                                "k" 'cider-direct-doc) 
+
+(evil-leader/set-key-for-mode 'clojurescript-mode "." 'cider-find-dwim
+                                                "e" 'cider-eval-sexp-at-point
+                                                "b" 'cider-eval-buffer
+                                                "r" 'cider-eval-region
+                                                "k" 'cider-direct-doc) 
+
+;; Paredit
+(defun paredit-wiggle-back ()
+  (paredit-forward)
+  (paredit-backward))
+
+(defmacro defparedit-wrapper (name invoked-wrapper)
+  `(defun ,name ()
+     (interactive)
+     (paredit-wiggle-back)
+     (,invoked-wrapper)))
+
+(defparedit-wrapper back-then-wrap paredit-wrap-sexp)
+(defparedit-wrapper back-then-wrap-square paredit-wrap-square)
+(defparedit-wrapper back-then-wrap-curly paredit-wrap-curly)
+(defparedit-wrapper back-then-wrap-angled paredit-wrap-angled)
+(defparedit-wrapper back-then-wrap-doublequote paredit-meta-doublequote)
+
+(define-key evil-normal-state-map ";W" 'back-then-wrap)
+(define-key evil-normal-state-map ";w]" 'back-then-wrap-square)
+(define-key evil-normal-state-map ";w}" 'back-then-wrap-curly)
+(define-key evil-normal-state-map ";w>" 'back-then-wrap-angled)
+(define-key evil-normal-state-map ";w\"" 'back-then-wrap-doublequote)
+
+(define-key evil-normal-state-map ";S" 'paredit-splice-sexp)
+(define-key evil-normal-state-map ";A" 'paredit-splice-sexp-killing-backward)
+(define-key evil-normal-state-map ";D" 'paredit-splice-sexp-killing-forward)
+(define-key evil-normal-state-map ";|" 'paredit-split-sexp)
+(define-key evil-normal-state-map ";J" 'paredit-join-sexps)
+(define-key evil-normal-state-map ",;<" 'paredit-backward-slurp-sexp)
+(define-key evil-normal-state-map ";," 'paredit-backward-barf-sexp) 
+(define-key evil-normal-state-map ";>" 'paredit-forward-slurp-sexp)
+(define-key evil-normal-state-map ";." 'paredit-forward-barf-sexp) 
+(define-key evil-normal-state-map ";~" 'paredit-convolute-sexp)
