@@ -12,10 +12,11 @@ export RUST_SRC_PATH="/Users/david/.rustup/toolchains/stable-x86_64-apple-darwin
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=100000
-SAVEHIST=90000
+HISTSIZE=1000000
+SAVEHIST=900000
 #setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
+setopt share_history
 #bindkey -e
 
 bindkey "^[[F" end-of-line
@@ -23,6 +24,8 @@ bindkey "^[[H" beginning-of-line
 bindkey    "^[[3~"          delete-char
 bindkey    "^[3;5~"         delete-char
 bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^N' forward-word
+bindkey '^P' backward-word
 source ~/.zprezto/init.zsh
 
 eval $( dircolors -b $HOME/.dir_colors )
@@ -114,3 +117,4 @@ source /usr/local/bin/virtualenvwrapper.sh
 # fh - repeat history
 fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//') }
+export PATH="/usr/local/opt/ruby/bin:$PATH"
