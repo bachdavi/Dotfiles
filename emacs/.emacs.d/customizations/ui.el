@@ -5,17 +5,24 @@
 ;; preferences
 
 ;; Color Theme
-;; (load-theme 'tango-plus t) ;; load material theme
-;; (set-cursor-color "#00ff7f") 
+;; (load-theme 'dracula t) ;; load dracula theme
 
 ;; set up fonts
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "Operator Mono Lig-17"))
+  (set-frame-parameter frame 'font "Operator Mono-17:Bold"))
 ;; Fontify current frame
 (fontify-frame nil)
 ;; Fontify any future frames
 (push 'fontify-frame after-make-frame-functions) 
 (setq-default line-spacing 4)
+
+;; Set up italic comments and ligatures if using mac port
+(if (fboundp 'mac-auto-operator-composition-mode)
+    (mac-auto-operator-composition-mode))
+
+(copy-face 'italic 'font-lock-comment-face)
+(set-face-foreground 'font-lock-comment-face "red")
+
 
 ;; (toggle-frame-fullscreen)
 
@@ -101,3 +108,6 @@
 
 ;; Help window
 (setq help-window-select t)
+
+;; Size of orgs inline images
+(setq org-image-actual-width 400)

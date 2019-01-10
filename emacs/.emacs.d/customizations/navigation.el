@@ -57,6 +57,12 @@
   (setq ivy-initial-inputs-alist nil)
   ;; configure regexp engine.
   (setq ivy-re-builders-alist
-	'((t . ivy--regex-plus))))
+				'((t . ivy--regex-plus)))
+  ;; extend ivy-bibtex
+	(ivy-add-actions
+	 'ivy-bibtex
+	 '(("P" bibtex-completion-pdf "Open pdf with mac's preview")
+		 ("S" bibtex-completion-skim "Open pdf with skim"))))
+
 
 (counsel-projectile-mode)
