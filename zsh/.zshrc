@@ -9,6 +9,7 @@ zstyle :compinstall filename '/User/david/.zshrc'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export RUST_SRC_PATH="/Users/david/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 # export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export PATH="$PATH:/opt/local/bin"
 
 # History
 HISTFILE=~/.histfile
@@ -57,6 +58,10 @@ alias vi='nvim'
 # export TERM=screen-256color
 # alias python=python3
 # export TERM=xterm-256color
+
+# Ruby
+# export GEM_HOME=$HOME/gems
+export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 
 #----------------------------------------------------------------------#
 # PATH
@@ -118,3 +123,4 @@ source /usr/local/bin/virtualenvwrapper.sh
 fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//') }
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/qt/bin:$PATH"
