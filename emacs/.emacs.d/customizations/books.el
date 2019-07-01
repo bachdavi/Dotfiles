@@ -17,7 +17,7 @@
 										(cons (alist-get 'id item) (alist-get 'formats item)))
 							result)))))
 
-(defun counsel-books-action-open-book (book)
+(defun counsel-books-action-open (book)
   "open selected book"
   (let ((formats (cdr (cdr book))))
     (if (< (length formats) 2)
@@ -25,6 +25,21 @@
       (find-file (ivy-read "%d Choose format: " formats
 			   :require-match t)))))
 
+(defun counsel-books-action-open-dired (book)
+  "open with native mac os `open`"
+  (let ((formats (cdr (cdr book))))
+    (if (< (length formats) 2)
+     (dired-jump nil (car formats)) 
+      (dired-jump nil (ivy-read "%d Choose format: " formats
+			   :require-match t)))))
+
+(defun counsel-books-action-open-finder (book)
+  "open and find in Finder"
+  (let ((formats (cdr (cdr book))))
+    (if (< (length formats) 2)
+      (call-process "open" nil 0 nil "-R" (car formats))
+      (call-process "open" nil 0 nil "-R" (ivy-read "%d Choose format: " formats
+			   :require-match t)))))
 
 (defun counsel-books-action-open-skim (book)
   "open selected book with skim"
@@ -60,10 +75,12 @@
 
 (ivy-set-actions
  'counsel-books
- '(("p" counsel-books-action-open-book "open book")
-	 ("P" counsel-books-action-open-native "open native")
-	 ("s" counsel-books-action-open-skim "open skim")
-	 ("I" counsel-books-action-get-info "show metadata")))
+ '(("p" counsel-books-action-open "Pdf-View")
+	 ("P" counsel-books-action-open-native "Open")
+	 ("s" counsel-books-action-open-skim "Skim")
+	 ("F" counsel-books-action-open-finder "Show Finder")
+	 ("d" counsel-books-action-open-dired "Show Dired")
+	 ("I" counsel-books-action-get-info "Show metadata")))
 
 (defun counsel-books ()
 	"show a list of books in calibre database"
@@ -72,6 +89,6 @@
 				 (json-object-type 'alist)
 				 (book-list (json-read-from-string (shell-command-to-string "calibredb list -f \"authors, title, formats,series,series_index\" --for-machine"))))
 		(ivy-read "%d Choose book: " (book-list-to-ivy book-list)
-							:action #'counsel-books-action-open-skim
+							:action #'counsel-books-action-open
 							:require-match t
 							:sort t)))

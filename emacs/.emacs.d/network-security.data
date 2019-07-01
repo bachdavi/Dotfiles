@@ -1,3 +1,4 @@
 (
+ (:id "sha1:2054c2d6d8be403662e1189363e97df53bdaf8d6" :fingerprint "sha1:91:22:34:84:44:a6:3e:b2:1a:bd:17:5f:3f:b2:a8:0d:c6:7b:9f:de" :host "linkinghub.elsevier.com:443" :conditions (:unknown-ca :invalid))
  (:id "sha1:85457c729378cc93c732b6a3941c8e4f9c2e60f3" :fingerprint "sha1:ab:a6:d7:6a:b3:d3:63:fa:19:0d:65:41:60:23:6e:ef:d3:2a:46:dc" :host "marmalade-repo.org:443" :conditions (:expired :unknown-ca :invalid))
 )

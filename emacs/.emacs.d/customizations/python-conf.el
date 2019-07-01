@@ -1,16 +1,16 @@
 ;; Python configuration 
-;; UTF-8 as default encoding
+;; UT-8 as default encoding
 (set-language-environment "UTF-8")
 
 ;; elpy stuff
 (setq elpy-rpc-python-command "python3")
 (setq elpy-rpc-backend "jedi")
 (setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "-i --simple-prompt")
+      python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i")
 
-(add-hook 'python-mode-hook 'flycheck-mode)
+;; (add-hook 'python-mode-hook 'flycheck-mode)
 (add-hook 'python-mode-hook 'elpy-mode)
-(add-hook 'elpy-mode-hook 'linum-mode)
+;; (add-hook 'elpy-mode-hook 'linum-mode)
 
 ;; Remove flymake s.t. we use flycheck
 (with-eval-after-load 'elpy (remove-hook 'elpy-modules 'elpy-module-flymake))
@@ -49,4 +49,4 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-(setq ein:console-executable "/usr/local/bin/ipython3")
+(setq ein:console-executable "/usr/local/bin/ipython")

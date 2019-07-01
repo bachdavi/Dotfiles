@@ -29,40 +29,6 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 
-;; Projectile
-(use-package projectile
-  :ensure projectile
-  :config
-  ;; (setq projectile-indexing-method 'git)
-  (projectile-mode +1))
-
 ;; Neotree
 (use-package neotree :ensure t)
 
-;; set up ivy completion
-(use-package ivy :ensure t
-  :diminish (ivy-mode . "")
-  :bind
-  (:map ivy-mode-map
-	("C-'" . ivy-avy))
-  :config
-  (ivy-mode 1)
-  ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
-  (setq ivy-use-virtual-buffers t)
-  ;; number of result lines to display
-  (setq ivy-height 10)
-  ;; does not count candidates
-  (setq ivy-count-format "%d/%d ")
-  ;; no regexp by default
-  (setq ivy-initial-inputs-alist nil)
-  ;; configure regexp engine.
-  (setq ivy-re-builders-alist
-				'((t . ivy--regex-plus)))
-  ;; extend ivy-bibtex
-	(ivy-add-actions
-	 'ivy-bibtex
-	 '(("P" bibtex-completion-pdf "Open pdf with mac's preview")
-		 ("S" bibtex-completion-skim "Open pdf with skim"))))
-
-
-(counsel-projectile-mode)

@@ -9,7 +9,7 @@
 (add-hook 'clojure-mode-hook 'evil-cleverparens-mode)
 
 ;; Line numbers
-(add-hook 'clojure-mode-hook 'linum-mode)
+;; (add-hook 'clojure-mode-hook 'linum-mode)
 
 ;; This is useful for working with camel-case tokens, like names of
 ;; Java classes (e.g. JavaClassName)
@@ -52,7 +52,8 @@
 (add-hook 'clojure-mode-hook 'cider-mode)
 
 ;; Use dev 
-(setq cider-clojure-cli-global-options "-A:dev")
+;; (setq cider-clojure-cli-global-options "-A:dev")
+;; (setq cider-clojure-cli-global-options nil)
 
 ;; Turn on auto-completion with Company-Mode
 (add-hook 'cider-repl-mode-hook #'company-mode)

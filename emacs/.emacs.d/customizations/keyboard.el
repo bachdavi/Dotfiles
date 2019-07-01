@@ -6,8 +6,8 @@
 	;; (setq mac-command-modifier 'none)
   (setq mac-right-option-modifier 'none))
 
-(setq key-chord-two-keys-delay 0.35)
-(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+(setq key-chord-two-keys-delay 0.15)
+;; (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 (key-chord-define evil-insert-state-map "$1" "(")
 (key-chord-define evil-insert-state-map "$2" "[")
 (key-chord-define evil-insert-state-map "$3" "{")
@@ -25,11 +25,11 @@
   "y" 'counsel-find-file
   "p" 'projectile-switch-project
   "a" 'counsel-projectile-rg
-  "q" 'evil-quit
   "w" 'save-buffer
   "t" 'neotree-toggle
   ",w" 'avy-goto-word-1
   ",b" 'avy-goto-word-1-above
+  "SPC" 'avy-goto-line
   "e" 'emojify-insert-emoji
   "g" 'magit)
 

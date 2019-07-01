@@ -1,8 +1,8 @@
 ;; Customizations relating to editing a buffer.
 
 ;; multiple cursors
-(require 'evil-mc)
-(global-evil-mc-mode  1) 
+; (require 'evil-mc)
+; (global-evil-mc-mode  1) 
 
 ;; Auto add pairs
 (electric-pair-mode 1)

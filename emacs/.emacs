@@ -12,8 +12,9 @@
 ;; (add-to-list 'exec-path "/opt/local/bin")
 ;; (add-to-list 'exec-path "/usr/local/bin")
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-;; (setenv "PATH" (concat (getenv "PATH") ":/opt/local/bin"))
+;"~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/libstd/"  (setenv "PATH" (concat (getenv "PATH") ":/opt/local/bin"))
 ;; (setenv "FZF_DEFAULT_COMMAND" "rg --files --hidden --follow --glob "!.git/*"")
+(setenv "PKG_CONFIG_PATH" "/usr/local/Cellar/zlib/1.2.11/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig")
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -35,6 +36,7 @@
 											org-ref
 											org-bullets
 											org-journal
+											org-pdfview
 											key-chord
                       ivy
                       ivy-bibtex
@@ -81,10 +83,13 @@
 ;;;;
 ;; EVIL
 ;;;;
+
 (use-package evil
 :ensure t
 :init
 (setq evil-vsplit-window-right t)
+(setq evil-disable-insert-state-bindings t)
+;; (setq evil-want-keybinding nil)
 ;; (setq evil-auto-indent nil)
 :config
 (evil-mode 1)
@@ -111,6 +116,11 @@
   :ensure t
   :config
   (evil-cleverparens-mode))
+
+;; (use-package evil-collection
+;;   :ensure t
+;;   :config
+;;   (evil-collection-init))
 
 (use-package evil-terminal-cursor-changer
 :ensure t
@@ -143,9 +153,16 @@
 
 (setq evil-want-C-u-scroll t)
 
+;; (define-key evil-normal-state-map (kbd "M-.")
+;;   `(menu-item "" evil-repeat-pop :filter
+;;               ,(lambda (cmd) (if (eq last-command 'evil-repeat-pop) cmd))))
+
 ;; Use words and symbols
 (with-eval-after-load 'evil
     (defalias #'forward-evil-word #'forward-evil-symbol))
+
+(add-hook 'org-capture-mode-hook 'evil-insert-state)
+
 
 ;;;;
 ;; AUTO-COMPLETION
@@ -156,11 +173,6 @@
   '(add-to-list 'company-frontends 'company-tng-frontend))
 (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
 (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
-;; Use tab
-;; (eval-after-load 'company
-;;   '(progn
-;;      (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
-;;      (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)))
 
 ;;;;
 ;; MARKDOWN
@@ -171,7 +183,9 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "/usr/local/bin/pandoc"))
+
+(add-hook 'markdown-mode-hook 'auto-fill-mode)
 
 ;;;;
 ;; RECOLL
@@ -224,10 +238,57 @@ INITIAL-INPUT can be given as the initial minibuffer input."
      '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
 
 ;;;;
+;; TIKZ
+;;;;
+; (add-to-list 'org-latex-packages-alist
+;              '("" "tikz" t))
+;
+; (eval-after-load "preview"
+;   '(add-to-list 'preview-default-preamble "\\PreviewEnvironment{tikzpicture}" t))
+;
+
+;;;;
+;; MINTED
+;;;;
+(setq org-latex-create-formula-image-program 'imagemagick)
+(setq org-latex-listings 'minted
+      org-latex-packages-alist '(("" "minted"))
+      org-latex-pdf-process
+      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+;;;;
+;; IVY
+;;;;
+
+;; set up ivy completion
+(use-package ivy :ensure t
+  :diminish (ivy-mode . "")
+  :bind
+  (:map ivy-mode-map
+	("C-'" . ivy-avy))
+  :config
+  (ivy-mode 1)
+  ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
+  (setq ivy-use-virtual-buffers t)
+  ;; number of result lines to display
+  (setq ivy-height 10)
+  ;; does not count candidates
+  (setq ivy-count-format "%d/%d ")
+  ;; no regexp by default
+  (setq ivy-initial-inputs-alist nil)
+  ;; configure regexp engine.
+  (setq ivy-re-builders-alist
+				'((t . ivy--regex-plus)))
+  ;; extend ivy-bibtex
+	)
+
+;;;;
 ;; BIBTEX
 ;;;;
 
 (autoload 'ivy-bibtex "ivy-bibtex" "" t)
+
 ;; ivy-bibtex requires ivy's `ivy--regex-ignore-order` regex builder, which
 ;; ignores the order of regexp tokens when searching for matching candidates.
 ;; Add something like this to your init file:
@@ -239,33 +300,35 @@ INITIAL-INPUT can be given as the initial minibuffer input."
   (let ((pdf (bibtex-completion-find-pdf entry)))
     (call-process "open" nil 0 nil (car pdf))))
 
+(defun bibtex-completion-finder (entry)
+  (let ((pdf (bibtex-completion-find-pdf entry)))
+    (call-process "open" nil 0 nil "-R" (car pdf))))
+
 (defun bibtex-completion-skim (entry)
   (let ((pdf (bibtex-completion-find-pdf entry)))
     (call-process "open" nil 0 nil "-a" "skim" (car pdf))))
 
-;; (use-package ivy
-;; 	:ensure t
-;; 	:config
-;; 	(ivy-add-actions
-;; 	 'ivy-bibtex
-;; 	 '(("P" bibtex-completion-pdf "Open pdf with mac's preview")
-;; 		 ("S" bibtex-completion-skim "Open pdf with skim"))))
-
 (use-package org-ref :ensure t
 	:config
 	(setq org-ref-bibliography-notes "~/Dropbox/org/ref/notes.org"
-				org-ref-default-bibliography '("~/Dropbox/org/ref/master.bib")
+				org-ref-default-bibliography '("~/Dropbox/org/ref/master.bib" "~/Dropbox/University/ETH/Master/Masterthesis/thesis.bib")
 				org-ref-pdf-directory "~/Dropbox/org/ref/pdfs/")
 
-	(setq bibtex-completion-bibliography "~/Dropbox/org/ref/master.bib"
+	(setq bibtex-completion-bibliography '("~/Dropbox/org/ref/master.bib"  "~/Dropbox/University/ETH/Master/Masterthesis/thesis.bib")
 				bibtex-completion-library-path "~/Dropbox/org/ref/pdfs"
 				bibtex-completion-notes-path "~/Dropbox/org/ref/notes.org")
 
+	;; (ivy-add-actions
+	;;  'ivy-bibtex
+	;;  '(("P" bibtex-completion-pdf "Open pdf with mac's preview")
+	;; 	 ("S" bibtex-completion-skim "Open pdf with skim")
+	;; 	 ("F" bibtex-completion-finder "Open finder on the pdf")))
+
 	(setq org-latex-pdf-process
-				'("pdflatex -interaction nonstopmode -output-directory %o %f"
+				'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
 					"bibtex %b"
-					"pdflatex -interaction nonstopmode -output-directory %o %f"
-					"pdflatex -interaction nonstopmode -output-directory %o %f")))
+					"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+					"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
 
 (defun bibtex-completion-format-citation-org (keys)
   "Formatter for ebib references."
@@ -323,10 +386,35 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 (setq org-hide-emphasis-markers t)
 (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
 (add-hook 'org-mode-hook 'org-bullets-mode)
+(add-hook 'org-mode-hook 'auto-fill-mode)
+
+;; We do not want to indent when pressing o in org-mode
+(add-hook 'org-mode-hook
+					(lambda ()
+						(make-local-variable 'evil-auto-indent)
+						(setq evil-auto-indent nil)))
+
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c C-l") 'org-insert-link)
+
+;; Enable org-pdf-view
+(eval-after-load 'org '(require 'org-pdfview))
+
+(defun capture-comment-line (&optional line)
+  (let ((c
+        (save-excursion
+          (save-window-excursion
+            (switch-to-buffer (plist-get org-capture-plist :original-buffer))
+          comment-start)
+          )))
+    (while (string-prefix-p c line)
+      (setq line (string-remove-prefix c line)))
+    (comment-string-strip line t t))) 
 
 (setq org-agenda-files '("~/Dropbox/org/gtd/inbox.org"
                          "~/Dropbox/org/gtd/gtd.org"
                          "~/Dropbox/org/gtd/tickler.org"
+                         "~/Dropbox/org/deft/"
                          "~/Dropbox/org/ref/notes.org"))
 
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
@@ -336,13 +424,18 @@ INITIAL-INPUT can be given as the initial minibuffer input."
                                (file+headline "~/Dropbox/org/gtd/tickler.org" "Tickler")
                                "* %i%? \n %U")))
 
+(add-to-list 'org-capture-templates
+       '("C" "TODO comment" entry
+         (file+headline "~/Dropbox/org/gtd/inbox.org" "Tasks")
+         "* %(capture-comment-line \"%i\")\n  %a"))
+
 (setq org-refile-targets '(("~/Dropbox/org/gtd/gtd.org" :maxlevel . 1)
                            ("~/Dropbox/org/gtd/someday.org" :level . 1)
                            ("~/Dropbox/org/gtd/tickler.org" :maxlevel . 1)))
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
-(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
+(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "LATER(l)" "CANCELLED(c)")))
 
 (setq org-agenda-custom-commands 
       '(("c" "Clockworks" tags-todo "Clockworks"
@@ -350,13 +443,18 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 				("d" "3DF" tags-todo "3DF"
          ((org-agenda-overriding-header "3DF")))
 				("e" "ETH" tags-todo "ETH"
-         ((org-agenda-overriding-header "ETH")))))
+         ((org-agenda-overriding-header "ETH")))
+				("s" "Semesterthesis" tags-todo "Semesterthesis"
+         ((org-agenda-overriding-header "Semesterthesis")))))
 
 (setq org-edit-src-content-indentation 0
       org-src-tab-acts-natively t
       org-src-fontify-natively t
       org-confirm-babel-evaluate nil
       org-support-shift-select 'always)
+
+(org-babel-do-load-languages 'org-babel-load-languages
+    '((shell . t)))
 
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.75))
 
@@ -376,6 +474,8 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 							deft-auto-save-interval 0)
 	:config
 	(global-set-key [f8] 'deft))
+
+(add-to-list 'evil-insert-state-modes 'deft-mode)
 
 ;;;;
 ;; FZF
@@ -420,14 +520,38 @@ same directory as the org-buffer and insert a link to this file."
 ;;;;
 (defun insert-todays-date (arg)
   (interactive "P")
-  (insert (if arg
-              (format-time-string "%d-%m-%Y")
-            (format-time-string "%Y-%m-%d "))))
+  (insert (format-time-string "%Y-%m-%d %A")))
 
+;;;;
+;; PROJECTILE
+;;;;
+
+(use-package projectile
+  :ensure projectile
+  :config
+  ;; (setq projectile-indexing-method 'git)
+	;; (setq projectile-globally-ignored-directories
+	;; 			(append '(
+	;; 								".git"
+	;; 								".svn"
+	;; 								"ltximg"
+	;; 								)
+	;; 							projectile-globally-ignored-directories))
+  (projectile-mode +1))
+
+(counsel-projectile-mode)
 
 ;;;;
 ;; CUSTOMIZATION
 ;;;;
+
+;; Go to scratch buffer and clear contents
+(defun clear-scratch nil
+  "create a scratch buffer"
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+	(erase-buffer)
+  (lisp-interaction-mode))
 
 ;; yes or no
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -459,29 +583,6 @@ same directory as the org-buffer and insert a link to this file."
 (add-hook 'org-mode-hook (lambda () 
   (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(TeX-source-correlate-mode t)
- '(org-export-backends (quote (ascii html icalendar latex md odt)))
- '(org-file-apps
-	 (quote
-		((auto-mode . emacs)
-		 ("\\.mm\\'" . default)
-		 ("\\.x?html?\\'" . default)
-		 ("\\.pdf\\'" . emacs))))
- '(org-modules
-	 (quote
-		(org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-mac-link)))
- '(package-selected-packages
-	 (quote
-		(0blayout org-journal ebib pdfgrep dracula-theme night-owl-theme interleave deft flyspell-popup flycheck-pycheckers aggressive-indent use-package smex rg rainbow-mode rainbow-delimiters racer python-mode pyenv-mode py-autopep8 org-ref org-bullets neotree ivy-bibtex ipython hlinum highlight-symbol flycheck-rust flycheck-inline flx evil-terminal-cursor-changer evil-surround evil-mc evil-leader evil-indent-textobject evil-commentary evil-cleverparens elpy ein drag-stuff counsel-projectile clojure-mode-extra-font-locking cider cargo better-defaults avy auctex))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq custom-file (concat user-emacs-directory ".custom.el")) ; tell Customize to save customizations to ~/.emacs.d/.custom.el
+(ignore-errors                                                ; load customizations from ~/.emacs.d/.custom.el
+  (load-file custom-file))
