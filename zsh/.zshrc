@@ -3,7 +3,7 @@
 #[[ $- != *i* ]] && return
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-zstyle :compinstall filename '/User/david/.zshrc'
+# zstyle :compinstall filename '/User/david/.zshrc'
 
 # export FZF_DEFAULT_COMMAND='ag --ignore *.class -g ""'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -29,11 +29,11 @@ bindkey '^N' forward-word
 bindkey '^P' backward-word
 source ~/.zprezto/init.zsh
 
-eval $( dircolors -b $HOME/.dir_colors )
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# eval $( dircolors -b $HOME/.dir_colors )
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Direnv
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 
 #----------------------------------------------------------------------#
 # Autocompletion and prompt
@@ -54,10 +54,11 @@ alias l='ls'
 
 alias vim='nvim'
 alias vi='nvim'
-# alias tmux="TERM=screen-256color-bce tmux"
+ alias tmux="TERM=screen-256color-bce tmux"
 # export TERM=screen-256color
 # alias python=python3
 # export TERM=xterm-256color
+set term=screen-256color
 
 # Ruby
 # export GEM_HOME=$HOME/gems
@@ -73,7 +74,7 @@ export QUGEN="${HOME}/ownCloud/University/ETH/Master/Semesterproject/"
 export VW="${HOME}/Projects/Vorwerk/"
 export TMOUT=0
 export VISUAL='nvim'
-export EDITOR=$VISUAL
+export EDITOR="$VISUAL"
 
 #----------------------------------------------------------------------#
 # Alias
@@ -115,7 +116,7 @@ zle -N down-line-or-beginning-search
 # Python Virtualenvs
 export WORKON_HOME=~/Envs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # FZF
 
@@ -124,3 +125,9 @@ fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//') }
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/qt/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/david/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/david/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/david/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/david/google-cloud-sdk/completion.zsh.inc'; fi
