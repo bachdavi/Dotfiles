@@ -16,8 +16,8 @@ let &t_EI = "\e[2 q"
 " => Standart Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set termguicolors     " enable true colors support
-set background=dark
-colorscheme Gruvbox
+set background=light
+colorscheme PaperColor
 set number
 " set cursorline
 set splitbelow
