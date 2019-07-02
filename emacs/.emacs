@@ -158,8 +158,8 @@
 ;;               ,(lambda (cmd) (if (eq last-command 'evil-repeat-pop) cmd))))
 
 ;; Use words and symbols
-(with-eval-after-load 'evil
-    (defalias #'forward-evil-word #'forward-evil-symbol))
+;; (with-eval-after-load 'evil
+;;     (defalias #'forward-evil-word #'forward-evil-symbol))
 
 (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
@@ -378,6 +378,14 @@ INITIAL-INPUT can be given as the initial minibuffer input."
   (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
 
 ;;;;
+;; DIRED
+;;;;
+
+;; Sort dired buffer differently
+(add-hook 'dired-load-hook
+          (lambda () (require 'dired-sort-menu)))
+
+;;;;
 ;; ORG MODE
 ;;;;
 ;; (setq org-startup-indented t)
@@ -387,6 +395,16 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (add-hook 'org-mode-hook 'auto-fill-mode)
+
+;; (setq org-ellipsis "  ")
+;; (setq org-bullets-bullet-list '("⬢" "◆" "▲" "■"))
+
+(require 'org-protocol)
+(require 'org-habit)
+(add-to-list 'org-modules 'org-habit)
+
+(global-set-key (kbd "<f12>") 'org-agenda)
+
 
 ;; We do not want to indent when pressing o in org-mode
 (add-hook 'org-mode-hook
@@ -411,41 +429,123 @@ INITIAL-INPUT can be given as the initial minibuffer input."
       (setq line (string-remove-prefix c line)))
     (comment-string-strip line t t))) 
 
-(setq org-agenda-files '("~/Dropbox/org/gtd/inbox.org"
-                         "~/Dropbox/org/gtd/gtd.org"
-                         "~/Dropbox/org/gtd/tickler.org"
-                         "~/Dropbox/org/deft/"
+;; AGENDA
+(setq org-agenda-files '("~/Dropbox/org/"
+												 "~/Dropbox/org/clients/"
+												 "~/Dropbox/org/projects/"
                          "~/Dropbox/org/ref/notes.org"))
 
-(setq org-capture-templates '(("t" "Todo [inbox]" entry
-                               (file+headline "~/Dropbox/org/gtd/inbox.org" "Tasks")
-                               "* TODO %i%?")
-                              ("T" "Tickler" entry
-                               (file+headline "~/Dropbox/org/gtd/tickler.org" "Tickler")
-                               "* %i%? \n %U")))
 
-(add-to-list 'org-capture-templates
-       '("C" "TODO comment" entry
-         (file+headline "~/Dropbox/org/gtd/inbox.org" "Tasks")
-         "* %(capture-comment-line \"%i\")\n  %a"))
 
-(setq org-refile-targets '(("~/Dropbox/org/gtd/gtd.org" :maxlevel . 1)
-                           ("~/Dropbox/org/gtd/someday.org" :level . 1)
-                           ("~/Dropbox/org/gtd/tickler.org" :maxlevel . 1)))
+;; Set default column view headings: Task Total-Time Time-Stamp
+(setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
+
+;; Dim blocked tasks (and other settings)
+(setq org-enforce-todo-dependencies t)
+(setq org-agenda-inhibit-startup nil)
+(setq org-agenda-dim-blocked-tasks nil)
+
+;; Compact the block agenda view (disabled)
+(setq org-agenda-compact-blocks nil)
+
+(setq org-deadline-warning-days 30)
+
+
+;; Custom agenda command definitions
+(setq org-agenda-custom-commands
+      (quote (("N" "Notes" tags "NOTE"
+               ((org-agenda-overriding-header "Notes")
+                (org-tags-match-list-sublevels t)))
+              (" " "Agenda"
+               ((agenda "" ((org-agenda-overriding-header "Today's Schedule:")
+														(org-agenda-span 'day)
+														(org-agenda-ndays 1)
+														(org-agenda-skip-scheduled-if-done t)
+														(org-agenda-skip-deadline-if-done t)
+														(org-agenda-start-on-weekday nil)
+														(org-agenda-start-day "+0d")
+														(org-agenda-show-all-dates t)
+														(org-agenda-todo-ignore-deadlines nil)))
+                (tags "REFILE"
+                      ((org-agenda-overriding-header "Tasks to Refile")
+                       (org-tags-match-list-sublevels nil)))
+                (tags-todo "-CANCELLED-REFILE/!NEXT"
+                           ((org-agenda-overriding-header (concat "Project Next Tasks"
+                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
+                                                                      ""
+                                                                    " (including WAITING and SCHEDULED tasks)")))
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-sorting-strategy
+                             '(todo-state-down effort-up category-keep))))
+								(tags-todo "-CANCELLED/!WAITING|HOLD"
+                           ((org-agenda-overriding-header "Waiting and Postponed Tasks")
+														(org-tags-match-list-sublevels nil)))
+								(agenda "" ((org-agenda-use-time-grid nil)))
+								(tags-todo "-CANCELLED-REFILE/!TODO"
+                           ((org-agenda-overriding-header (concat "Projects"
+                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
+                                                                      ""
+                                                                    " (including WAITING and SCHEDULED tasks)")))
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-sorting-strategy
+                             '(todo-state-down effort-up category-keep))))
+								)
+               nil))))
+
+;; CAPTURE
+
+(setq org-default-notes-file "~/Dropbox/org/inbox.org")
+
+(add-to-list 'load-path "~/.emacs.d/customizations")
+(load "org-helper.el")
+
+;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
+(setq org-capture-templates
+      (quote (("t" "todo" entry (file "~/Dropbox/org/inbox.org")
+               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+							("r" "respond" entry (file "~/Dropbox/org/inbox.org")
+               "* NEXT Respond to %? on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("n" "note" entry (file "~/Dropbox/org/inbox.org")
+               "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("j" "Journal" entry  (file "~/Dropbox/org/inbox.org")
+               "* %?\n%U\n" :clock-in t :clock-resume t)
+							("i" "Idea" entry (file org-default-notes-file)
+							 "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
+              ("m" "Meeting" entry (file "~/Dropbox/org/inbox.org")
+               "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
+              ("p" "Phone call" entry (file "~/Dropbox/org/inbox.org")
+               "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t))))
+
+(setq org-refile-targets '((org-agenda-files :maxlevel . 9)))
+
+; Use full outline paths for refile targets - we file directly with IDO
+(setq org-refile-use-outline-path t)
+
+; Targets complete directly with IDO
+(setq org-outline-path-complete-in-steps nil)
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
-(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "LATER(l)" "CANCELLED(c)")))
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
 
-(setq org-agenda-custom-commands 
-      '(("c" "Clockworks" tags-todo "Clockworks"
-         ((org-agenda-overriding-header "Clockworks")))
-				("d" "3DF" tags-todo "3DF"
-         ((org-agenda-overriding-header "3DF")))
-				("e" "ETH" tags-todo "ETH"
-         ((org-agenda-overriding-header "ETH")))
-				("s" "Semesterthesis" tags-todo "Semesterthesis"
-         ((org-agenda-overriding-header "Semesterthesis")))))
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "red" :weight bold)
+              ("NEXT" :foreground "blue" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("WAITING" :foreground "orange" :weight bold)
+              ("HOLD" :foreground "magenta" :weight bold)
+              ("CANCELLED" :foreground "forest green" :weight bold)
+              ("MEETING" :foreground "forest green" :weight bold)
+              ("PHONE" :foreground "forest green" :weight bold))))
+
 
 (setq org-edit-src-content-indentation 0
       org-src-tab-acts-natively t
@@ -522,6 +622,11 @@ same directory as the org-buffer and insert a link to this file."
   (interactive "P")
   (insert (format-time-string "%Y-%m-%d %A")))
 
+
+(defun insert-current-week (arg)
+  (interactive "P")
+  (insert (format-time-string "Week %U")))
+
 ;;;;
 ;; PROJECTILE
 ;;;;
@@ -560,7 +665,6 @@ same directory as the org-buffer and insert a link to this file."
 (require 'cider)
 
 ;; Load all the things
-(add-to-list 'load-path "~/.emacs.d/customizations")
 (load "ui.el")
 (load "editing.el")
 (load "navigation.el")
