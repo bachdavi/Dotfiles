@@ -5,7 +5,7 @@
 ;; elpy stuff
 (setq elpy-rpc-python-command "python3")
 (setq elpy-rpc-backend "jedi")
-(setq python-shell-interpreter "ipython"
+(setq python-shell-interpreter "ipython3"
       python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i")
 
 ;; (add-hook 'python-mode-hook 'flycheck-mode)

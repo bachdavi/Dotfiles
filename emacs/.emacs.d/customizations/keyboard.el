@@ -24,7 +24,7 @@
   "s" 'ivy-switch-buffer
   "y" 'counsel-find-file
   "p" 'projectile-switch-project
-  "a" 'counsel-projectile-rg
+  "a" 'counsel-rg
   "w" 'save-buffer
   "t" 'neotree-toggle
   ",w" 'avy-goto-word-1
@@ -34,7 +34,8 @@
   "g" 'magit)
 
 ;; Space for search
-(define-key evil-normal-state-map (kbd "SPC") 'counsel-grep-or-swiper)
+(define-key evil-normal-state-map (kbd "SPC") 'swiper-isearch)
+(global-set-key (kbd "C-s") 'swiper-isearch)
 
 ;; Neotree
 (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)

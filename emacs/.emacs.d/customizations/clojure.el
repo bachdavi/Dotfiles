@@ -46,7 +46,7 @@
 ;;;;
 
 (global-set-key [f9] 'cider-jack-in)
-(global-set-key [f10] 'cider-jack-in-clojurescript)
+(global-set-key [f10] 'cider-jack-in-cljs)
 
 ;; Enter cider mode when entering the clojure major mode
 (add-hook 'clojure-mode-hook 'cider-mode)

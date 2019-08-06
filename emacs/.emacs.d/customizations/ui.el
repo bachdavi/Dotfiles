@@ -9,7 +9,7 @@
 
 ;; set up fonts
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "Operator Mono-17:Bold"))
+  (set-frame-parameter frame 'font "Operator Mono-17:Medium"))
 ;; Fontify current frame
 (fontify-frame nil)
 ;; Fontify any future frames

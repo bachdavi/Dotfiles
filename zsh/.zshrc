@@ -28,6 +28,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^N' forward-word
 bindkey '^P' backward-word
 source ~/.zprezto/init.zsh
+source ~/Projects/zsh-z/zsh-z.plugin.zsh
 
 # eval $( dircolors -b $HOME/.dir_colors )
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
