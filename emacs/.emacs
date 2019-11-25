@@ -61,12 +61,13 @@
                       cider
                       markdown-mode
                       rainbow-mode
-                      rust-mode
+                      ;; rust-mode
+											rustic
 											cargo
 											racer
 											flycheck
 											flycheck-inline
-											flycheck-rust
+											;; flycheck-rust
 											flycheck-pycheckers
 											flycheck-mypy
 											auctex
@@ -86,37 +87,41 @@
 
 (fixme-mode 1)
 
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
 ;;;;
 ;; EVIL
 ;;;;
 
 (use-package evil
-:ensure t
-:init
-(setq evil-vsplit-window-right t)
-(setq evil-disable-insert-state-bindings t)
-;; (setq evil-want-keybinding nil)
-(setq evil-auto-indent t)
-:config
-(evil-mode 1)
+  :ensure t
+  :init
+  (setq evil-vsplit-window-right t)
+  (setq evil-disable-insert-state-bindings t)
+  ;; (setq evil-want-keybinding nil)
+  (setq evil-auto-indent t)
+  :config
+  (evil-mode 1)
 
-(use-package evil-leader
-:ensure t
-:config
-(global-evil-leader-mode))
+  (use-package evil-leader
+    :ensure t
+    :config
+    (global-evil-leader-mode))
 
-(use-package evil-surround
-:ensure t
-:config
-(global-evil-surround-mode))
+  (use-package evil-surround
+    :ensure t
+    :config
+    (global-evil-surround-mode))
 
-(use-package evil-indent-textobject
-:ensure t)
+  (use-package evil-indent-textobject
+    :ensure t)
 
-(use-package evil-commentary
-:ensure t
-:config
-(evil-commentary-mode)))
+  (use-package evil-commentary
+    :ensure t
+    :config
+    (evil-commentary-mode)))
 
 (use-package evil-cleverparens
   :ensure t
@@ -129,22 +134,22 @@
 ;;   (evil-collection-init))
 
 (use-package evil-terminal-cursor-changer
-:ensure t
-:init
-(setq evil-motion-state-cursor 'box)  
-(setq evil-visual-state-cursor 'box)  
-(setq evil-normal-state-cursor 'box) 
-(setq evil-insert-state-cursor 'bar)
-(setq evil-emacs-state-cursor  'hbar)
-:config
-(evil-terminal-cursor-changer-activate))
+  :ensure t
+  :init
+  (setq evil-motion-state-cursor 'box)  
+  (setq evil-visual-state-cursor 'box)  
+  (setq evil-normal-state-cursor 'box) 
+  (setq evil-insert-state-cursor 'bar)
+  (setq evil-emacs-state-cursor  'hbar)
+  :config
+  (evil-terminal-cursor-changer-activate))
 
 (defun minibuffer-keyboard-quit ()
-(interactive)
-(if (and delete-selection-mode transient-mark-mode mark-active)
-    (setq deactivate-mark  t)
-(when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-(abort-recursive-edit)))
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
 
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [tab] 'aggressive-indent-indent-region-and-on)
@@ -173,12 +178,12 @@
 ;;;;
 ;; AUTO-COMPLETION
 ;;;;
-(global-company-mode)
-(setq company-minimum-prefix-length 1)
-(eval-after-load 'company
-  '(add-to-list 'company-frontends 'company-tng-frontend))
-(define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
-(define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+;; (global-company-mode)
+;; (setq company-minimum-prefix-length 1)
+;; (eval-after-load 'company
+;;   '(add-to-list 'company-frontends 'company-tng-frontend))
+;; (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+;; (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
 
 ;;;;
 ;; MARKDOWN
@@ -223,17 +228,17 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; LATEX
 ;;;;
-; (add-to-list 'exec-path "/Library/TeX/texbin/")
+;; (add-to-list 'exec-path "/Library/TeX/texbin/")
 (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))
 
 ;; Use Skim as viewer, enable source <-> PDF sync
 ;; make latexmk available via C-c C-c
 ;; Note: SyncTeX is setup via ~/.latexmkrc (see below)
 (add-hook 'LaTeX-mode-hook (lambda ()
-  (push
-    '("latexmk" "latexmk -pdf %s" TeX-run-TeX nil t
-      :help "Run latexmk on file")
-    TeX-command-list)))
+                             (push
+                              '("latexmk" "latexmk -pdf %s" TeX-run-TeX nil t
+                                :help "Run latexmk on file")
+                              TeX-command-list)))
 (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
 
 ;; use Skim as default pdf viewer
@@ -241,17 +246,17 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;; option -b highlights the current line; option -g opens Skim in the background  
 (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
 (setq TeX-view-program-list
-     '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+      '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
 
 ;;;;
 ;; TIKZ
 ;;;;
-; (add-to-list 'org-latex-packages-alist
-;              '("" "tikz" t))
-;
-; (eval-after-load "preview"
-;   '(add-to-list 'preview-default-preamble "\\PreviewEnvironment{tikzpicture}" t))
-;
+
+;; (add-to-list 'org-latex-packages-alist
+;;              '("" "tikz" t))
+
+(eval-after-load "preview"
+  '(add-to-list 'preview-default-preamble "\\PreviewEnvironment{tikzpicture}" t))
 
 ;;;;
 ;; MINTED
@@ -272,7 +277,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
   :diminish (ivy-mode . "")
   :bind
   (:map ivy-mode-map
-	("C-'" . ivy-avy))
+	    ("C-'" . ivy-avy))
   :config
   (ivy-mode 1)
   ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
@@ -285,13 +290,25 @@ INITIAL-INPUT can be given as the initial minibuffer input."
   (setq ivy-initial-inputs-alist nil)
   ;; configure regexp engine.
   (setq ivy-re-builders-alist
-				'((t . ivy--regex-plus)))
+		'((t . ivy--regex-plus)))
   ;; extend ivy-bibtex
-	)
+  )
 
 ;;;;
 ;; BIBTEX
 ;;;;
+
+(defun org-ref-rescan-labels nil
+		"Rescan buffer local labels."
+		(interactive)
+		(save-excursion
+			(org-ref-add-labels (point-min) (point-max)))
+		(reverse org-ref-labels))
+
+;; This is necessary for the resolution of image labels when exporting
+;; to latex from org mode.
+;; use `org-ref-insert-link' to auto complete all figures.
+(setq org-latex-prefer-user-labels t)
 
 (autoload 'ivy-bibtex "ivy-bibtex" "" t)
 
@@ -315,26 +332,26 @@ INITIAL-INPUT can be given as the initial minibuffer input."
     (call-process "open" nil 0 nil "-a" "skim" (car pdf))))
 
 (use-package org-ref :ensure t
-	:config
-	(setq org-ref-bibliography-notes "~/Dropbox/org/ref/notes.org"
-				org-ref-default-bibliography '("~/Dropbox/org/ref/master.bib" "~/Dropbox/University/ETH/Master/Masterthesis/thesis.bib")
-				org-ref-pdf-directory "~/Dropbox/org/ref/pdfs/")
+  :config
+  (setq org-ref-bibliography-notes "~/Dropbox/org/ref/notes.org"
+		org-ref-default-bibliography '("~/Dropbox/org/ref/master.bib" "~/Dropbox/University/ETH/Master/Masterthesis/thesis.bib")
+		org-ref-pdf-directory "~/Dropbox/org/ref/pdfs/")
 
-	(setq bibtex-completion-bibliography '("~/Dropbox/org/ref/master.bib"  "~/Dropbox/University/ETH/Master/Masterthesis/thesis.bib")
-				bibtex-completion-library-path "~/Dropbox/org/ref/pdfs"
-				bibtex-completion-notes-path "~/Dropbox/org/ref/notes.org")
+  (setq bibtex-completion-bibliography '("~/Dropbox/org/ref/master.bib"  "~/Dropbox/University/ETH/Master/Masterthesis/thesis.bib")
+		bibtex-completion-library-path "~/Dropbox/org/ref/pdfs"
+		bibtex-completion-notes-path "~/Dropbox/org/ref/notes.org")
 
-	;; (ivy-add-actions
-	;;  'ivy-bibtex
-	;;  '(("P" bibtex-completion-pdf "Open pdf with mac's preview")
-	;; 	 ("S" bibtex-completion-skim "Open pdf with skim")
-	;; 	 ("F" bibtex-completion-finder "Open finder on the pdf")))
+  ;; (ivy-add-actions
+  ;;  'ivy-bibtex
+  ;;  '(("P" bibtex-completion-pdf "Open pdf with mac's preview")
+  ;; 	 ("S" bibtex-completion-skim "Open pdf with skim")
+  ;; 	 ("F" bibtex-completion-finder "Open finder on the pdf")))
 
-	(setq org-latex-pdf-process
-				'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-					"bibtex %b"
-					"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-					"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
+  (setq org-latex-pdf-process
+		'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+		  "bibtex %b"
+		  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+		  "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
 
 (defun bibtex-completion-format-citation-org (keys)
   "Formatter for ebib references."
@@ -342,12 +359,12 @@ INITIAL-INPUT can be given as the initial minibuffer input."
           (--map (format "cite:%s" it) keys)))
 
 (setq bibtex-completion-format-citation-functions
-  '((org-mode      . bibtex-completion-format-citation-org)
-    (latex-mode    . bibtex-completion-format-citation-cite)
-    (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
-    (default       . bibtex-completion-format-citation-default)))
+      '((org-mode      . bibtex-completion-format-citation-org)
+        (latex-mode    . bibtex-completion-format-citation-cite)
+        (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+        (default       . bibtex-completion-format-citation-default)))
 
-(setq org-image-actual-width '(500))
+(setq org-image-actual-width '(550))
 
 ;;;;
 ;; PDF
@@ -356,7 +373,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
   :ensure t
   :config
   (pdf-tools-install)
-	(setq-default pdf-view-display-size 'fit-page))
+  (setq-default pdf-view-display-size 'fit-page))
 
 ;; (eval-after-load "tex"
 ;;   '(progn
@@ -394,6 +411,8 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;; DIRED
 ;;;;
 
+(require 'dired-x)
+
 ;; Sort dired buffer differently
 (add-hook 'dired-load-hook
           (lambda () (require 'dired-sort-menu)))
@@ -408,16 +427,21 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (add-hook 'org-mode-hook 'auto-fill-mode)
+(add-hook 'org-mode-hook 'flyspell-mode)
 ;; (add-hook 'org-mode-hook 'auto-save-mode)
 ;; (add-hook 'org-mode-hook 'auto-revert-mode)
 
 ;; (setq org-ellipsis "  ")
 ;; (setq org-bullets-bullet-list '("⬢" "◆" "▲" "■"))
 
+(require 'org-inlinetask)
+
 (setq org-log-done 'time)
 
 ;; Local variable evaluation.
 (setq enable-local-eval t)
+
+(require 'ob-async)
 
 (require 'org-protocol)
 (require 'org-habit)
@@ -428,9 +452,9 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 ;; We do not want to indent when pressing o in org-mode
 (add-hook 'org-mode-hook
-					(lambda ()
-						(make-local-variable 'evil-auto-indent)
-						(setq evil-auto-indent nil)))
+		  (lambda ()
+			(make-local-variable 'evil-auto-indent)
+			(setq evil-auto-indent nil)))
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c C-l") 'org-insert-link)
@@ -440,21 +464,21 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 (defun capture-comment-line (&optional line)
   (let ((c
-        (save-excursion
-          (save-window-excursion
-            (switch-to-buffer (plist-get org-capture-plist :original-buffer))
-          comment-start)
-          )))
+         (save-excursion
+           (save-window-excursion
+             (switch-to-buffer (plist-get org-capture-plist :original-buffer))
+             comment-start)
+           )))
     (while (string-prefix-p c line)
       (setq line (string-remove-prefix c line)))
     (comment-string-strip line t t))) 
 
 ;; AGENDA
 (setq org-agenda-files '("~/Dropbox/org/"
-												 "~/Projects/anarres/project.org"
-												 "~/Dropbox/org/clients/"
-												 "~/Dropbox/org/projects/"
-                         "~/Dropbox/org/ref/notes.org"))
+						 "~/Projects/anarres/project.org"
+						 "~/Dropbox/org/clients/"
+						 "~/Dropbox/org/projects/"
+             "~/Dropbox/org/ref/notes.org"))
 
 ;; Set default column view headings: Task Total-Time Time-Stamp
 (setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
@@ -471,12 +495,12 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 ;; How to show tasks
 (setq org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")
-																 (timeline . "  % s")
-																 (todo .
-																			 " %i %?-12(concat \"[ \"(org-format-outline-path (list (nth 1 (org-get-outline-path)))) \" ]\") ")
-																 (tags .
-																			 " %i %-12:c %(concat \"[ \"(org-format-outline-path (org-get-outline-path)) \" ]\") ")
-																 (search . " %i %-12:c")))
+								 (timeline . "  % s")
+								 (todo .
+									   " %i %?-12(concat \"[ \"(org-format-outline-path (list (nth 1 (org-get-outline-path)))) \" ]\") ")
+								 (tags .
+									   " %i %-12:c %(concat \"[ \"(org-format-outline-path (org-get-outline-path)) \" ]\") ")
+								 (search . " %i %-12:c")))
 
 ;; Custom agenda command definitions
 (setq org-agenda-custom-commands
@@ -495,116 +519,141 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 														(org-agenda-todo-ignore-deadlines nil)))
                 (tags "+REFILE-noexport"
                       ((org-agenda-overriding-header "Tasks to Refile")
-											 (org-agenda-prefix-format " %i %-23:c%l%s")
-                       (org-tags-match-list-sublevels nil)))
-                (tags-todo "-CANCELLED-REFILE/!NEXT"
-                           ((org-agenda-overriding-header (concat "Project Next Tasks"
+											 (org-agenda-prefix-format " %i %-12:c%l%s")
+											 (org-tags-match-list-sublevels nil)))
+                (tags-todo "-CANCELLED-REFILE-Research/!NEXT|CURRENT"
+                           ((org-agenda-overriding-header (concat "Project Next & Current Tasks"
                                                                   (if bh/hide-scheduled-and-waiting-next-tasks
                                                                       ""
                                                                     " (including WAITING and SCHEDULED tasks)")))
-                            (org-tags-match-list-sublevels nil)
-														(org-agenda-prefix-format " %i %-23:c")
-                            ;; (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
-                            ;; (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
-                            ;; (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
-                            ;; (org-agenda-sorting-strategy
-                            ;;  '(todo-state-down effort-up category-keep))
-														))
+														;; (org-agenda-prefix-format " %i %(concat \"[ \"(first (org-get-outline-path)) \" ]\") %-15:l%s")
+														(org-agenda-prefix-format " %i %-15:c%l%s")
+														(org-tags-match-list-sublevels nil)))
 								(tags-todo "-CANCELLED/!WAITING|HOLD"
-                           ((org-agenda-overriding-header "Waiting and Postponed Tasks")
+													 ((org-agenda-overriding-header "Waiting and Postponed Tasks")
 														(org-agenda-prefix-format " %i %-22:c%l%s")
 														(org-tags-match-list-sublevels nil)))
 								(tags "IDEA"
-                           ((org-agenda-overriding-header "Current Ideas")
-														(org-agenda-prefix-format " %i %-4:c%l%s")
-														(org-tags-match-list-sublevels nil)))
-								(agenda "" ((org-agenda-use-time-grid nil)))
+											((org-agenda-overriding-header "Current Ideas")
+											 (org-agenda-prefix-format " %i %-4:c%l%s")
+											 (org-tags-match-list-sublevels nil)))
+								(agenda "" ((org-agenda-use-time-grid nil)
+														(org-agenda-skip-function '(eoxxs/org-agenda-skip-tag "Reoccurring" nil))))
 								(tags-todo "-CANCELLED-REFILE/!TODO"
-                           ((org-agenda-overriding-header (concat "Tasks"
-                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
-                                                                      ""
-                                                                    " (including WAITING and SCHEDULED tasks)")))
-                            (org-tags-match-list-sublevels t)
-                            (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
-                            (org-agenda-sorting-strategy
-                             '(todo-state-down effort-up category-keep))))
-								(tags "-REFILE-MEETING/"
-                      ((org-agenda-overriding-header "Tasks to Archive")
-                       (org-agenda-skip-function 'skip-non-archivable-tasks)
-                       (org-tags-match-list-sublevels nil))))
+													 ((org-agenda-overriding-header (concat "Tasks"
+																																	(if bh/hide-scheduled-and-waiting-next-tasks
+																																			""
+																																		" (including WAITING and SCHEDULED tasks)")))
+														(org-tags-match-list-sublevels t)
+														(org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
+														(org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
+														(org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
+														(org-agenda-sorting-strategy
+														 '(todo-state-down effort-up category-keep))))
+								(tags "-REFILE-MEETING-Research-Outline/"
+											((org-agenda-overriding-header "Tasks to Archive")
+											 (org-agenda-skip-function 'skip-non-archivable-tasks)
+											 (org-tags-match-list-sublevels nil))))
                nil))))
+
+(defun eoxxs/org-agenda-skip-tag (tag &optional others)
+  "Skip all entries that correspond to TAG.
+         If OTHERS is true, skip all entries that do not
+         correspond to TAG."
+  (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
+				(current-headline (or (and (org-at-heading-p)
+																	 (point))
+															(save-excursion (org-back-to-heading)))))
+	(if others
+		(if (not (member tag (org-get-tags-at current-headline)))
+			next-headline
+		  nil)
+	  (if (member tag (org-get-tags-at current-headline))
+		  next-headline
+		nil))))
 
 (defun skip-non-archivable-tasks ()
   "Skip trees that are not available for archiving"
   (save-restriction
-    (widen)
-    ;; Consider only tasks with done todo headings as archivable candidates
-    (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
-          (subtree-end (save-excursion (org-end-of-subtree t))))
-      (if (member (org-get-todo-state) org-todo-keywords-1)
-          (if (member (org-get-todo-state) org-done-keywords)
-              (let* (
-										 ;; (daynr (string-to-number (format-time-string "%d" (current-time))))
-                     ;; (a-month-ago (* 60 60 24 (+ daynr 1)))
-                     ;; (last-month (format-time-string "%Y-%m-" (time-subtract (current-time) (seconds-to-time a-month-ago))))
-                     (this-month (format-time-string "%Y-%m-" (current-time)))
-                     (subtree-is-current (save-excursion
-                                           (forward-line 1)
-                                           (and (< (point) subtree-end)
-                                                (re-search-forward this-month subtree-end t)))))
-                (if subtree-is-current
-                    subtree-end ; Has a date in this month or last month, skip it
-                  nil))  ; available to archive
-            (or subtree-end (point-max)))
-        next-headline))))
+	(widen)
+	;; Consider only tasks with done todo headings as archivable candidates
+	(let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
+		  (subtree-end (save-excursion (org-end-of-subtree t))))
+	  (if (member (org-get-todo-state) org-todo-keywords-1)
+		  (if (member (org-get-todo-state) org-done-keywords)
+			  (let* (
+					 (daynr (string-to-number (format-time-string "%d" (current-time))))
+					 (a-month-ago (* 60 60 24 (+ daynr 1)))
+					 (last-month (format-time-string "%Y-%m-" (time-subtract (current-time) (seconds-to-time a-month-ago))))
+					 (this-month (format-time-string "%Y-%m-" (current-time)))
+					 (subtree-is-current (save-excursion
+										   (forward-line 1)
+										   (and (< (point) subtree-end)
+														(or
+														 (re-search-forward this-month subtree-end t)
+														 (re-search-forward last-month subtree-end t))))))
+					(if subtree-is-current
+					subtree-end ; Has a date in this month or last month, skip it
+				  nil))  ; available to archive
+			(or subtree-end (point-max)))
+		next-headline))))
 
 ;; CAPTURE
-(setq org-default-notes-file "~/Dropbox/org/refile.org")
+			(setq org-default-notes-file "~/Dropbox/org/refile.org")
 
-(add-to-list 'load-path "~/.emacs.d/customizations")
-(load "org-helper.el")
+			(add-to-list 'load-path "~/.emacs.d/customizations")
+			(load "org-helper.el")
 
-;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
-(setq org-capture-templates
-      (quote (("t" "Todo" entry (file "~/Dropbox/org/refile.org")
-               "* TODO %?\n%U\n" :clock-in t :clock-resume t)
-							("c" "Code Todo" entry (file "~/Dropbox/org/refile.org")
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-							("r" "Respond" entry (file "~/Dropbox/org/refile.org")
-               "* NEXT Respond to %? on %:subject\nSCHEDULED: %t\n%U\n" :clock-in t :clock-resume t)
-              ("n" "Note" entry (file "~/Dropbox/org/refile.org")
-               "* %? :NOTE:\n%U\n" :clock-in t :clock-resume t)
-							("i" "Idea" entry (file org-default-notes-file)
-							 "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
-              ("m" "Meeting" entry (file "~/Dropbox/org/refile.org")
-               "* MEETING %u with %? :MEETING:\n** Notes\n** Todos\n" :clock-in t :clock-resume t))))
+			;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
+			(setq org-capture-templates
+						(quote (("t" "Todo" entry (file "~/Dropbox/org/refile.org")
+										 "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+										("c" "Code Todo" entry (file "~/Dropbox/org/refile.org")
+										 "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+										("r" "Respond" entry (file "~/Dropbox/org/refile.org")
+										 "* NEXT Respond to %? on %:subject\nSCHEDULED: %t\n%U\n" :clock-in t :clock-resume t)
+										("n" "Note" entry (file "~/Dropbox/org/refile.org")
+										 "* %? :NOTE:\n%U\n" :clock-in t :clock-resume t)
+										("i" "Idea" entry (file org-default-notes-file)
+										 "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
+										("m" "Meeting" entry (file "~/Dropbox/org/refile.org")
+										 "* MEETING %u %? :MEETING:\n** Summary\n** Attendees\n** Questions\n** Notes\n** Actions\n" :clock-in t :clock-resume t))))
 
-(setq org-refile-targets '((org-agenda-files :maxlevel . 9)))
+			(setq org-refile-targets '((org-agenda-files :maxlevel . 9)))
 
-; Use full outline paths for refile targets - we file directly with IDO
-(setq org-refile-use-outline-path t)
+																				; Use full outline paths for refile targets - we file directly with IDO
+			(setq org-refile-use-outline-path t)
 
-; Targets complete directly with IDO
-(setq org-outline-path-complete-in-steps nil)
+																				; Targets complete directly with IDO
+			(setq org-outline-path-complete-in-steps nil)
 
-(global-set-key (kbd "C-c c") 'org-capture)
+			(global-set-key (kbd "C-c c") 'org-capture)
 
-(setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "CURRENT(c)" "|" "DONE(d)")
-              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+			(setq org-todo-keywords
+						(quote ((sequence "TODO(t)" "NEXT(n)" "CURRENT(u)" "|" "DONE(d)")
+										(sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
 
-(setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "red" :weight bold)
-              ("NEXT" :foreground "blue" :weight bold)
-              ("CURRENT" :foreground "orange" :weight bold)
-              ("DONE" :foreground "forest green" :weight bold)
-              ("WAITING" :foreground "orange" :weight bold)
-              ("HOLD" :foreground "magenta" :weight bold)
-              ("CANCELLED" :foreground "forest green" :weight bold)
-              ("MEETING" :foreground "forest green" :weight bold)
-              ("INACTICE" :foreground "magenta" :weight bold))))
+			(setq org-todo-keyword-faces
+						(quote (("TODO" :foreground "red" :weight bold)
+										("NEXT" :foreground "blue" :weight bold)
+										("CURRENT" :foreground "orange" :weight bold)
+										("DONE" :foreground "forest green" :weight bold)
+										("WAITING" :foreground "orange" :weight bold)
+										("HOLD" :foreground "magenta" :weight bold)
+										("CANCELLED" :foreground "forest green" :weight bold)
+										("MEETING" :foreground "forest green" :weight bold)
+										("INACTICE" :foreground "magenta" :weight bold))))
+
+;;;;
+;; ORG-GCAL
+;;;;
+
+;; (use-package org-gcal
+;; :ensure t
+;; :config
+;; (setq org-gcal-client-id "oauth 2.0 client ID"
+;; org-gcal-client-secret ""
+;; org-gcal-file-alist '(("david@clockworks.io" .  "~/Dropbox/org/gcal.org"))))
 
 ;;;;
 ;; BABEL
@@ -612,52 +661,67 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
 
-; Make babel results blocks lowercase
+(add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
+
+;; Make babel results blocks lowercase
 (setq org-babel-results-keyword "results")
 
 (defun bh/display-inline-images ()
-  (condition-case nil
-      (org-display-inline-images)
-    (error nil)))
+	(condition-case nil
+			(org-display-inline-images)
+		(error nil)))
 
 (setq org-edit-src-content-indentation 0
-      org-src-tab-acts-natively t
-      org-src-fontify-natively t
-      org-confirm-babel-evaluate nil
-      org-support-shift-select 'always)
+			org-src-tab-acts-natively t
+			org-src-fontify-natively t
+			org-confirm-babel-evaluate nil
+			org-support-shift-select 'always)
+
+(setq inferior-julia-program-name "/usr/local/bin/julia")
+
+(add-hook 'ob-async-pre-execute-src-block-hook
+          '(lambda ()
+             (setq inferior-julia-program-name "/usr/local/bin/julia")))
+
+;; (setq ob-async-no-async-languages-alist '("jupyter-python" "jupyter-julia"))
+
+;; Org Babel julia support
+(load "ob-julia.el")
 
 (org-babel-do-load-languages 'org-babel-load-languages
 														 '((shell . t)
 															 (gnuplot . t)
+															 (julia . t)
 															 (dot . t)
+															 (latex . t)
 															 (ipython . t)))
+
+(setq org-babel-python-command "python3")
 
 
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.75))
 
 (defun my-org-archive-done-tasks ()
-  (interactive)
-  (org-map-entries 'org-archive-subtree "/DONE/CANCELLED" 'file))
+	(interactive)
+	(org-map-entries 'org-archive-subtree "/DONE/CANCELLED" 'file))
 
 (setq org-publish-project-alist
-  '(("blog"
-		 :base-directory "~/Dropbox/Blog/"
-     :base-extension "org"
-     :publishing-directory "~/Projects/eoxxs.github.io/_posts/"
-     :publishing-function org-jekyll-md-export-to-md)))
+			'(("blog"
+				 :base-directory "~/Dropbox/Blog/"
+				 :base-extension "org"
+				 :publishing-directory "~/Projects/eoxxs.github.io/_posts/"
+				 :publishing-function org-jekyll-md-export-to-md)))
 
 ;;;;
 ;; ACE-WINDOW
 ;;;;
 (global-set-key (kbd "M-o") 'ace-window)
 
-
 ;;;;
 ;; YASNIPPET
 ;;;;
 (setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"                 ;; personal snippets
-        ))
+			'("~/.emacs.d/snippets"))
 
 (yas-global-mode 1) ;; or M-x yas-reload-all if you've started YASnippet already.
 
@@ -696,7 +760,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;; DEFT
 ;;;;
 (use-package deft
-  :ensure t
+	:ensure t
 	:init (setq deft-directory "~/Dropbox/org/deft"
 							deft-extensions '("org" "txt" "tex")
 							deft-use-filename-as-title t
@@ -724,26 +788,26 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;; SCREENSHOT
 ;;;;
 (defun my-org-screenshot ()
-  "Take a screenshot into a time stamped unique-named file in the
+	"Take a screenshot into a time stamped unique-named file in the
 same directory as the org-buffer and insert a link to this file."
-  (interactive)
-  (org-display-inline-images)
-  (setq filename
-        (concat
-         (make-temp-name
-          (concat (file-name-nondirectory (buffer-file-name))
-                  "_imgs/"
-                  (format-time-string "%Y%m%d_%H%M%S_")) ) ".png"))
-  (unless (file-exists-p (file-name-directory filename))
-    (make-directory (file-name-directory filename)))
-  ; take screenshot
-  (if (eq system-type 'darwin)
-      (call-process "screencapture" nil nil nil "-i" filename))
-  (if (eq system-type 'gnu/linux)
-      (call-process "import" nil nil nil filename))
-  ; insert into file if correctly taken
-  (if (file-exists-p filename)
-    (insert (concat "[[file:" filename "]]"))))
+	(interactive)
+	(org-display-inline-images)
+	(setq filename
+				(concat
+				 (make-temp-name
+					(concat (file-name-nondirectory (buffer-file-name))
+									"_files/"
+									(format-time-string "%Y%m%d_%H%M%S_")) ) ".png"))
+	(unless (file-exists-p (file-name-directory filename))
+		(make-directory (file-name-directory filename)))
+																				; take screenshot
+	(if (eq system-type 'darwin)
+			(call-process "screencapture" nil nil nil "-i" filename))
+	(if (eq system-type 'gnu/linux)
+			(call-process "import" nil nil nil filename))
+																				; insert into file if correctly taken
+	(if (file-exists-p filename)
+			(insert (concat "[[file:" filename "]]"))))
 
 ;;;;
 ;; JOURNAL
@@ -760,27 +824,30 @@ same directory as the org-buffer and insert a link to this file."
 
 (setq diary-file "~/Dropbox/org/diary")
 (setq org-agenda-include-diary t)
+(setq diary-display-function 'diary-fancy-display)
+(add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
+(add-hook 'diary-list-entries-hook 'diary-sort-entries t)
 
 ;;;;
 ;; MISC
 ;;;;
 (defun insert-todays-date (arg)
-  (interactive "P")
-  (insert (format-time-string "%Y-%m-%d %A")))
+	(interactive "P")
+	(insert (format-time-string "%Y-%m-%d %A")))
 
 
 (defun insert-current-week (arg)
-  (interactive "P")
-  (insert (format-time-string "Week %U")))
+	(interactive "P")
+	(insert (format-time-string "Week %U")))
 
 ;;;;
 ;; PROJECTILE
 ;;;;
 
 (use-package projectile
-  :ensure projectile
-  :config
-  ;; (setq projectile-indexing-method 'git)
+	:ensure projectile
+	:config
+	;; (setq projectile-indexing-method 'git)
 	;; (setq projectile-globally-ignored-directories
 	;; 			(append '(
 	;; 								".git"
@@ -788,16 +855,16 @@ same directory as the org-buffer and insert a link to this file."
 	;; 								"ltximg"
 	;; 								)
 	;; 							projectile-globally-ignored-directories))
-  (projectile-mode +1))
+	(projectile-mode +1))
 
 (counsel-projectile-mode)
 
 ;;;;
-;; CUSTOMIZATION
+;; ELFEED
 ;;;;
 
 (setq elfeed-feeds
-      '("http://cachestocaches.com/feed/"
+			'("http://cachestocaches.com/feed/"
 				"http://nullprogram.com/feed/"  
 				"https://thume.ca/atom.xml"
 				"https://jvns.ca/atom.xml"
@@ -810,11 +877,10 @@ same directory as the org-buffer and insert a link to this file."
 				"http://matt.might.net/articles/feed.rss"))
 
 ;;;;
-;; CUSTOMIZATION
+;; FUNCTIONS
 ;;;;
-
 (defun org-include-img-from-pdf (&rest _)
-  "Convert pdf files to image files in org-mode bracket links.
+	"Convert pdf files to image files in org-mode bracket links.
 
     # ()convertfrompdf:t # This is a special comment; tells that the upcoming
                          # link points to the to-be-converted-to file.
@@ -822,41 +888,45 @@ same directory as the org-buffer and insert a link to this file."
     # foo.png file name in the link.
     [[./foo.png]]
 "
-  (interactive)
-  (if (executable-find "convert")
-      (save-excursion
-        (goto-char (point-min))
-        (while (re-search-forward "^[ \t]*#\\s-+()convertfrompdf\\s-*:\\s-*t"
-                                  nil :noerror)
-          ;; Keep on going to the next line till it finds a line with bracketed
-          ;; file link.
-          (while (progn
-                   (forward-line 1)
-                   (not (looking-at org-bracket-link-regexp))))
-          ;; Get the sub-group 1 match, the link, from `org-bracket-link-regexp'
-          (let ((link (match-string-no-properties 1)))
-            (when (stringp link)
-              (let* ((imgfile (expand-file-name link))
-                     (pdffile (expand-file-name
-                               (concat (file-name-sans-extension imgfile)
-                                       "." "pdf")))
-                     (cmd (concat "convert -density 96 -quality 85 "
-                                  pdffile " " imgfile)))
-                (when (and (file-readable-p pdffile)
-                           (file-newer-than-file-p pdffile imgfile))
-                  ;; This block is executed only if pdffile is newer than
-                  ;; imgfile or if imgfile does not exist.
-                  (shell-command cmd)
-                  (message "%s" cmd)))))))
-    (user-error "`convert' executable (part of Imagemagick) is not found")))
+	(interactive)
+	(if (executable-find "convert")
+			(save-excursion
+				(goto-char (point-min))
+				(while (re-search-forward "^[ \t]*#\\s-+()convertfrompdf\\s-*:\\s-*t"
+																	nil :noerror)
+					;; Keep on going to the next line till it finds a line with bracketed
+					;; file link.
+					(while (progn
+									 (forward-line 1)
+									 (not (looking-at org-bracket-link-regexp))))
+					;; Get the sub-group 1 match, the link, from `org-bracket-link-regexp'
+					(let ((link (match-string-no-properties 1)))
+						(when (stringp link)
+							(let* ((imgfile (expand-file-name link))
+										 (pdffile (expand-file-name
+															 (concat (file-name-sans-extension imgfile)
+																			 "." "pdf")))
+										 (cmd (concat "convert -density 96 -quality 85 "
+																	pdffile " " imgfile)))
+								(when (and (file-readable-p pdffile)
+													 (file-newer-than-file-p pdffile imgfile))
+									;; This block is executed only if pdffile is newer than
+									;; imgfile or if imgfile does not exist.
+									(shell-command cmd)
+									(message "%s" cmd)))))))
+		(user-error "`convert' executable (part of Imagemagick) is not found")))
 
-;; Go to scratch buffer and clear contents
 (defun clear-scratch nil
-  "create a scratch buffer"
-  (interactive)
-  (switch-to-buffer (get-buffer-create "*scratch*"))
+	"create a scratch buffer"
+	(interactive)
+	(switch-to-buffer (get-buffer-create "*scratch*"))
 	(erase-buffer)
-  (lisp-interaction-mode))
+	(lisp-interaction-mode))
+
+;;;;
+;; CUSTOMIZATION
+;;;;
+
 
 ;; yes or no
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -887,9 +957,18 @@ same directory as the org-buffer and insert a link to this file."
 ;; Calibre query
 (load "books.el")
 
+;; Org Subfigure
+(load "ox-latex-subfigure.el")
+
+
+;; Dired+
+;; (load "dired+.el")
+
+
 (add-hook 'org-mode-hook (lambda () 
-  (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
+													 (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 
 (setq custom-file (concat user-emacs-directory ".custom.el")) ; tell Customize to save customizations to ~/.emacs.d/.custom.el
 (ignore-errors                                                ; load customizations from ~/.emacs.d/.custom.el
-  (load-file custom-file))
+	(load-file custom-file))
+(put 'erase-buffer 'disabled nil)

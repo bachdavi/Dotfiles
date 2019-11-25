@@ -69,6 +69,10 @@
 ;; (setq cider-show-error-buffer t)
 ;; (setq cider-auto-select-error-buffer t)
 
+;; Use words and symbols
+;; (with-eval-after-load 'evil
+;;     (defalias #'forward-evil-word #'forward-evil-symbol))
+
 ;; Where to store the cider history.
 (setq cider-repl-history-file "~/.emacs.d/cider-history")
 

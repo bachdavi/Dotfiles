@@ -1,5 +1,15 @@
 ;; Rust 
-(require 'rust-mode)
+;; (require 'rust-mode)
+
+(use-package rustic)
+(require 'rustic)
+;; (require 'rustic-mode)
+
+(add-hook 'rustic-mode-hook 'flycheck-mode)
+
+(evil-leader/set-key-for-mode 'rustic-mode
+  "." 'lsp-find-definition
+  "k" 'lsp-describe-thing-at-point)
 
 ;; Tell racer where to find its stuff
 ;; (setq racer-rust-src-path "/Users/david/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src")
@@ -21,9 +31,6 @@
 ;;   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;; Repl evalutaion
-;; (evil-leader/set-key-for-mode 'rust-mode
-;;   "." 'racer-find-definition
-;;   "k" 'racer-describe)
 
 ;; Add insert mode to the racer-help window s.t. we can exist via 'q'
 ;; (add-to-list 'evil-insert-state-modes 'racer-help-mode)

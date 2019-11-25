@@ -24,7 +24,7 @@
   "s" 'ivy-switch-buffer
   "y" 'counsel-find-file
   "p" 'projectile-switch-project
-  "a" 'counsel-rg
+  "a" 'counsel-projectile-rg
   "w" 'save-buffer
   "t" 'neotree-toggle
   ",w" 'avy-goto-word-1
