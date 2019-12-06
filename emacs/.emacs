@@ -10,7 +10,7 @@
 (package-initialize)
 
 ;; (add-to-list 'exec-path "/opt/local/bin")
-;; (add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/usr/local/bin")
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin" ":/Users/david/.ghcup/bin"))
 ;"~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/libstd/"  (setenv "PATH" (concat (getenv "PATH") ":/opt/local/bin"))
 ;; (setenv "FZF_DEFAULT_COMMAND" "rg --files --hidden --follow --glob "!.git/*"")
@@ -41,6 +41,7 @@
                       ivy
                       ivy-bibtex
                       counsel
+											ob-ipython
                       counsel-projectile
                       projectile
                       avy
@@ -61,18 +62,17 @@
                       cider
                       markdown-mode
                       rainbow-mode
-                      ;; rust-mode
 											rustic
 											cargo
 											racer
 											flycheck
 											flycheck-inline
-											;; flycheck-rust
 											flycheck-pycheckers
 											flycheck-mypy
 											auctex
 											company-auctex
                       pdf-tools
+											gnuplot-mode
 											aggressive-indent
 											flyspell
 											flyspell-popup))
@@ -85,7 +85,7 @@
 ;; GENERIC
 ;;;;
 
-(fixme-mode 1)
+;;(fixme-mode 1)
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -442,11 +442,11 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;; Local variable evaluation.
 (setq enable-local-eval t)
 
-(require 'ob-async)
+;;(require 'ob-async)
 
-(require 'org-protocol)
-(require 'org-habit)
-(add-to-list 'org-modules 'org-habit)
+;;(require 'org-protocol)
+;;(require 'org-habit)
+;;(add-to-list 'org-modules 'org-habit)
 
 (global-set-key (kbd "<f12>") 'org-agenda)
 
