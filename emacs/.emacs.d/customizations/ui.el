@@ -91,6 +91,9 @@
 ;; No cursor blinking, it's distracting
 (blink-cursor-mode 0)
 
+;; Set the cursor color to some yellow-ish thingy
+(set-cursor-color "#f4812c")
+
 ;; full path in title bar
 (setq-default frame-title-format "%b (%f)")
 
