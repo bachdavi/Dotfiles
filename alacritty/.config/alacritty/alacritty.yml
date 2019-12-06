@@ -41,24 +41,24 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: SauceCodePro Nerd Font Mono
+    family: Droid Sans Mono Slashed for Powerline
     # Style can be specified to pick a specific face.
-    # style: Regular
+    style: Regular
 
   # The bold font face
   bold:
-    family: SauceCodePro Nerd Font Mono
+    family: Droid Sans Mono Slashed for Powerline
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: SauceCodePro Nerd Font Mono
+    family: Droid Sans Mono Slashed for Powerline
     # Style can be specified to pick a specific face.
     # style: Italic
 
   # Point size of the font
-  size: 14.0
+  size: 17.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -87,42 +87,67 @@ render_timer: false
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: true
-
-# Colors (One Dark)
+# custom_cursor_colors: true
+# Colors (Pencil Light)
 colors:
-  # Default colors
-  primary:
-    background: '#282c34'
-    foreground: '0xabb2bf'
+ # Default Colors
+ primary:
+   background: '0xf1f1f1'
+   foreground: '0x424242'
+ # Normal colors
+ normal:
+   black:   '0x212121'
+   red:     '0xc30771'
+   green:   '0x10a778'
+   yellow:  '0xa89c14'
+   blue:    '0x008ec4'
+   magenta: '0x523c79'
+   cyan:    '0x20a5ba'
+   white:   '0xe0e0e0'
+ # Bright colors
+ bright:
+   black:   '0x212121'
+   red:     '0xfb007a'
+   green:   '0x5fd7af'
+   yellow:  '0xf3e430'
+   blue:    '0x20bbfc'
+   magenta: '0x6855de'
+   cyan:    '0x4fb8cc'
+   white:   '0xf1f1f1'
+# # Colors (One Dark)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#282c34'
+#     foreground: '0xabb2bf'
 
-# Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x000000'
-    cursor: '0xff981d'
-  # Normal colors
-  normal:
-    # NOTE: Use '0x131613' for the `black` color if you'd like to see
-    # black text on the background.
-    black:   '0x282c34'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xabb2bf'
+# # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0x000000'
+#     cursor: '0xff981d'
+#   # Normal colors
+#   normal:
+#     # NOTE: Use '0x131613' for the `black` color if you'd like to see
+#     # black text on the background.
+#     black:   '0x282c34'
+#     red:     '0xe06c75'
+#     green:   '0x98c379'
+#     yellow:  '0xd19a66'
+#     blue:    '0x61afef'
+#     magenta: '0xc678dd'
+#     cyan:    '0x56b6c2'
+#     white:   '0xabb2bf'
 
-  # Bright colors
-  bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xffffff'
+#   # Bright colors
+#   bright:
+#     black:   '0x5c6370'
+#     red:     '0xe06c75'
+#     green:   '0x98c379'
+#     yellow:  '0xd19a66'
+#     blue:    '0x61afef'
+#     magenta: '0xc678dd'
+#     cyan:    '0x56b6c2'
+#     white:   '0xffffff'
 
 # # Colors (Tomorrow Night Bright)
 # colors:
@@ -305,6 +330,8 @@ live_config_reload: true
 #     strings. For example:
 #     - { ... , command: { program: "alacritty", args: ["-e", "vttest"] } }
 key_bindings:
+  - { key: F,        mods: Alt,     chars: "\x1bf"                       }
+  - { key: B,        mods: Alt,     chars: "\x1bb"                       }
   - { key: V,        mods: Command, action: Paste                        }
   - { key: C,        mods: Command, action: Copy                         }
   - { key: Paste,                   action: Paste                        }
@@ -416,4 +443,8 @@ key_bindings:
   - { key: F9,       mods: Command, chars: "\x1b[20;3~"                  }
   - { key: F10,      mods: Command, chars: "\x1b[21;3~"                  }
   - { key: F11,      mods: Command, chars: "\x1b[23;3~"                  }
+  - { key: J,        mods: Alt,     chars: "\x1bj"                       }
+  - { key: K,        mods: Alt,     chars: "\x1bk"                       }
+  - { key: H,        mods: Alt,     chars: "\x1bh"                       }
+  - { key: L,        mods: Alt,     chars: "\x1bl"                       }
   - { key: F12,      mods: Command, chars: "\x1b[24;3~"                  }
