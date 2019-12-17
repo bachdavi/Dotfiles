@@ -22,7 +22,7 @@
   "d" 'counsel-projectile
   "f" 'counsel-recentf
   "s" 'ivy-switch-buffer
-  "y" 'counsel-find-file
+  "z" 'counsel-find-file
   "p" 'projectile-switch-project
   "a" 'counsel-projectile-rg
   "w" 'save-buffer
