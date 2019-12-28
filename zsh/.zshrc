@@ -28,7 +28,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^N' forward-word
 bindkey '^P' backward-word
 source ~/.zprezto/init.zsh
-source ~/Projects/zsh-z/zsh-z.plugin.zsh
+# source ~/Projects/zsh-z/zsh-z.plugin.zsh
 
 # eval $( dircolors -b $HOME/.dir_colors )
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -91,7 +91,7 @@ alias mv='mv -i'
 
 
 alias h='history'
-alias ls='ls --color'
+# alias ls='ls --color'
 alias v='vi'
 alias gv='gvim'
 alias j="jobs -l"
@@ -132,3 +132,4 @@ if [ -f '/Users/david/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/david/goo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/david/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/david/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/usr/local/opt/llvm/bin:$PATH"
