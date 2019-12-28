@@ -9,11 +9,8 @@
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
 (package-initialize)
 
-;; (add-to-list 'exec-path "/opt/local/bin")
 (add-to-list 'exec-path "/usr/local/bin")
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin" ":/Users/david/.ghcup/bin"))
-;"~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/libstd/"  (setenv "PATH" (concat (getenv "PATH") ":/opt/local/bin"))
-;; (setenv "FZF_DEFAULT_COMMAND" "rg --files --hidden --follow --glob "!.git/*"")
 (setenv "PKG_CONFIG_PATH" "/usr/local/Cellar/zlib/1.2.11/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig")
 
 (unless (package-installed-p 'use-package)
@@ -30,48 +27,46 @@
 
 ;; All my packages
 (defvar my-packages '(better-defaults
-                      smex
+											ace-window
+											smex
 											deft
-                      org
+											org
 											org-ref
 											org-bullets
 											org-journal
 											org-pdfview
 											key-chord
-                      ivy
-                      ivy-bibtex
-                      counsel
+											ivy
+											ivy-bibtex
+											counsel
 											ob-ipython
-                      counsel-projectile
-                      projectile
-                      avy
+											counsel-projectile
+											projectile
+											avy
 											rg
-                      rainbow-delimiters
-                      highlight-symbol
-                      flx
-                      evil
-                      evil-cleverparens
+											rainbow-delimiters
+											highlight-symbol
+											flx
+											evil
+											evil-cleverparens
 											python-mode
 											ipython
 											elpy
 											jedi
-                      py-autopep8
-                      ein
-                      clojure-mode
-                      clojure-mode-extra-font-locking
-                      cider
-                      markdown-mode
-                      rainbow-mode
+											py-autopep8
+											ein
+											clojure-mode
+											clojure-mode-extra-font-locking
+											cider
+											markdown-mode
+											rainbow-mode
 											rustic
-											cargo
-											racer
 											flycheck
 											flycheck-inline
-											flycheck-pycheckers
-											flycheck-mypy
 											auctex
+											fixme-mode
 											company-auctex
-                      pdf-tools
+											pdf-tools
 											gnuplot-mode
 											aggressive-indent
 											flyspell
@@ -84,23 +79,18 @@
 ;;;;
 ;; GENERIC
 ;;;;
-
-;;(fixme-mode 1)
+(fixme-mode 1)
 
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq indent-line-function 'insert-tab)
 
 ;;;;
 ;; EVIL
 ;;;;
-
 (use-package evil
   :ensure t
   :init
   (setq evil-vsplit-window-right t)
   (setq evil-disable-insert-state-bindings t)
-  ;; (setq evil-want-keybinding nil)
   (setq evil-auto-indent t)
   :config
   (evil-mode 1)
@@ -127,11 +117,6 @@
   :ensure t
   :config
   (evil-cleverparens-mode))
-
-;; (use-package evil-collection
-;;   :ensure t
-;;   :config
-;;   (evil-collection-init))
 
 (use-package evil-terminal-cursor-changer
   :ensure t
@@ -163,10 +148,6 @@
 (setq evil-want-C-i-jump nil)
 
 (setq evil-want-C-u-scroll t)
-
-;; (define-key evil-normal-state-map (kbd "M-.")
-;;   `(menu-item "" evil-repeat-pop :filter
-;;               ,(lambda (cmd) (if (eq last-command 'evil-repeat-pop) cmd))))
 
 ;; Use words and symbols
 ;; (with-eval-after-load 'evil
@@ -229,7 +210,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; LATEX
 ;;;;
-;; (add-to-list 'exec-path "/Library/TeX/texbin/")
 (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))
 
 ;; Use Skim as viewer, enable source <-> PDF sync
@@ -252,7 +232,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; TIKZ
 ;;;;
-
 ;; (add-to-list 'org-latex-packages-alist
 ;;              '("" "tikz" t))
 
@@ -272,7 +251,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; IVY
 ;;;;
-
 ;; set up ivy completion
 (use-package ivy :ensure t
   :diminish (ivy-mode . "")
@@ -298,7 +276,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; BIBTEX
 ;;;;
-
 (defun org-ref-rescan-labels nil
 		"Rescan buffer local labels."
 		(interactive)
@@ -335,10 +312,10 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 (use-package org-ref :ensure t
   :config
   (setq org-ref-bibliography-notes "~/Dropbox/org/ref/notes.org"
-		org-ref-default-bibliography '("~/Dropbox/org/ref/master.bib" "~/Dropbox/University/ETH/Master/Masterthesis/thesis.bib")
+		org-ref-default-bibliography '("~/Dropbox/org/ref/master.bib")
 		org-ref-pdf-directory "~/Dropbox/org/ref/pdfs/")
 
-  (setq bibtex-completion-bibliography '("~/Dropbox/org/ref/master.bib"  "~/Dropbox/University/ETH/Master/Masterthesis/thesis.bib")
+  (setq bibtex-completion-bibliography '("~/Dropbox/org/ref/master.bib")
 		bibtex-completion-library-path "~/Dropbox/org/ref/pdfs"
 		bibtex-completion-notes-path "~/Dropbox/org/ref/notes.org")
 
@@ -376,18 +353,10 @@ INITIAL-INPUT can be given as the initial minibuffer input."
   (pdf-tools-install)
   (setq-default pdf-view-display-size 'fit-page))
 
-;; (eval-after-load "tex"
-;;   '(progn
-;; 		 (setq TeX-view-program-selection '((output-pdf "pdf-tools")))
-;; 		 (setq tex-view-program-list '(("pdf-tools" "tex-pdf-tools-sync-view")))
-;; 		 (add-to-list 'TeX-view-program-list
-;; 									'("pdf-tools" TeX-pdf-tools-sync-view))))
-
 ;;;;
 ;; SPELLING
 ;;;;
 (setq ispell-program-name "aspell")
-;; (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
 
 (define-key flyspell-mode-map (kbd "C-c $") #'flyspell-popup-correct)
 (add-hook 'flyspell-mode 'auto-fill-mode)
@@ -411,7 +380,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; DIRED
 ;;;;
-
 (require 'dired-x)
 
 ;; Sort dired buffer differently
@@ -421,7 +389,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; ORG MODE
 ;;;;
-;; (setq org-startup-indented t)
 (setq org-startup-folded "overview")
 (setq org-directory "~/Dropbox/org/")
 (setq org-hide-emphasis-markers t)
@@ -429,11 +396,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (add-hook 'org-mode-hook 'auto-fill-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
-;; (add-hook 'org-mode-hook 'auto-save-mode)
-;; (add-hook 'org-mode-hook 'auto-revert-mode)
-
-;; (setq org-ellipsis "  ")
-;; (setq org-bullets-bullet-list '("⬢" "◆" "▲" "■"))
 
 (require 'org-inlinetask)
 
@@ -442,14 +404,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;; Local variable evaluation.
 (setq enable-local-eval t)
 
-;;(require 'ob-async)
-
-;;(require 'org-protocol)
-;;(require 'org-habit)
-;;(add-to-list 'org-modules 'org-habit)
-
 (global-set-key (kbd "<f12>") 'org-agenda)
-
 
 ;; We do not want to indent when pressing o in org-mode
 (add-hook 'org-mode-hook
@@ -527,7 +482,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
                                                                   (if bh/hide-scheduled-and-waiting-next-tasks
                                                                       ""
                                                                     " (including WAITING and SCHEDULED tasks)")))
-														;; (org-agenda-prefix-format " %i %(concat \"[ \"(first (org-get-outline-path)) \" ]\") %-15:l%s")
 														(org-agenda-prefix-format " %i %-15:c%l%s")
 														(org-tags-match-list-sublevels nil)))
 								(tags-todo "-CANCELLED/!WAITING|HOLD"
@@ -600,66 +554,57 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 		next-headline))))
 
 ;; CAPTURE
-			(setq org-default-notes-file "~/Dropbox/org/refile.org")
+(setq org-default-notes-file "~/Dropbox/org/refile.org")
 
-			(add-to-list 'load-path "~/.emacs.d/customizations")
-			(load "org-helper.el")
 
-			;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
-			(setq org-capture-templates
-						(quote (("t" "Todo" entry (file "~/Dropbox/org/refile.org")
-										 "* TODO %?\n%U\n" :clock-in t :clock-resume t)
-										("c" "Code Todo" entry (file "~/Dropbox/org/refile.org")
-										 "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-										("r" "Respond" entry (file "~/Dropbox/org/refile.org")
-										 "* NEXT Respond to %? on %:subject\nSCHEDULED: %t\n%U\n" :clock-in t :clock-resume t)
-										("n" "Note" entry (file "~/Dropbox/org/refile.org")
-										 "* %? :NOTE:\n%U\n" :clock-in t :clock-resume t)
-										("i" "Idea" entry (file org-default-notes-file)
-										 "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
-										("m" "Meeting" entry (file "~/Dropbox/org/refile.org")
-										 "* MEETING %u %? :MEETING:\n** Summary\n** Attendees\n** Questions\n** Notes\n** Actions\n" :clock-in t :clock-resume t))))
+(add-to-list 'load-path "~/.emacs.d/customizations")
+(load "org-helper.el")
 
-			(setq org-refile-targets '((org-agenda-files :maxlevel . 9)))
+;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
+(setq org-capture-templates
+      (quote (("t" "Todo" entry (file "~/Dropbox/org/refile.org")
+               "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+              ("c" "Code Todo" entry (file "~/Dropbox/org/refile.org")
+               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("r" "Respond" entry (file "~/Dropbox/org/refile.org")
+               "* NEXT Respond to %? on %:subject\nSCHEDULED: %t\n%U\n" :clock-in t :clock-resume t)
+              ("n" "Note" entry (file "~/Dropbox/org/refile.org")
+               "* %? :NOTE:\n%U\n" :clock-in t :clock-resume t)
+              ("i" "Idea" entry (file org-default-notes-file)
+               "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
+              ("m" "Meeting" entry (file "~/Dropbox/org/refile.org")
+               "* MEETING %u %? :MEETING:\n** Summary\n** Attendees\n** Questions\n** Notes\n** Actions\n" :clock-in t :clock-resume t))))
+
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
+(setq org-refile-targets '((org-agenda-files :maxlevel . 9)))
 
 																				; Use full outline paths for refile targets - we file directly with IDO
-			(setq org-refile-use-outline-path t)
+(setq org-refile-use-outline-path t)
 
 																				; Targets complete directly with IDO
-			(setq org-outline-path-complete-in-steps nil)
+(setq org-outline-path-complete-in-steps nil)
 
-			(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c c") 'org-capture)
 
-			(setq org-todo-keywords
-						(quote ((sequence "TODO(t)" "NEXT(n)" "CURRENT(u)" "|" "DONE(d)")
-										(sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t)" "NEXT(n)" "CURRENT(u)" "|" "DONE(d)")
+              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
 
-			(setq org-todo-keyword-faces
-						(quote (("TODO" :foreground "red" :weight bold)
-										("NEXT" :foreground "blue" :weight bold)
-										("CURRENT" :foreground "orange" :weight bold)
-										("DONE" :foreground "forest green" :weight bold)
-										("WAITING" :foreground "orange" :weight bold)
-										("HOLD" :foreground "magenta" :weight bold)
-										("CANCELLED" :foreground "forest green" :weight bold)
-										("MEETING" :foreground "forest green" :weight bold)
-										("INACTICE" :foreground "magenta" :weight bold))))
-
-;;;;
-;; ORG-GCAL
-;;;;
-
-;; (use-package org-gcal
-;; :ensure t
-;; :config
-;; (setq org-gcal-client-id "oauth 2.0 client ID"
-;; org-gcal-client-secret ""
-;; org-gcal-file-alist '(("david@clockworks.io" .  "~/Dropbox/org/gcal.org"))))
-
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "red" :weight bold)
+              ("NEXT" :foreground "blue" :weight bold)
+              ("CURRENT" :foreground "orange" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("WAITING" :foreground "orange" :weight bold)
+              ("HOLD" :foreground "magenta" :weight bold)
+              ("CANCELLED" :foreground "forest green" :weight bold)
+              ("MEETING" :foreground "forest green" :weight bold)
+              ("INACTICE" :foreground "magenta" :weight bold))))
 ;;;;
 ;; BABEL
 ;;;;
-
 (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
 
 (add-to-list 'org-src-lang-modes '("dot" . graphviz-dot))
@@ -683,8 +628,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 (add-hook 'ob-async-pre-execute-src-block-hook
           '(lambda ()
              (setq inferior-julia-program-name "/usr/local/bin/julia")))
-
-;; (setq ob-async-no-async-languages-alist '("jupyter-python" "jupyter-julia"))
 
 ;; Org Babel julia support
 (load "ob-julia.el")
@@ -748,7 +691,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 					(split-window-below)
 					(windmove-down))
 		"horz")
-	 ;; ("t" transpose-frame "'")
 	 ("o" delete-other-windows "one" :color blue)
 	 ("a" ace-window "ace")
 	 ("s" ace-swap-window "swap")
@@ -772,11 +714,9 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 (add-to-list 'evil-insert-state-modes 'deft-mode)
 
-
 ;;;;
 ;; MAGIT
 ;;;;
-
 (add-to-list 'evil-insert-state-modes 'git-timemachine-mode)
 
 ;;;;
@@ -817,12 +757,9 @@ same directory as the org-buffer and insert a link to this file."
 
 (setq org-journal-file-format "%Y%m%d.org")
 
-;; (setq org-journal-enable-agenda-integration nil)
-
 ;;;;
 ;; DIARY
 ;;;;
-
 (setq diary-file "~/Dropbox/org/diary")
 (setq org-agenda-include-diary t)
 (setq diary-display-function 'diary-fancy-display)
@@ -844,18 +781,9 @@ same directory as the org-buffer and insert a link to this file."
 ;;;;
 ;; PROJECTILE
 ;;;;
-
 (use-package projectile
 	:ensure projectile
 	:config
-	;; (setq projectile-indexing-method 'git)
-	;; (setq projectile-globally-ignored-directories
-	;; 			(append '(
-	;; 								".git"
-	;; 								".svn"
-	;; 								"ltximg"
-	;; 								)
-	;; 							projectile-globally-ignored-directories))
 	(projectile-mode +1))
 
 (counsel-projectile-mode)
@@ -863,7 +791,6 @@ same directory as the org-buffer and insert a link to this file."
 ;;;;
 ;; ELFEED
 ;;;;
-
 (setq elfeed-feeds
 			'("http://cachestocaches.com/feed/"
 				"http://nullprogram.com/feed/"  
@@ -927,13 +854,13 @@ same directory as the org-buffer and insert a link to this file."
 ;;;;
 ;; CUSTOMIZATION
 ;;;;
-
-
 ;; yes or no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Don't know why but I have to do it here otherwise stuff breaks
 (require 'cider)
+
+(require 'org-mac-link)
 
 ;; Load all the things
 (load "ui.el")
@@ -961,10 +888,8 @@ same directory as the org-buffer and insert a link to this file."
 ;; Org Subfigure
 (load "ox-latex-subfigure.el")
 
-
 ;; Dired+
 ;; (load "dired+.el")
-
 
 (add-hook 'org-mode-hook (lambda () 
 													 (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))

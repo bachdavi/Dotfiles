@@ -23,7 +23,6 @@
 (copy-face 'italic 'font-lock-comment-face)
 (set-face-foreground 'font-lock-comment-face "red")
 
-
 ;; (toggle-frame-fullscreen)
 
 ;; Turn off the menu bar at the top of each frame because it's distracting
