@@ -53,6 +53,8 @@
 											ipython
 											elpy
 											jedi
+											julia-mode
+											jupyter
 											py-autopep8
 											ein
 											clojure-mode
