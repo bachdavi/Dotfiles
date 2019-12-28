@@ -197,6 +197,7 @@
   :init (setq markdown-command "/usr/local/bin/pandoc"))
 
 (add-hook 'markdown-mode-hook 'auto-fill-mode)
+(add-hook 'markdown-mode-hook 'flyspell-mode)
 
 ;;;;
 ;; RECOLL
