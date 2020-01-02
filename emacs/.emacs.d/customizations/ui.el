@@ -41,9 +41,10 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
-;; Show visual line at current cursor position
-(global-visual-line-mode t)
-(global-hl-line-mode +1)
+;; Show visual line in programming and org mode.
+(add-hook 'prog-mode-hook 'hl-line-mode)
+(add-hook 'org-mode-hook 'hl-line-mode)
+(add-hook 'hledger-mode-hook 'hl-line-mode)
 
 ;; Delay
 (setq show-paren-delay 0)
