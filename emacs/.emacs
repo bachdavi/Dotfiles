@@ -26,53 +26,54 @@
 (setq auto-save-default nil) 
 
 ;; All my packages
-(defvar my-packages '(better-defaults
-											ace-window
-											smex
-											deft
-											org
-											org-ref
-											org-bullets
-											org-journal
-											org-pdfview
-											key-chord
-											ivy
-											ivy-bibtex
-											counsel
-											ob-ipython
-											counsel-projectile
-											projectile
-											avy
-											rg
-											rainbow-delimiters
-											highlight-symbol
-											flx
-											evil
-											evil-cleverparens
-											python-mode
-											ipython
-											elpy
-											jedi
-											julia-mode
-											jupyter
-											py-autopep8
-											ein
-											clojure-mode
-											clojure-mode-extra-font-locking
-											cider
-											markdown-mode
-											rainbow-mode
-											rustic
-											flycheck
-											flycheck-inline
-											auctex
-											fixme-mode
-											company-auctex
-											pdf-tools
-											gnuplot-mode
-											aggressive-indent
-											flyspell
-											flyspell-popup))
+(defvar my-packages '(ace-window
+                      aggressive-indent
+                      auctex
+                      avy
+                      better-defaults
+                      cider
+                      clojure-mode
+                      clojure-mode-extra-font-locking
+                      company-auctex
+                      counsel
+                      counsel-projectile
+                      deft
+                      ein
+                      elpy
+                      evil
+                      evil-cleverparens
+                      fixme-mode
+                      flx
+                      flycheck
+                      flycheck-inline
+                      flyspell
+                      flyspell-popup
+                      gnuplot-mode
+                      highlight-symbol
+                      hledger-mode
+                      ipython
+                      ivy
+                      ivy-bibtex
+                      jedi
+                      julia-mode
+                      jupyter
+                      key-chord
+                      markdown-mode
+                      ob-ipython
+                      org
+                      org-bullets
+                      org-journal
+                      org-pdfview
+                      org-ref
+                      pdf-tools
+                      projectile
+                      py-autopep8
+                      python-mode
+                      rainbow-delimiters
+                      rainbow-mode
+                      rg
+                      rustic
+                      smex))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -161,12 +162,61 @@
 ;;;;
 ;; AUTO-COMPLETION
 ;;;;
-;; (global-company-mode)
-;; (setq company-minimum-prefix-length 1)
-;; (eval-after-load 'company
-;;   '(add-to-list 'company-frontends 'company-tng-frontend))
-;; (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
-;; (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+(global-company-mode)
+(setq company-minimum-prefix-length 1)
+(eval-after-load 'company
+  '(add-to-list 'company-frontends 'company-tng-frontend))
+(define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+(define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+
+;;;;
+;; HLEDGER
+;;;;
+;;; Basic configuration
+(require 'hledger-mode)
+
+(add-to-list 'evil-insert-state-modes 'hledger-mode)
+(add-to-list 'evil-insert-state-modes 'hledger-view-mode)
+
+;; To open files with .journal extension in hledger-mode
+(add-to-list 'auto-mode-alist '("\\.journal\\'" . hledger-mode))
+
+;; Provide the path to you journal file.
+;; The default location is too opinionated.
+(setq hledger-jfile "~/Dropbox/Finances/hledger.journal")
+
+;; For company-mode users,
+(add-to-list 'company-backends 'hledger-company)
+
+(add-hook 'hledger-mode-hook 'company-mode)
+
+(defun hledger/next-entry ()
+  "Move to next entry and pulse."
+  (interactive)
+  (hledger-next-or-new-entry)
+  (hledger-pulse-momentary-current-entry))
+
+(defface hledger-warning-face
+  '((((background dark))
+     :background "Red" :foreground "White")
+    (((background light))
+     :background "Red" :foreground "White")
+    (t :inverse-video t))
+  "Face for warning"
+  :group 'hledger)
+
+(defun hledger/prev-entry ()
+  "Move to last entry and pulse."
+  (interactive)
+  (hledger-backward-entry)
+  (hledger-pulse-momentary-current-entry))
+
+;; Personal Accounting
+(global-set-key (kbd "C-c e") 'hledger-jentry)
+(global-set-key (kbd "C-c j") 'hledger-run-command)
+
+(define-key hledger-mode-map (kbd "M-p") #'hledger/prev-entry)
+(define-key hledger-mode-map (kbd "M-n") #'hledger/next-entry)
 
 ;;;;
 ;; MARKDOWN
@@ -369,9 +419,10 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;; Use flyspell for comments
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
-(setq flyspell-prog-text-faces
-      (delq 'font-lock-string-face
-            flyspell-prog-text-faces))
+;; Activate this to only check comments!
+;; (setq flyspell-prog-text-faces
+;;       (delq 'font-lock-string-face
+;;             flyspell-prog-text-faces))
 
 ;;;;
 ;; FLYCHECK
