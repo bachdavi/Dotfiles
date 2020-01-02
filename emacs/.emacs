@@ -218,6 +218,13 @@
 (define-key hledger-mode-map (kbd "M-p") #'hledger/prev-entry)
 (define-key hledger-mode-map (kbd "M-n") #'hledger/next-entry)
 
+(add-hook 'hledger-input-mode-hook 'auto-fill-mode)
+
+(add-hook 'hledger-input-mode-hook
+					(lambda ()
+						(make-local-variable 'company-idle-delay)
+						(setq-local company-idle-delay 0.1)))
+
 ;;;;
 ;; MARKDOWN
 ;;;;
