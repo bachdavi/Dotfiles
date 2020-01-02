@@ -932,6 +932,9 @@ same directory as the org-buffer and insert a link to this file."
 ;; rust environment
 (load "rust.el")
 
+;; rust environment
+(load "julia.el")
+
 ;; haskell environment
 (load "haskell.el")
 
