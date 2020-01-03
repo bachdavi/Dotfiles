@@ -90,7 +90,7 @@
       mouse-yank-at-point t)
 
 ;; No cursor blinking, it's distracting
-(blink-cursor-mode 0)
+;; (blink-cursor-mode 0)
 
 ;; Set the cursor color to some yellow-ish thingy
 (set-cursor-color "#f4812c")
