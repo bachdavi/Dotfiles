@@ -225,6 +225,8 @@
 						(make-local-variable 'company-idle-delay)
 						(setq-local company-idle-delay 0.1)))
 
+(setq hledger-currency-string "CHF") 
+
 ;;;;
 ;; MARKDOWN
 ;;;;
