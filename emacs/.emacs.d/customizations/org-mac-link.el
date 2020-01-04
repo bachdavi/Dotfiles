@@ -373,7 +373,6 @@ The links are of the form <link>::split::<name>."
 	   "	set theUrl to get URL of active tab of first window\n"
 	   "	set theResult to (get theUrl) & \"::split::\" & (get name of window 1)\n"
 	   "end tell\n"
-	   "activate application (frontmostApplication as text)\n"
 	   "set links to {}\n"
 	   "copy theResult to the end of links\n"
 	   "return links as string\n"))))

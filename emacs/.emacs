@@ -162,12 +162,13 @@
 ;;;;
 ;; AUTO-COMPLETION
 ;;;;
-(global-company-mode)
+(global-company-mode t)
 (setq company-minimum-prefix-length 1)
 (eval-after-load 'company
   '(add-to-list 'company-frontends 'company-tng-frontend))
 (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
 (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+(global-company-mode nil)
 
 ;;;;
 ;; HLEDGER
@@ -912,6 +913,15 @@ same directory as the org-buffer and insert a link to this file."
 	(switch-to-buffer (get-buffer-create "*scratch*"))
 	(erase-buffer)
 	(lisp-interaction-mode))
+
+(defun org-ref-copy-pdf-at-point ()
+		"Copies a potential pdf in the `~/Downloads' folder into the
+		org-ref-pdf folder."
+	(interactive)
+	(let ((file (counsel-find-file "~/Downloads"))
+				(key (funcall org-ref-clean-bibtex-key-function
+											(bibtex-generate-autokey))))
+		(rename-file file (concat "~/Dropbox/org/ref/pdfs/" key ".pdf"))))
 
 ;;;;
 ;; CUSTOMIZATION
