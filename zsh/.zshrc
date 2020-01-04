@@ -74,7 +74,7 @@ export CQP="${HOME}/Projects/ETH/CQP/"
 export QUGEN="${HOME}/ownCloud/University/ETH/Master/Semesterproject/"
 export VW="${HOME}/Projects/Vorwerk/"
 export TMOUT=0
-export VISUAL='nvim'
+export VISUAL="emacsclient -t"
 export EDITOR="$VISUAL"
 
 #----------------------------------------------------------------------#
