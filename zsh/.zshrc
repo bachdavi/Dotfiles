@@ -15,9 +15,9 @@ export PATH="$PATH:/opt/local/bin"
 HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=900000
-#setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY
-setopt share_history
+# setopt APPEND_HISTORY
+# setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 #bindkey -e
 
 bindkey "^[[F" end-of-line
