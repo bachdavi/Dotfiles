@@ -5,6 +5,9 @@
 ;; When in jupyter result mode.
 (add-to-list 'evil-insert-state-modes 'special-mode)
 
+;; Inline evaluation
+(setq jupyter-eval-use-overlays t)
+
 ;; Autocompletion
 (add-hook 'julia-mode-hook 'company-mode)
 (add-hook 'jupyter-repl-mode-hook 'company-mode)
