@@ -46,6 +46,7 @@
 (add-hook 'org-mode-hook 'hl-line-mode)
 (add-hook 'hledger-mode-hook 'hl-line-mode)
 (add-hook 'markdown-mode-hook 'hl-line-mode)
+(add-hook 'org-agenda-mode-hook 'hl-line-mode)
 
 ;; Delay
 (setq show-paren-delay 0)
