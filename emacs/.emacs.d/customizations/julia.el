@@ -21,3 +21,8 @@
  '(jupyter-repl-output-prompt ((t (:foreground "dark red"))))
  '(jupyter-repl-traceback ((t (:background "firebrick3")))))
 
+;; Use lsp in julia
+;; (require 'lsp-julia)
+;; (add-hook 'julia-mode-hook #'lsp-mode)
+;; (add-hook 'julia-mode-hook #'lsp)
+

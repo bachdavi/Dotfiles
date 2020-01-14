@@ -56,6 +56,7 @@
                       ivy-bibtex
                       jedi
                       julia-mode
+											lsp-julia
                       jupyter
                       key-chord
                       markdown-mode
@@ -169,6 +170,12 @@
 (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
 (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
 (global-company-mode nil)
+
+
+;;;;
+;; LSP
+;;;;
+(require 'lsp-mode)
 
 ;;;;
 ;; HLEDGER
