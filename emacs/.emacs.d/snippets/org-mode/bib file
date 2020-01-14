@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: bib file
+# key: b 
+# --
+\newpage
+bibliographystyle:unsrt
+bibliography:thesis.bib
