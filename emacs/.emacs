@@ -1,6 +1,6 @@
 ;; Emacs configuration file
 ;; Author: David Bach
-;; 20-12-2018
+;; 16-01-2019
 
 ;; set up package repositories
 (require 'package)

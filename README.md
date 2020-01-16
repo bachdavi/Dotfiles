@@ -6,8 +6,8 @@ the shell. `zprezto` is a selection of settings to use together with
 `zsh`.
 
 ## Installation
-Assuming that all binaries are installed, simply simlink the `.conf`
-files into the `$HOME` directory.
+Assuming that all binaries are installed, simply simlink the
+configuration files into the `$HOME` directory.
 
 The folder structure mirrors the one expected in the `$HOME`
 directory.
