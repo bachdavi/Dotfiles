@@ -3,7 +3,6 @@
 #[[ $- != *i* ]] && return
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-# zstyle :compinstall filename '/User/david/.zshrc'
 
 # export FZF_DEFAULT_COMMAND='ag --ignore *.class -g ""'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -15,10 +14,7 @@ export PATH="$PATH:/opt/local/bin"
 HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=900000
-# setopt APPEND_HISTORY
-# setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
-#bindkey -e
 
 bindkey "^[[F" end-of-line
 bindkey "^[[H" beginning-of-line
@@ -28,13 +24,6 @@ bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^N' forward-word
 bindkey '^P' backward-word
 source ~/.zprezto/init.zsh
-# source ~/Projects/zsh-z/zsh-z.plugin.zsh
-
-# eval $( dircolors -b $HOME/.dir_colors )
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# Direnv
-# eval "$(direnv hook zsh)"
 
 #----------------------------------------------------------------------#
 # Autocompletion and prompt
@@ -56,9 +45,6 @@ alias l='ls'
 alias vim='nvim'
 alias vi='nvim'
  alias tmux="TERM=screen-256color-bce tmux"
-# export TERM=screen-256color
-# alias python=python3
-# export TERM=xterm-256color
 set term=screen-256color
 
 # Ruby
@@ -69,10 +55,6 @@ export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 # PATH
 #----------------------------------------------------------------------#
 export PATH="$PATH:$HOME/bin"
-export HPC="${HOME}/Projects/ETH/HPC/"
-export CQP="${HOME}/Projects/ETH/CQP/"
-export QUGEN="${HOME}/ownCloud/University/ETH/Master/Semesterproject/"
-export VW="${HOME}/Projects/Vorwerk/"
 export TMOUT=0
 export VISUAL="emacsclient -t"
 export EDITOR="$VISUAL"
@@ -81,17 +63,11 @@ export EDITOR="$VISUAL"
 # Alias
 #----------------------------------------------------------------------#
 
-alias juams='ssh -Y vsk1045@juams01.fz-juelich.de'
-alias cluster='ssh -Y db957752@cluster.rz.rwth-aachen.de'
-alias portal='ssh -Y dbach@portal.physik.rwth-aachen.de'
-
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-
 alias h='history'
-# alias ls='ls --color'
 alias v='vi'
 alias gv='gvim'
 alias j="jobs -l"
@@ -117,7 +93,6 @@ zle -N down-line-or-beginning-search
 # Python Virtualenvs
 export WORKON_HOME=~/Envs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-# source /usr/local/bin/virtualenvwrapper.sh
 
 # FZF
 
