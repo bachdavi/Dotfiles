@@ -346,9 +346,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; TIKZ
 ;;;;
-;; (add-to-list 'org-latex-packages-alist
-;;              '("" "tikz" t))
-
 (eval-after-load "preview"
   '(add-to-list 'preview-default-preamble "\\PreviewEnvironment{tikzpicture}" t))
 
@@ -365,7 +362,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; IVY
 ;;;;
-;; set up ivy completion
 (use-package ivy :ensure t
   :diminish (ivy-mode . "")
   :bind
@@ -433,6 +429,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 		bibtex-completion-library-path "~/Dropbox/org/ref/pdfs"
 		bibtex-completion-notes-path "~/Dropbox/org/ref/notes.org")
 
+	;; TODO This does only work after loading ivy + org-ref
   ;; (ivy-add-actions
   ;;  'ivy-bibtex
   ;;  '(("P" bibtex-completion-pdf "Open pdf with mac's preview")
@@ -480,11 +477,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 ;; Use flyspell for comments
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-
-;; Activate this to only check comments!
-;; (setq flyspell-prog-text-faces
-;;       (delq 'font-lock-string-face
-;;             flyspell-prog-text-faces))
 
 ;;;;
 ;; FLYCHECK
@@ -609,7 +601,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 											 (org-agenda-prefix-format " %i %-4:c%l%s")
 											 (org-tags-match-list-sublevels nil)))
 								(agenda "" ((org-agenda-use-time-grid nil)
-														(org-agenda-skip-function '(eoxxs/org-agenda-skip-tag "Reoccurring" nil))))
+														(org-agenda-skip-function '(dba/org-agenda-skip-tag "Reoccurring" nil))))
 								(tags-todo "-CANCELLED-REFILE/!TODO"
 													 ((org-agenda-overriding-header (concat "Tasks"
 																																	(if bh/hide-scheduled-and-waiting-next-tasks
@@ -627,7 +619,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 											 (org-tags-match-list-sublevels nil))))
                nil))))
 
-(defun eoxxs/org-agenda-skip-tag (tag &optional others)
+(defun dba/org-agenda-skip-tag (tag &optional others)
   "Skip all entries that correspond to TAG.
          If OTHERS is true, skip all entries that do not
          correspond to TAG."

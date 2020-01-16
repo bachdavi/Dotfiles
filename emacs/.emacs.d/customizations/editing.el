@@ -1,9 +1,5 @@
 ;; Customizations relating to editing a buffer.
 
-;; multiple cursors
-; (require 'evil-mc)
-; (global-evil-mc-mode  1) 
-
 ;; Auto add pairs
 (electric-pair-mode 1)
 
@@ -28,9 +24,6 @@
       delete-old-versions    t  ; Automatically delete excess backups:
       kept-new-versions      20 ; how many of the newest versions to keep
       kept-old-versions      5) ; and how many of the old
-
-;; yay rainbows!
-;; (global-rainbow-delimiters-mode t)
 
 (use-package drag-stuff
   :ensure t)
