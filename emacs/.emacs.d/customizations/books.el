@@ -12,7 +12,7 @@
 						 (formats (alist-get 'formats item))
 						 (series (alist-get 'series item))
 						 (series-index (alist-get 'series_index item)))
-				
+
 				(push (cons (format "%s - %s" author title)
 										(cons (alist-get 'id item) (alist-get 'formats item)))
 							result)))))
@@ -29,7 +29,7 @@
   "open with native mac os `open`"
   (let ((formats (cdr (cdr book))))
     (if (< (length formats) 2)
-     (dired-jump nil (car formats)) 
+     (dired-jump nil (car formats))
       (dired-jump nil (ivy-read "%d Choose format: " formats
 			   :require-match t)))))
 

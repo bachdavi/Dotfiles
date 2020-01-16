@@ -168,7 +168,7 @@ narrowing features like author: or title: style searches."
       (shr-insert-document intermediate-render)
       (goto-char (point-min)))
     (switch-to-buffer render-buffer)))
- 
+
 (defun org-recoll-doc-view-search (squery)
   "Jump to the next match of SQUERY in 'doc-view-mode'.
 If the current document hasn't been transformed to plain text
@@ -336,7 +336,7 @@ If PAGING is t this indicates that the function is being called to page through 
   (read-only-mode)
   ;;Add post-processing/file-search hook
   (add-hook 'org-follow-link-hook (lambda () (org-recoll-post-open-actions (org-recoll-reformat-for-file-search squery))) nil t))
-(shell-command-to-string (concat org-recoll-command-invocation " -Q '" "test" "'")) 
+(shell-command-to-string (concat org-recoll-command-invocation " -Q '" "test" "'"))
 ;;
 ;; User-Facing Functions
 ;;

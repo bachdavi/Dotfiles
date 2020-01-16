@@ -23,7 +23,7 @@
 
 ;; No locking
 (setq create-lockfiles nil)
-(setq auto-save-default nil) 
+(setq auto-save-default nil)
 
 ;; All my packages
 (defvar my-packages '(ace-window
@@ -127,9 +127,9 @@
 (use-package evil-terminal-cursor-changer
   :ensure t
   :init
-  (setq evil-motion-state-cursor 'box)  
-  (setq evil-visual-state-cursor 'box)  
-  (setq evil-normal-state-cursor 'box) 
+  (setq evil-motion-state-cursor 'box)
+  (setq evil-visual-state-cursor 'box)
+  (setq evil-normal-state-cursor 'box)
   (setq evil-insert-state-cursor 'bar)
   (setq evil-emacs-state-cursor  'hbar)
   :config
@@ -278,7 +278,7 @@
 						(make-local-variable 'company-idle-delay)
 						(setq-local company-idle-delay 0.1)))
 
-(setq hledger-currency-string "CHF") 
+(setq hledger-currency-string "CHF")
 
 ;;;;
 ;; MARKDOWN
@@ -338,7 +338,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 ;; use Skim as default pdf viewer
 ;; Skim's displayline is used for forward search (from .tex to .pdf)
-;; option -b highlights the current line; option -g opens Skim in the background  
+;; option -b highlights the current line; option -g opens Skim in the background
 (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
 (setq TeX-view-program-list
       '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
@@ -534,7 +534,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
            )))
     (while (string-prefix-p c line)
       (setq line (string-remove-prefix c line)))
-    (comment-string-strip line t t))) 
+    (comment-string-strip line t t)))
 
 ;; AGENDA
 (setq org-agenda-files '("~/Dropbox/org/"
@@ -780,7 +780,6 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; HYDRA
 ;;;;
-
 (global-set-key
  (kbd "C-M-o")
  (defhydra hydra-window ()
@@ -901,7 +900,7 @@ same directory as the org-buffer and insert a link to this file."
 ;;;;
 (setq elfeed-feeds
 			'("http://cachestocaches.com/feed/"
-				"http://nullprogram.com/feed/"  
+				"http://nullprogram.com/feed/"
 				"https://thume.ca/atom.xml"
 				"https://jvns.ca/atom.xml"
 				"https://oremacs.com/atom.xml"
@@ -1011,7 +1010,7 @@ same directory as the org-buffer and insert a link to this file."
 ;; Dired+
 ;; (load "dired+.el")
 
-(add-hook 'org-mode-hook (lambda () 
+(add-hook 'org-mode-hook (lambda ()
 													 (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 
 (setq custom-file (concat user-emacs-directory ".custom.el")) ; tell Customize to save customizations to ~/.emacs.d/.custom.el

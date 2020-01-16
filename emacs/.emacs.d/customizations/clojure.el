@@ -109,19 +109,19 @@
                                                 "e" 'cider-eval-sexp-at-point
                                                 "b" 'cider-eval-buffer
                                                 "r" 'cider-eval-region
-                                                "k" 'cider-direct-doc) 
+                                                "k" 'cider-direct-doc)
 
 (evil-leader/set-key-for-mode 'clojurec-mode "." 'cider-find-dwim
                                                 "e" 'cider-eval-sexp-at-point
                                                 "b" 'cider-eval-buffer
                                                 "r" 'cider-eval-region
-                                                "k" 'cider-direct-doc) 
+                                                "k" 'cider-direct-doc)
 
 (evil-leader/set-key-for-mode 'clojurescript-mode "." 'cider-find-dwim
                                                 "e" 'cider-eval-sexp-at-point
                                                 "b" 'cider-eval-buffer
                                                 "r" 'cider-eval-region
-                                                "k" 'cider-direct-doc) 
+                                                "k" 'cider-direct-doc)
 
 ;; Paredit
 (defun paredit-wiggle-back ()
@@ -152,7 +152,7 @@
 (define-key evil-normal-state-map ";|" 'paredit-split-sexp)
 (define-key evil-normal-state-map ";J" 'paredit-join-sexps)
 (define-key evil-normal-state-map ",;<" 'paredit-backward-slurp-sexp)
-(define-key evil-normal-state-map ";," 'paredit-backward-barf-sexp) 
+(define-key evil-normal-state-map ";," 'paredit-backward-barf-sexp)
 (define-key evil-normal-state-map ";>" 'paredit-forward-slurp-sexp)
-(define-key evil-normal-state-map ";." 'paredit-forward-barf-sexp) 
+(define-key evil-normal-state-map ";." 'paredit-forward-barf-sexp)
 (define-key evil-normal-state-map ";~" 'paredit-convolute-sexp)

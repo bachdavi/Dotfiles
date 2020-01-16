@@ -19,4 +19,3 @@ To use all features, e.g. `emacs-jupyter`, install `emacs-plus`.
 ``` shell
 brew install emacs-plus
 ```
-

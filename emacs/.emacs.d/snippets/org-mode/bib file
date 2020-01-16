@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: bib file
-# key: b 
+# key: b
 # --
 \newpage
 bibliographystyle:unsrt

@@ -31,4 +31,3 @@
 
 ;; Neotree
 (use-package neotree :ensure t)
-

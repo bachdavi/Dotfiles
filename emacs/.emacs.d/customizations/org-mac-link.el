@@ -175,7 +175,7 @@
   :group 'org-mac-flagged-mail
   :type 'string)
 
-
+
 ;; In mac.c, removed in Emacs 23.
 (declare-function do-applescript "org-mac-message" (script))
 (unless (fboundp 'do-applescript)
@@ -234,9 +234,9 @@ When done, go grab the link, and insert it at point."
 (defun org-mac-paste-applescript-links (as-link-list)
   "Paste in a list of links from an applescript handler.
 The links are of the form <link>::split::<name>."
-  (let* ((noquote-as-link-list 
-	  (if (string-prefix-p "\"" as-link-list) 
-	      (substring as-link-list 1 -1) 
+  (let* ((noquote-as-link-list
+	  (if (string-prefix-p "\"" as-link-list)
+	      (substring as-link-list 1 -1)
 	    as-link-list))
 	 (link-list
           (mapcar (lambda (x) (if (string-match "\\`\"\\(.*\\)\"\\'" x)
@@ -255,7 +255,7 @@ The links are of the form <link>::split::<name>."
     (kill-new rtn)
     rtn))
 
-
+
 ;; Handle links from Firefox.app
 ;;
 ;; This code allows you to grab the current active url from the main
@@ -313,7 +313,7 @@ The links are of the form <link>::split::<name>."
   (interactive)
   (insert (org-mac-firefox-get-frontmost-url)))
 
-
+
 ;; Handle links from Google Firefox.app running the Vimperator extension
 ;; Grab the frontmost url from Firefox+Vimperator. Same limitations are
 ;; Firefox
@@ -359,7 +359,7 @@ The links are of the form <link>::split::<name>."
   (interactive)
   (insert (org-mac-vimperator-get-frontmost-url)))
 
-
+
 ;; Handle links from Google Chrome.app
 ;; Grab the frontmost url from Google Chrome. Same limitations as
 ;; Firefox because Chrome doesn't publish an Applescript dictionary
@@ -396,7 +396,7 @@ The links are of the form <link>::split::<name>."
   (interactive)
   (insert (org-mac-chrome-get-frontmost-url)))
 
-
+
 ;; Handle links from Safari.app
 ;; Grab the frontmost url from Safari.
 
@@ -412,14 +412,14 @@ The links are of the form <link>::split::<name>."
 (defun org-mac-safari-get-frontmost-url ()
   (interactive)
   (message "Applescript: Getting Safari url...")
-  (org-mac-paste-applescript-links 
+  (org-mac-paste-applescript-links
    (org-as-mac-safari-get-frontmost-url)))
 
 (defun org-mac-safari-insert-frontmost-url ()
   (interactive)
   (insert (org-mac-safari-get-frontmost-url)))
 
-
+
 ;; Handle links from together.app
 
 (org-add-link-type "x-together-item" 'org-mac-together-item-open)
@@ -450,7 +450,7 @@ The links are of the form <link>::split::<name>."
   (interactive)
   (insert (org-mac-together-get-selected)))
 
-
+
 ;; Handle links from Finder.app
 
 (defun as-get-selected-finder-items ()
@@ -475,7 +475,7 @@ The links are of the form <link>::split::<name>."
   (interactive)
   (insert (org-mac-finder-item-get-selected)))
 
-
+
 ;; Handle links from AddressBook.app
 
 (org-add-link-type "addressbook" 'org-mac-addressbook-item-open)
@@ -506,7 +506,7 @@ The links are of the form <link>::split::<name>."
   (interactive)
   (insert (org-mac-addressbook-item-get-selected)))
 
-
+
 ;; Handle links from Skim.app
 ;;
 ;; Original code & idea by Christopher Suckling (org-mac-protocol)
@@ -570,7 +570,7 @@ The links are of the form <link>::split::<name>."
   (interactive)
   (insert (org-mac-skim-get-page)))
 
-
+
 ;; Handle links from Microsoft Outlook.app
 
 (org-add-link-type "mac-outlook" 'org-mac-outlook-message-open)
@@ -695,7 +695,7 @@ after heading."
 	(org-insert-heading nil t)
 	(insert org-heading "\n" (org-mac-outlook-message-get-links "f"))))))
 
-
+
 ;; Handle links from DEVONthink Pro Office.app
 
 (org-add-link-type "x-devonthink-item" 'org-devonthink-item-open)
@@ -760,7 +760,7 @@ selected items in DEVONthink Pro Office and make link(s) out of it/them."
   (interactive)
   (insert (org-mac-devonthink-get-links)))
 
-
+
 ;; Handle links from Mail.app
 
 (org-add-link-type "message" 'org-mac-message-open)

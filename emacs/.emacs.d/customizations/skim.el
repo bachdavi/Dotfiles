@@ -12,6 +12,6 @@
 	"show notes content in counsel."
 	(interactive)
 	(let* ((notes (read-skim-notes)))
-		(ivy-read "%d Choose note:  " notes 
+		(ivy-read "%d Choose note:  " notes
 							:action #'read-skim-notes
 							:require-match t)))

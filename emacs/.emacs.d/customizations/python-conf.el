@@ -1,4 +1,4 @@
-;; Python configuration 
+;; Python configuration
 ;; UT-8 as default encoding
 (set-language-environment "UTF-8")
 

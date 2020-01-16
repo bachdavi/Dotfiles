@@ -13,7 +13,7 @@
 ;; Fontify current frame
 (fontify-frame nil)
 ;; Fontify any future frames
-(push 'fontify-frame after-make-frame-functions) 
+(push 'fontify-frame after-make-frame-functions)
 (setq-default line-spacing 4)
 
 ;; Set up italic comments and ligatures if using mac port

@@ -48,4 +48,3 @@
                 indent)))
     (unless (string= formatted-args "")
       (mapconcat 'identity (list "# Arguments" formatted-args) indent))))
-
