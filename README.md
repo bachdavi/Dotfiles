@@ -13,4 +13,10 @@ The folder structure mirrors the one expected in the `$HOME`
 directory.
 
 
+### Emacs
+To use all features, e.g. `emacs-jupyter`, install `emacs-plus`.
+
+``` shell
+brew install emacs-plus
+```
 
