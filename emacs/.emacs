@@ -10,7 +10,7 @@
 (package-initialize)
 
 (add-to-list 'exec-path "/usr/local/bin")
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin" ":/Users/david/.ghcup/bin"))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setenv "PKG_CONFIG_PATH" "/usr/local/Cellar/zlib/1.2.11/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig")
 
 (unless (package-installed-p 'use-package)
@@ -38,7 +38,6 @@
                       counsel
                       counsel-projectile
                       deft
-                      dump-jump
                       ein
                       elpy
                       evil
@@ -57,9 +56,11 @@
                       ivy-bibtex
                       jedi
                       julia-mode
-											lsp-julia
                       jupyter
                       key-chord
+											lsp-mode
+											lsp-ui
+											lsp-julia
                       markdown-mode
                       ob-ipython
                       org
@@ -173,23 +174,53 @@
 (global-company-mode nil)
 
 ;;;;
-;; DUMP-JUMP
+;; XREF
 ;;;;
 
-(use-package dumb-jump
-  :bind (("M-g o" . dumb-jump-go-other-window)
-         ("M-g j" . dumb-jump-go)
-         ("M-g b" . dumb-jump-back)
-         ("M-g i" . dumb-jump-go-prompt)
-         ("M-g x" . dumb-jump-go-prefer-external)
-         ("M-g z" . dumb-jump-go-prefer-external-other-window))
-  :config (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
-  :ensure)
+(use-package xref
+	:bind (("M-g o" . xref-find-definitions-other-window)
+         ("M-g j" . xref-find-definitions)
+         ("M-g b" . xref-pop-marker-stack))
+	:ensure)
+
 
 ;;;;
 ;; LSP
 ;;;;
-(require 'lsp-mode)
+(use-package lsp-mode
+  :init
+  ;; Use flycheck instead of flymake (better lsp-ui integration)
+  (setq lsp-prefer-flymake nil)
+
+  :config
+  ;; Prevent long documentation showing up in the echo area from messing up the
+  ;; window configuration -> only show the first line
+  (defun dba/lsp-eldoc-advice (orig-fun &rest args)
+    (let ((msg (car args)))
+      (if msg
+          (funcall orig-fun (->> msg (s-trim-left)
+                                     (s-split "\n")
+                                     (first))))))
+  (advice-add 'lsp--eldoc-message :around #'dba/lsp-eldoc-advice)
+
+  ;; Avoid questions about restarting the LSP server when quitting emacs
+  (defun dba/lsp-disable-server-autorestart ()
+    (setq lsp-restart nil))
+  (add-hook 'kill-emacs-hook #'dba/lsp-disable-server-autorestart))
+
+(use-package lsp-ui
+  :ensure t
+
+  :init
+	(setq lsp-ui-doc-enable nil
+      lsp-ui-peek-enable nil
+      lsp-ui-sideline-enable nil
+      lsp-ui-imenu-enable nil
+      lsp-ui-flycheck-enable t)
+
+  :config)
+
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 
 ;;;;
 ;; HLEDGER
@@ -517,6 +548,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 (setq org-agenda-files '("~/Dropbox/org/"
 						 "~/Projects/anarres/project.org"
 						 "~/Dropbox/org/clients/"
+						 "~/Dropbox/org/deft/Database Server Delve.org"
 						 "~/Dropbox/org/projects/"
              "~/Dropbox/org/ref/notes.org"))
 
