@@ -58,9 +58,9 @@
                       julia-mode
                       jupyter
                       key-chord
-											lsp-mode
-											lsp-ui
-											lsp-julia
+                      lsp-mode
+                      lsp-ui
+                      lsp-julia
                       markdown-mode
                       ob-ipython
                       org
