@@ -39,7 +39,9 @@
                       counsel-projectile
                       deft
                       ein
+                      eglot
                       elpy
+                      elfeed
                       evil
                       evil-cleverparens
                       fixme-mode
@@ -161,7 +163,6 @@
 
 (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
-
 ;;;;
 ;; AUTO-COMPLETION
 ;;;;
@@ -176,13 +177,11 @@
 ;;;;
 ;; XREF
 ;;;;
-
 (use-package xref
 	:bind (("M-g o" . xref-find-definitions-other-window)
          ("M-g j" . xref-find-definitions)
          ("M-g b" . xref-pop-marker-stack))
 	:ensure)
-
 
 ;;;;
 ;; LSP
@@ -967,6 +966,16 @@ same directory as the org-buffer and insert a link to this file."
 											(bibtex-generate-autokey))))
 		(rename-file file (concat "~/Dropbox/org/ref/pdfs/" key ".pdf"))))
 
+(defun arrayify (start end quote)
+	"Turn strings on newlines into a QUOTEd, comma-separated one-liner."
+	(interactive "r\nMQuote: ")
+	(let ((insertion
+				 (mapconcat
+					(lambda (x) (format "%s%s%s" quote x quote))
+					(split-string (buffer-substring start end)) ", ")))
+		(delete-region start end)
+		(insert insertion)))
+
 ;;;;
 ;; CUSTOMIZATION
 ;;;;
@@ -978,6 +987,9 @@ same directory as the org-buffer and insert a link to this file."
 
 (require 'org-mac-link)
 
+(add-hook 'org-mode-hook (lambda ()
+                           (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
+
 ;; Load all the things
 (load "ui.el")
 (load "editing.el")
@@ -985,20 +997,20 @@ same directory as the org-buffer and insert a link to this file."
 (load "keyboard.el")
 (load "org-recoll.el")
 
-;; clojure environment
+;; Clojure environment
 (setq org-babel-clojure-backend 'cider)
 (load "clojure.el")
 
-;; python environment
+;; Python environment
 (load "python-conf.el")
 
-;; rust environment
+;; Rust environment
 (load "rust.el")
 
-;; rust environment
+;; Julia environment
 (load "julia.el")
 
-;; haskell environment
+;; Haskell environment
 (load "haskell.el")
 
 ;; Calibre query
@@ -1006,12 +1018,6 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; Org Subfigure
 (load "ox-latex-subfigure.el")
-
-;; Dired+
-;; (load "dired+.el")
-
-(add-hook 'org-mode-hook (lambda ()
-													 (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 
 (setq custom-file (concat user-emacs-directory ".custom.el")) ; tell Customize to save customizations to ~/.emacs.d/.custom.el
 (ignore-errors                                                ; load customizations from ~/.emacs.d/.custom.el
