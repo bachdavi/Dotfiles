@@ -22,10 +22,10 @@
  '(jupyter-repl-traceback ((t (:background "firebrick3")))))
 
 ;; Use lsp in julia
-(setq lsp-julia-package-dir nil)
-(require 'lsp-julia)
-(add-hook 'julia-mode-hook #'lsp-mode)
-(add-hook 'julia-mode-hook #'lsp)
+;; (setq lsp-julia-package-dir nil)
+;; (require 'lsp-julia)
+;; (add-hook 'julia-mode-hook #'lsp-mode)
+;; (add-hook 'julia-mode-hook #'lsp)
 
 ;; Helper functions for YAS
 ;; for functions
