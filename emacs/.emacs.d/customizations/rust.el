@@ -1,5 +1,4 @@
 ;; Rust
-;; (require 'rust-mode)
 
 (use-package rustic)
 
