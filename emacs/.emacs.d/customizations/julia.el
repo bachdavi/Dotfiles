@@ -48,3 +48,21 @@
                 indent)))
     (unless (string= formatted-args "")
       (mapconcat 'identity (list "# Arguments" formatted-args) indent))))
+
+(use-package julia-snail
+  :hook (julia-mode . julia-snail-mode)
+  :config (progn
+            ;; order matters, unfortunately:
+            (add-to-list 'display-buffer-alist
+                         ;; match buffers named "*julia" in general
+                         '("\\*julia"
+                           ;; actions:
+                           (display-buffer-reuse-window display-buffer-same-window)))
+            (add-to-list 'display-buffer-alist
+                         ;; when displaying buffers named "*julia" in REPL mode
+                         '((lambda (bufname _action)
+                             (and (string-match-p "\\*julia" bufname)
+                                  (with-current-buffer bufname
+                                    (bound-and-true-p julia-snail-repl-mode))))
+                           ;; actions:
+                           (display-buffer-reuse-window display-buffer-pop-up-window)))))

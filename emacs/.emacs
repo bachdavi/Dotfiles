@@ -58,6 +58,7 @@
                       ivy-bibtex
                       jedi
                       julia-mode
+                      julia-snail
                       jupyter
                       key-chord
                       lsp-mode
