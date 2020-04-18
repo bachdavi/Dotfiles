@@ -15,6 +15,10 @@
 (add-hook 'jupyter-repl-mode-hook
           (lambda () (local-set-key (kbd "C-c M-o") 'jupyter-repl-clear-cells)))
 
+(add-hook 'julia-mode-hook
+          (lambda ()
+            (set-fill-column 92)))
+
 ;; Jupyter Repl customizations
 (custom-set-faces
  '(jupyter-repl-input-prompt ((t (:foreground "dark blue"))))
@@ -50,7 +54,7 @@
       (mapconcat 'identity (list "# Arguments" formatted-args) indent))))
 
 (use-package julia-snail
-  :hook (julia-mode . julia-snail-mode)
+  ;; :hook (julia-mode . julia-snail-mode)
   :config (progn
             ;; order matters, unfortunately:
             (add-to-list 'display-buffer-alist

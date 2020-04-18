@@ -1,7 +1,19 @@
+function installed()
+    deps = Pkg.dependencies()
+    installs = Dict{String, VersionNumber}()
+    for (uuid, dep) in deps
+        dep.is_direct_dep || continue
+        dep.version === nothing && continue
+        installs[dep.name] = dep.version
+    end
+    return installs
+end
+
+
 atreplinit() do repl
     try
         @eval using Pkg
-        haskey(Pkg.installed(), "Revise") || @eval Pkg.add("Revise")
+        haskey(installed(), "Revise") || @eval Pkg.add("Revise")
     catch
     end
     try

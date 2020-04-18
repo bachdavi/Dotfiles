@@ -537,12 +537,9 @@ INITIAL-INPUT can be given as the initial minibuffer input."
     (comment-string-strip line t t)))
 
 ;; AGENDA
-(setq org-agenda-files '("~/Dropbox/org/"
-						 "~/Projects/anarres/project.org"
-						 "~/Dropbox/org/clients/"
-						 "~/Dropbox/org/deft/Database Server Delve.org"
-						 "~/Dropbox/org/projects/"
-             "~/Dropbox/org/ref/notes.org"))
+(setq org-agenda-files '("~/Dropbox/org/refile.org"
+												 "~/Dropbox/org/relationalai"
+												 ))
 
 ;; Set default column view headings: Task Total-Time Time-Stamp
 (setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
@@ -585,21 +582,21 @@ INITIAL-INPUT can be given as the initial minibuffer input."
                       ((org-agenda-overriding-header "Tasks to Refile")
 											 (org-agenda-prefix-format " %i %-12:c%l%s")
 											 (org-tags-match-list-sublevels nil)))
-                (tags-todo "-CANCELLED-REFILE-Research/!NEXT|CURRENT"
-                           ((org-agenda-overriding-header (concat "Project Next & Current Tasks"
-                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
-                                                                      ""
-                                                                    " (including WAITING and SCHEDULED tasks)")))
-														(org-agenda-prefix-format " %i %-15:c%l%s")
-														(org-tags-match-list-sublevels nil)))
-								(tags-todo "-CANCELLED/!WAITING|HOLD"
-													 ((org-agenda-overriding-header "Waiting and Postponed Tasks")
-														(org-agenda-prefix-format " %i %-22:c%l%s")
-														(org-tags-match-list-sublevels nil)))
-								(tags "IDEA"
-											((org-agenda-overriding-header "Current Ideas")
-											 (org-agenda-prefix-format " %i %-4:c%l%s")
-											 (org-tags-match-list-sublevels nil)))
+                ;; (tags-todo "-CANCELLED-REFILE-Research/!NEXT|CURRENT"
+                ;;            ((org-agenda-overriding-header (concat "Project Next & Current Tasks"
+                ;;                                                   (if bh/hide-scheduled-and-waiting-next-tasks
+                ;;                                                       ""
+                ;;                                                     " (including WAITING and SCHEDULED tasks)")))
+								;; 						(org-agenda-prefix-format " %i %-15:c%l%s")
+								;; 						(org-tags-match-list-sublevels nil)))
+								;; (tags-todo "-CANCELLED/!WAITING|HOLD"
+								;; 					 ((org-agenda-overriding-header "Waiting and Postponed Tasks")
+								;; 						(org-agenda-prefix-format " %i %-22:c%l%s")
+								;; 						(org-tags-match-list-sublevels nil)))
+								;; (tags "IDEA"
+								;; 			((org-agenda-overriding-header "Current Ideas")
+								;; 			 (org-agenda-prefix-format " %i %-4:c%l%s")
+								;; 			 (org-tags-match-list-sublevels nil)))
 								(agenda "" ((org-agenda-use-time-grid nil)
 														(org-agenda-skip-function '(dba/org-agenda-skip-tag "Reoccurring" nil))))
 								(tags-todo "-CANCELLED-REFILE/!TODO"
