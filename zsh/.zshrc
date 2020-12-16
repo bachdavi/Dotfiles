@@ -56,7 +56,7 @@ export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 #----------------------------------------------------------------------#
 export PATH="$PATH:$HOME/bin"
 export TMOUT=0
-export VISUAL="emacsclient -t"
+export VISUAL="nvim"
 export EDITOR="$VISUAL"
 
 #----------------------------------------------------------------------#
