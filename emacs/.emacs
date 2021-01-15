@@ -568,7 +568,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
       (quote (("N" "Notes" tags "NOTE"
                ((org-agenda-overriding-header "Notes")
                 (org-tags-match-list-sublevels t)))
-              (" " "Agenda"
+              ("A" "Agenda"
                ((agenda "" ((org-agenda-overriding-header "Today's Schedule:")
 														(org-agenda-span 'day)
 														(org-agenda-ndays 1)
@@ -808,15 +808,59 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 (use-package deft
 	:ensure t
-	:init (setq deft-directory "~/Dropbox/org/deft"
-							deft-extensions '("org" "txt" "tex")
+	:init (setq deft-directory "/Users/david/Dropbox/Zettelkasten"
+							deft-extensions '("md")
 							deft-use-filename-as-title t
-							deft-text-mode 'org-mode
 							deft-auto-save-interval 0)
 	:config
 	(global-set-key [f8] 'deft))
 
 (add-to-list 'evil-insert-state-modes 'deft-mode)
+
+;;;;
+;; ZETTELDEFT
+;;;;
+
+(use-package zetteldeft
+	:load-path "/Users/david/Projects/zetteldeft"
+  :ensure t
+  :after deft
+  :config (zetteldeft-set-classic-keybindings))
+
+(setq zetteldeft-link-indicator "[["
+      zetteldeft-link-suffix "]]")
+(setq zetteldeft-title-prefix "# ")
+(setq zetteldeft-list-prefix "* ")
+
+;; Custom ID function similar to Obsidian.
+(defun dba/zetteldeft-id-function (tile filename)
+	(concat (format-time-string "%Y%m%d%H%M") (dba/random-al)))
+
+(defun dba/random-al()
+  (let* ((al"abcdefghijklmnopqrstuvwxyz")
+         (i (% (abs (random)) (length al))))
+    (substring al i (1+ i))))
+
+(setq zetteldeft-custom-id-function 'dba/zetteldeft-id-function)
+(setq zetteldeft-id-regex  "[0-9]\\{12\\}[a-z]?")
+(setq zetteldeft-home-id "202101020935o")
+
+(font-lock-add-keywords 'markdown-mode
+   `((,zetteldeft-id-regex
+      . font-lock-warning-face)))
+
+(font-lock-add-keywords 'markdown-mode
+   `((,(concat "\\[\\["
+               zetteldeft-id-regex
+               "\\]\\]")
+      . font-lock-warning-face)))
+
+;;;;
+;; CALIBREDB
+;;;;
+(require 'calibredb)
+(setq calibredb-root-dir "/Users/david/Dropbox/Calibre")
+(setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
 
 ;;;;
 ;; MAGIT
@@ -1016,6 +1060,9 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; Org Subfigure
 (load "ox-latex-subfigure.el")
+
+;; Delve Mode
+(load "delve-mode.el")
 
 (setq custom-file (concat user-emacs-directory ".custom.el")) ; tell Customize to save customizations to ~/.emacs.d/.custom.el
 (ignore-errors                                                ; load customizations from ~/.emacs.d/.custom.el

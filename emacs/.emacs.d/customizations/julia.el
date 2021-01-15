@@ -25,6 +25,12 @@
  '(jupyter-repl-output-prompt ((t (:foreground "dark red"))))
  '(jupyter-repl-traceback ((t (:background "firebrick3")))))
 
+(add-to-list 'load-path "~/.emacs.d/customizations/julia-formatter")
+
+
+(require 'julia-formatter)
+(add-hook 'julia-mode-hook '(lambda() (julia-formatter-server-start)))
+
 ;; Use lsp in julia
 ;; (setq lsp-julia-package-dir nil)
 ;; (require 'lsp-julia)
