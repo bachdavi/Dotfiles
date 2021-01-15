@@ -44,8 +44,11 @@ alias l='ls'
 
 alias vim='nvim'
 alias vi='nvim'
- alias tmux="TERM=screen-256color-bce tmux"
+alias tmux="TERM=screen-256color-bce tmux"
 set term=screen-256color
+
+alias julia='JULIA_NUM_THREADS=4 julia'
+
 
 # Ruby
 # export GEM_HOME=$HOME/gems
