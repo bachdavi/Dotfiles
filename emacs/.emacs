@@ -468,7 +468,17 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 ;; SPELLING
 ;;;;
-(setq ispell-program-name "aspell")
+
+;; if (aspell installed) { use aspell}
+;; else if (hunspell installed) { use hunspell }
+;; whatever spell checker I use, I always use English dictionary
+;; I prefer use aspell because:
+;; 1. aspell is older
+;; 2. looks Kevin Atkinson still get some road map for aspell:
+;; @see http://lists.gnu.org/archive/html/aspell-announce/2011-09/msg00000.html
+(setq ispell-program-name "aspell"
+      ;; force the English dictionary, support Camel Case spelling check (tested with aspell 0.6)
+      ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together")
 
 (define-key flyspell-mode-map (kbd "C-c $") #'flyspell-popup-correct)
 (add-hook 'flyspell-mode 'auto-fill-mode)
@@ -1044,6 +1054,9 @@ same directory as the org-buffer and insert a link to this file."
 (setq org-babel-clojure-backend 'cider)
 (load "clojure.el")
 
+;; JavaScript environment
+(load "javascript.el")
+
 ;; Python environment
 (load "python-conf.el")
 
@@ -1064,6 +1077,8 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; Delve Mode
 (load "delve-mode.el")
+
+(setq-default indent-tabs-mode nil)
 
 (setq custom-file (concat user-emacs-directory ".custom.el")) ; tell Customize to save customizations to ~/.emacs.d/.custom.el
 (ignore-errors                                                ; load customizations from ~/.emacs.d/.custom.el
