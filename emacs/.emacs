@@ -42,6 +42,7 @@
                       eglot
                       elpy
                       elfeed
+                      emmet
                       evil
                       evil-cleverparens
                       fixme-mode
@@ -79,7 +80,9 @@
                       rainbow-mode
                       rg
                       rustic
-                      smex))
+                      smex
+                      tide
+                      web-mode))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -478,7 +481,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;; @see http://lists.gnu.org/archive/html/aspell-announce/2011-09/msg00000.html
 (setq ispell-program-name "aspell"
       ;; force the English dictionary, support Camel Case spelling check (tested with aspell 0.6)
-      ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together")
+      ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together"))
 
 (define-key flyspell-mode-map (kbd "C-c $") #'flyspell-popup-correct)
 (add-hook 'flyspell-mode 'auto-fill-mode)
