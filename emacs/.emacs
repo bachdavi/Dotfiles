@@ -145,6 +145,7 @@
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
 
+(define-key evil-normal-state-map (kbd "M-.") nil)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [tab] 'aggressive-indent-indent-region-and-on)
 (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
