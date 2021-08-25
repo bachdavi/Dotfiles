@@ -4,6 +4,12 @@
   (web-mode-css-indent-offset 2)
   (web-mode-code-indent-offset 2))
 
+;; GitHub syntax highlighting.
+(set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "#255FBF")
+(set-face-attribute 'web-mode-html-tag-face nil :foreground "#438343")
+(set-face-attribute 'web-mode-html-attr-name-face nil :foreground "#255FBF")
+(set-face-attribute 'web-mode-html-attr-equal-face nil :foreground "#255FBF")
+
 (add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode)) ;; auto-enable for .js/.jsx files
 
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))

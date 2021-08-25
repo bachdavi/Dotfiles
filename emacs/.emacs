@@ -31,6 +31,7 @@
                       auctex
                       avy
                       better-defaults
+                      calibredb
                       cider
                       clojure-mode
                       clojure-mode-extra-font-locking
@@ -53,7 +54,6 @@
                       flyspell-popup
                       gnuplot-mode
                       highlight-symbol
-                      hledger-mode
                       ipython
                       ivy
                       ivy-bibtex
@@ -82,7 +82,9 @@
                       rustic
                       smex
                       tide
-                      web-mode))
+                      undo-tree
+                      web-mode
+                      zetteldeft))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -95,6 +97,21 @@
 
 (setq-default indent-tabs-mode nil)
 
+(use-package hl-todo
+       :ensure t
+       :config
+       (setq hl-todo-highlight-punctuation ":"
+          hl-todo-keyword-faces
+          `(("TODO"       error bold)
+            ("FIXME"      error bold)
+            ("HACK"       font-lock-constant-face bold)
+            ("REVIEW"     font-lock-keyword-face bold)
+            ("NOTE"       success bold)
+            ("DEPRECATED" font-lock-doc-face bold)))
+       :hook ((prog-mode . hl-todo-mode)
+              (yaml-mode . hl-todo-mode)
+              (web-mode .  hl-todo-mode)))
+
 ;;;;
 ;; EVIL
 ;;;;
@@ -104,6 +121,7 @@
   (setq evil-vsplit-window-right t)
   (setq evil-disable-insert-state-bindings t)
   (setq evil-auto-indent t)
+  (setq evil-undo-system 'undo-tree)
   :config
   (evil-mode 1)
 
@@ -148,6 +166,7 @@
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
 
+
 (define-key evil-normal-state-map (kbd "M-.") nil)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [tab] 'aggressive-indent-indent-region-and-on)
@@ -162,6 +181,8 @@
 
 (setq evil-want-C-u-scroll t)
 
+(evil-set-initial-state 'ivy-occur-mode 'emacs)
+
 ;; Use words and symbols
 ;; (with-eval-after-load 'evil
 ;;     (defalias #'forward-evil-word #'forward-evil-symbol))
@@ -169,15 +190,17 @@
 (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
 ;;;;
+;; UNDO-TREE
+;;;;
+(global-undo-tree-mode)
+
+;;;;
 ;; AUTO-COMPLETION
 ;;;;
 (global-company-mode t)
 (setq company-minimum-prefix-length 1)
-(eval-after-load 'company
-  '(add-to-list 'company-frontends 'company-tng-frontend))
 (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
 (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
-(global-company-mode nil)
 
 ;;;;
 ;; XREF
@@ -225,64 +248,6 @@
   :config)
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-
-;;;;
-;; HLEDGER
-;;;;
-;;; Basic configuration
-(require 'hledger-mode)
-
-(add-to-list 'evil-insert-state-modes 'hledger-mode)
-(add-to-list 'evil-insert-state-modes 'hledger-view-mode)
-
-;; To open files with .journal extension in hledger-mode
-(add-to-list 'auto-mode-alist '("\\.journal\\'" . hledger-mode))
-
-;; Provide the path to you journal file.
-;; The default location is too opinionated.
-(setq hledger-jfile "~/Dropbox/Finances/hledger.journal")
-
-;; For company-mode users,
-(add-to-list 'company-backends 'hledger-company)
-
-(add-hook 'hledger-mode-hook 'company-mode)
-
-(defun hledger/next-entry ()
-  "Move to next entry and pulse."
-  (interactive)
-  (hledger-next-or-new-entry)
-  (hledger-pulse-momentary-current-entry))
-
-(defface hledger-warning-face
-  '((((background dark))
-     :background "Red" :foreground "White")
-    (((background light))
-     :background "Red" :foreground "White")
-    (t :inverse-video t))
-  "Face for warning"
-  :group 'hledger)
-
-(defun hledger/prev-entry ()
-  "Move to last entry and pulse."
-  (interactive)
-  (hledger-backward-entry)
-  (hledger-pulse-momentary-current-entry))
-
-;; Personal Accounting
-(global-set-key (kbd "C-c e") 'hledger-jentry)
-(global-set-key (kbd "C-c j") 'hledger-run-command)
-
-(define-key hledger-mode-map (kbd "M-p") #'hledger/prev-entry)
-(define-key hledger-mode-map (kbd "M-n") #'hledger/next-entry)
-
-(add-hook 'hledger-input-mode-hook 'auto-fill-mode)
-
-(add-hook 'hledger-input-mode-hook
-					(lambda ()
-						(make-local-variable 'company-idle-delay)
-						(setq-local company-idle-delay 0.1)))
-
-(setq hledger-currency-string "CHF")
 
 ;;;;
 ;; MARKDOWN
@@ -384,7 +349,8 @@ INITIAL-INPUT can be given as the initial minibuffer input."
   ;; configure regexp engine.
   (setq ivy-re-builders-alist
 		'((t . ivy--regex-plus)))
-  ;; extend ivy-bibtex
+  ;; Allow selecting a non-match
+  (setq ivy-use-selectable-prompt t)
   )
 
 ;;;;

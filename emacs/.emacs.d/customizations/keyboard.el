@@ -1,5 +1,7 @@
 ;; Keyboard and shortcuts
 
+(global-set-key (kbd "M-u") nil)
+
 ;; Mac specific
 (when (eq system-type 'darwin)
 	(setq mac-option-modifier 'meta)
@@ -19,7 +21,7 @@
 ;; Fuzzy search everywhere
 (evil-leader/set-leader ",")
 (evil-leader/set-key
-  "d" 'counsel-projectile
+  "d" 'projectile-find-file
   "f" 'counsel-recentf
   "s" 'ivy-switch-buffer
   "z" 'counsel-find-file
