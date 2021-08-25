@@ -47,7 +47,7 @@ alias vi='nvim'
 alias tmux="TERM=screen-256color-bce tmux"
 set term=screen-256color
 
-alias julia='JULIA_NUM_THREADS=4 julia'
+alias julia='JULIA_NUM_THREADS=4 /Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia'
 
 
 # Ruby
