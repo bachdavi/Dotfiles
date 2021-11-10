@@ -43,7 +43,6 @@
                       eglot
                       elpy
                       elfeed
-                      emmet
                       evil
                       evil-cleverparens
                       fixme-mode
@@ -518,7 +517,10 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 ;; AGENDA
 (setq org-agenda-files '("~/Dropbox/org/refile.org"
-												 "~/Dropbox/org/relationalai"
+												 "~/Dropbox/org/inbox.org"
+												 "~/Dropbox/org/life.org"
+												 "~/Dropbox/org/research.org"
+												 "~/Dropbox/org/inner.org"
 												 ))
 
 ;; Set default column view headings: Task Total-Time Time-Stamp
@@ -562,17 +564,17 @@ INITIAL-INPUT can be given as the initial minibuffer input."
                       ((org-agenda-overriding-header "Tasks to Refile")
 											 (org-agenda-prefix-format " %i %-12:c%l%s")
 											 (org-tags-match-list-sublevels nil)))
-                ;; (tags-todo "-CANCELLED-REFILE-Research/!NEXT|CURRENT"
-                ;;            ((org-agenda-overriding-header (concat "Project Next & Current Tasks"
-                ;;                                                   (if bh/hide-scheduled-and-waiting-next-tasks
-                ;;                                                       ""
-                ;;                                                     " (including WAITING and SCHEDULED tasks)")))
-								;; 						(org-agenda-prefix-format " %i %-15:c%l%s")
-								;; 						(org-tags-match-list-sublevels nil)))
-								;; (tags-todo "-CANCELLED/!WAITING|HOLD"
-								;; 					 ((org-agenda-overriding-header "Waiting and Postponed Tasks")
-								;; 						(org-agenda-prefix-format " %i %-22:c%l%s")
-								;; 						(org-tags-match-list-sublevels nil)))
+                (tags-todo "-CANCELLED-REFILE-Research/!NEXT|CURRENT"
+                           ((org-agenda-overriding-header (concat "Project Next & Current Tasks"
+                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
+                                                                      ""
+                                                                    " (including WAITING and SCHEDULED tasks)")))
+														(org-agenda-prefix-format " %i %-15:c%l%s")
+														(org-tags-match-list-sublevels nil)))
+								(tags-todo "-CANCELLED/!WAITING|HOLD"
+													 ((org-agenda-overriding-header "Waiting and Postponed Tasks")
+														(org-agenda-prefix-format " %i %-22:c%l%s")
+														(org-tags-match-list-sublevels nil)))
 								;; (tags "IDEA"
 								;; 			((org-agenda-overriding-header "Current Ideas")
 								;; 			 (org-agenda-prefix-format " %i %-4:c%l%s")
@@ -648,7 +650,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
       (quote (("t" "Todo" entry (file "~/Dropbox/org/refile.org")
-               "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+               "* TODO %?\n%U\n %a" :clock-in t :clock-resume t)
               ("c" "Code Todo" entry (file "~/Dropbox/org/refile.org")
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
               ("r" "Respond" entry (file "~/Dropbox/org/refile.org")
@@ -788,8 +790,8 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;;
 (use-package deft
 	:ensure t
-	:init (setq deft-directory "/Users/david/Dropbox/Zettelkasten"
-							deft-extensions '("md")
+	:init (setq deft-directory "/Users/david/Dropbox/org/slip-box"
+							deft-extensions '("org" "md" "txt")
 							deft-use-filename-as-title t
 							deft-auto-save-interval 0)
 	:config
@@ -807,10 +809,37 @@ INITIAL-INPUT can be given as the initial minibuffer input."
   :after deft
   :config (zetteldeft-set-classic-keybindings))
 
-(setq zetteldeft-link-indicator "[["
-      zetteldeft-link-suffix "]]")
-(setq zetteldeft-title-prefix "# ")
-(setq zetteldeft-list-prefix "* ")
+(setq zetteldeft-link-indicator "ztl:"
+      zetteldeft-link-suffix "")
+
+(defun ztl-complete-link (&optional arg)
+  (format "ztl:%s"
+          (completing-read "Choose a link: " (deft-find-all-files-no-prefix))))
+
+(defun ztl-help-echo (window object position)
+  "A help-echo function for ztl links."
+  (save-excursion
+    (goto-char position)
+    (let ((s (zetteldeft--id-to-title
+              (org-element-property :path (org-element-context)))))
+      (with-temp-buffer
+        (insert s)
+        (fill-paragraph)
+        (buffer-string)))))
+
+(org-link-set-parameters
+ "ztl"
+ :follow (lambda (path) (zetteldeft--search-filename path))
+ :complete #'ztl-complete-link
+ :display 'full
+ :help-echo #'ztl-help-echo
+ :face 'org-ref-cite-face)
+
+(setq help-at-pt-display-when-idle t)
+
+;; We are not using markdown anymore
+;; (setq zetteldeft-title-prefix "# ")
+;; (setq zetteldeft-list-prefix "* ")
 
 ;; Custom ID function similar to Obsidian.
 (defun dba/zetteldeft-id-function (tile filename)
@@ -823,16 +852,14 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 (setq zetteldeft-custom-id-function 'dba/zetteldeft-id-function)
 (setq zetteldeft-id-regex  "[0-9]\\{12\\}[a-z]?")
-(setq zetteldeft-home-id "202101020935o")
+(setq zetteldeft-home-id "202110161039i index.org")
 
 (font-lock-add-keywords 'markdown-mode
    `((,zetteldeft-id-regex
       . font-lock-warning-face)))
 
-(font-lock-add-keywords 'markdown-mode
-   `((,(concat "\\[\\["
-               zetteldeft-id-regex
-               "\\]\\]")
+(font-lock-add-keywords 'org-mode
+   `((,zetteldeft-id-regex
       . font-lock-warning-face)))
 
 ;;;;
@@ -930,7 +957,8 @@ same directory as the org-buffer and insert a link to this file."
 				"https://danluu.com/atom.xml"
 				"https://dragan.rocks/feed.xml"
 				"https://www.scottaaronson.com/blog/?feed=rss2"
-				"http://matt.might.net/articles/feed.rss"))
+				"http://matt.might.net/articles/feed.rss"
+        "http://feeds.nature.com/neuro/rss/current"))
 
 ;;;;
 ;; FUNCTIONS
@@ -983,10 +1011,13 @@ same directory as the org-buffer and insert a link to this file."
 		"Copies a potential pdf in the `~/Downloads' folder into the
 		org-ref-pdf folder."
 	(interactive)
-	(let ((file (counsel-find-file "~/Downloads"))
-				(key (funcall org-ref-clean-bibtex-key-function
-											(bibtex-generate-autokey))))
-		(rename-file file (concat "~/Dropbox/org/ref/pdfs/" key ".pdf"))))
+  (save-excursion
+    (bibtex-beginning-of-entry)
+    (let* ((bibtex-expand-strings t)
+           (entry (bibtex-parse-entry t))
+           (key (reftex-get-bib-field "=key=" entry))
+           (file (counsel-find-file "~/Downloads")))
+		  (rename-file file (org-ref-get-pdf-filename key)))))
 
 (defun arrayify (start end quote)
 	"Turn strings on newlines into a QUOTEd, comma-separated one-liner."
