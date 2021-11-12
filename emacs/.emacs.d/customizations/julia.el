@@ -10,32 +10,10 @@
 
 ;; Autocompletion
 (add-hook 'julia-mode-hook 'company-mode)
-(add-hook 'jupyter-repl-mode-hook 'company-mode)
-
-(add-hook 'jupyter-repl-mode-hook
-          (lambda () (local-set-key (kbd "C-c M-o") 'jupyter-repl-clear-cells)))
 
 (add-hook 'julia-mode-hook
           (lambda ()
             (set-fill-column 92)))
-
-;; Jupyter Repl customizations
-(custom-set-faces
- '(jupyter-repl-input-prompt ((t (:foreground "dark blue"))))
- '(jupyter-repl-output-prompt ((t (:foreground "dark red"))))
- '(jupyter-repl-traceback ((t (:background "firebrick3")))))
-
-(add-to-list 'load-path "~/.emacs.d/customizations/julia-formatter")
-
-
-(require 'julia-formatter)
-(add-hook 'julia-mode-hook '(lambda() (julia-formatter-server-start)))
-
-;; Use lsp in julia
-;; (setq lsp-julia-package-dir nil)
-;; (require 'lsp-julia)
-;; (add-hook 'julia-mode-hook #'lsp-mode)
-;; (add-hook 'julia-mode-hook #'lsp)
 
 ;; Helper functions for YAS
 ;; for functions
@@ -58,21 +36,3 @@
                 indent)))
     (unless (string= formatted-args "")
       (mapconcat 'identity (list "# Arguments" formatted-args) indent))))
-
-(use-package julia-snail
-  ;; :hook (julia-mode . julia-snail-mode)
-  :config (progn
-            ;; order matters, unfortunately:
-            (add-to-list 'display-buffer-alist
-                         ;; match buffers named "*julia" in general
-                         '("\\*julia"
-                           ;; actions:
-                           (display-buffer-reuse-window display-buffer-same-window)))
-            (add-to-list 'display-buffer-alist
-                         ;; when displaying buffers named "*julia" in REPL mode
-                         '((lambda (bufname _action)
-                             (and (string-match-p "\\*julia" bufname)
-                                  (with-current-buffer bufname
-                                    (bound-and-true-p julia-snail-repl-mode))))
-                           ;; actions:
-                           (display-buffer-reuse-window display-buffer-pop-up-window)))))
