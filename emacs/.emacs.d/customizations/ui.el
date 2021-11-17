@@ -9,7 +9,7 @@
 
 ;; set up fonts
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "PragmataPro for Powerline-17:Regular"))
+  (set-frame-parameter frame 'font "PragmataPro for Powerline-16:Regular"))
 ;; Fontify current frame
 (fontify-frame nil)
 ;; Fontify any future frames
@@ -91,7 +91,7 @@
       mouse-yank-at-point t)
 
 ;; No cursor blinking, it's distracting
-;; (blink-cursor-mode 0)
+(blink-cursor-mode 0)
 
 ;; Set the cursor color to some yellow-ish thingy
 (set-cursor-color "#f4812c")

@@ -1,6 +1,6 @@
 ;; Emacs configuration file
 ;; Author: David Bach
-;; 16-01-2019
+;; 17-11-2021
 
 ;; set up package repositories
 (require 'package)
@@ -9,9 +9,9 @@
 
 (package-initialize)
 
-(add-to-list 'exec-path "/usr/local/bin")
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-(setenv "PKG_CONFIG_PATH" "/usr/local/Cellar/zlib/1.2.11/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig")
+(add-to-list 'exec-path "/opt/homebrew/bin")
+(add-to-list 'exec-path "/Applications/Julia-1.6.app/Contents/Resources/julia/bin/")
+(setenv "PATH" (concat (getenv "PATH") ":/opt/homebrew/bin"))
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -56,12 +56,10 @@
                       ivy-bibtex
                       jedi
                       julia-mode
-                      julia-snail
                       jupyter
                       key-chord
                       lsp-mode
                       lsp-ui
-                      lsp-julia
                       markdown-mode
                       ob-ipython
                       org
@@ -396,8 +394,8 @@
   (save-excursion
     (bibtex-beginning-of-entry)
     (let* ((key (bibtex-completion-get-key-bibtex))
-          (pdf-file-name (concat org-ref-pdf-directory key ".pdf"))
-          (file (counsel-find-file "~/Downloads")))
+           (pdf-file-name (concat "~/Dropbox/org/ref/pdfs/" key ".pdf"))
+           (file (counsel-find-file "~/Downloads")))
       (rename-file file pdf-file-name))))
 
 ;;;;
@@ -496,7 +494,8 @@
                          "~/Dropbox/org/inbox.org"
                          "~/Dropbox/org/life.org"
                          "~/Dropbox/org/research.org"
-                         "~/Dropbox/org/inner.org"))
+                         "~/Dropbox/org/inner.org"
+                         "~/Dropbox/org/clients/"))
 
 ;; Set default column view headings: Task Total-Time Time-Stamp
 (setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
@@ -681,11 +680,11 @@
       org-confirm-babel-evaluate nil
       org-support-shift-select 'always)
 
-(setq inferior-julia-program-name "/usr/local/bin/julia")
+(setq inferior-julia-program-name "/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia")
 
 (add-hook 'ob-async-pre-execute-src-block-hook
           '(lambda ()
-             (setq inferior-julia-program-name "/usr/local/bin/julia")))
+             (setq inferior-julia-program-name "/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia")))
 
 ;; Org Babel julia support
 (load "ob-julia.el")
