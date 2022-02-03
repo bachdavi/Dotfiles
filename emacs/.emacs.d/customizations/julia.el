@@ -15,6 +15,9 @@
           (lambda ()
             (set-fill-column 92)))
 
+(add-hook 'julia-mode-hook #'julia-vterm-mode)
+(setq julia-vterm-repl-program "/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia")
+
 ;; Helper functions for YAS
 ;; for functions
 (defun julia-split-args (arg-string)

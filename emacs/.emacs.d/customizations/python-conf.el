@@ -25,8 +25,8 @@
               (setq flycheck-python-pylint-executable "/usr/local/bin/pylint")))
 
 ;; Flycheck
-(with-eval-after-load 'flycheck
-  (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
+;; (with-eval-after-load 'flycheck
+;;   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
 
 ;; Repl evalutaion
 (evil-leader/set-key-for-mode 'python-mode

@@ -9,8 +9,9 @@
 
 (package-initialize)
 
-(add-to-list 'exec-path "/opt/homebrew/bin")
+(add-to-list 'exec-path "/opt/homebrew/bin/")
 (add-to-list 'exec-path "/Applications/Julia-1.6.app/Contents/Resources/julia/bin/")
+(add-to-list 'exec-path "/Library/TeX/texbin/")
 (setenv "PATH" (concat (getenv "PATH") ":/opt/homebrew/bin"))
 
 (unless (package-installed-p 'use-package)
@@ -227,10 +228,10 @@
   :ensure t
 
   :init
-  (setq lsp-ui-doc-enable nil
-      lsp-ui-peek-enable nil
-      lsp-ui-sideline-enable nil
-      lsp-ui-imenu-enable nil
+  (setq lsp-ui-doc-enable t
+      lsp-ui-peek-enable t
+      lsp-ui-sideline-enable t
+      lsp-ui-imenu-enable t
       lsp-ui-flycheck-enable t)
 
   :config)
@@ -283,11 +284,8 @@
 ;; MINTED
 ;;;;
 (setq org-latex-create-formula-image-program 'imagemagick)
-(setq org-latex-listings 'minted
-      org-latex-packages-alist '(("" "minted"))
-      org-latex-pdf-process
-      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+;;(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.7))
 
 ;;;;
 ;; IVY
@@ -320,17 +318,17 @@
 (use-package org-ref)
 
 (setq bibtex-completion-bibliography '("~/Dropbox/org/ref/master.bib")
-  bibtex-completion-library-path '("~/Dropbox/org/ref/pdfs")
+  bibtex-completion-library-path '("~/Dropbox/org/ref/pdfs/")
   bibtex-completion-notes-path "~/Dropbox/org/ref/notes.org"
   bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
 
   bibtex-completion-additional-search-fields '(keywords)
   bibtex-completion-display-formats
-  '((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
-    (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-    (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-    (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-    (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}"))
+  '((article       . "${year:4} ${author:36} ${title:*} ${journal:40}")
+    (inbook        . "${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+    (incollection  . "${year:4} ${author:36} ${title:*} ${booktitle:40}")
+    (inproceedings . "${year:4} ${author:36} ${title:*} ${booktitle:40}")
+    (t             . "${year:4} ${author:36} ${title:*}"))
   bibtex-completion-pdf-open-function
   (lambda (fpath)
     (call-process "open" nil 0 nil fpath)))
@@ -457,6 +455,8 @@
 (add-hook 'org-mode-hook 'auto-fill-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
 
+(setq org-adapt-indentation nil)
+
 (require 'org-inlinetask)
 
 (setq org-log-done 'time)
@@ -494,7 +494,6 @@
                          "~/Dropbox/org/inbox.org"
                          "~/Dropbox/org/life.org"
                          "~/Dropbox/org/research.org"
-                         "~/Dropbox/org/inner.org"
                          "~/Dropbox/org/clients/"))
 
 ;; Set default column view headings: Task Total-Time Time-Stamp
@@ -646,7 +645,7 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "CURRENT(u)" "|" "DONE(d)")
+      (quote ((sequence "TODO(t)" "NEXT(n)" "CURRENT(u)" "|" "DONE(d)" "MIGRATE(g)" )
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
 
 (setq org-todo-keyword-faces
@@ -654,6 +653,7 @@
               ("NEXT" :foreground "blue" :weight bold)
               ("CURRENT" :foreground "orange" :weight bold)
               ("DONE" :foreground "forest green" :weight bold)
+              ("MIGRATE" :foreground "magenta" :weight bold)
               ("WAITING" :foreground "orange" :weight bold)
               ("HOLD" :foreground "magenta" :weight bold)
               ("CANCELLED" :foreground "forest green" :weight bold)
@@ -760,7 +760,7 @@
 ;;;;
 (use-package deft
   :ensure t
-  :init (setq deft-directory "/Users/david/Dropbox/org/slip-box"
+  :init (setq deft-directory "/Users/david/Dropbox/slip-box"
               deft-extensions '("org" "md" "txt")
               deft-use-filename-as-title t
               deft-auto-save-interval 0)
@@ -780,7 +780,8 @@
   :config (zetteldeft-set-classic-keybindings))
 
 (setq zetteldeft-link-indicator "ztl:"
-      zetteldeft-link-suffix "")
+      zetteldeft-link-suffix ""
+      zetteldeft-backlink-prefix "#+BACKLINK: ")
 
 (defun ztl-complete-link (&optional arg)
   (format "ztl:%s"
@@ -906,7 +907,8 @@ same directory as the org-buffer and insert a link to this file."
   :ensure projectile
   :config
   (projectile-mode +1)
-  (setq projectile-enable-caching t))
+  (setq projectile-enable-caching t)
+  (setq projectile-indexing-method 'alien))
 
 (counsel-projectile-mode)
 
@@ -914,8 +916,7 @@ same directory as the org-buffer and insert a link to this file."
 ;; ELFEED
 ;;;;
 (setq elfeed-feeds
-      '("http://cachestocaches.com/feed/"
-        "http://nullprogram.com/feed/"
+      '("http://nullprogram.com/feed/"
         "https://thume.ca/atom.xml"
         "https://jvns.ca/atom.xml"
         "https://oremacs.com/atom.xml"
@@ -925,7 +926,7 @@ same directory as the org-buffer and insert a link to this file."
         "https://dragan.rocks/feed.xml"
         "https://www.scottaaronson.com/blog/?feed=rss2"
         "http://matt.might.net/articles/feed.rss"
-        "http://feeds.nature.com/neuro/rss/current"))
+        "https://www.juliabloggers.com/feed/"))
 
 ;;;;
 ;; FUNCTIONS
@@ -1017,6 +1018,9 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; JavaScript environment
 (load "javascript.el")
+
+;; TypeScript environment
+(load "typescript.el")
 
 ;; Python environment
 (load "python-conf.el")
