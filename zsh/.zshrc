@@ -2,12 +2,7 @@
 # If not running interactively, don't do anything
 #[[ $- != *i* ]] && return
 
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-
-# export FZF_DEFAULT_COMMAND='ag --ignore *.class -g ""'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-export RUST_SRC_PATH="/Users/david/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export PATH="$PATH:/opt/local/bin"
 
 # History
@@ -16,10 +11,8 @@ HISTSIZE=1000000
 SAVEHIST=900000
 setopt SHARE_HISTORY
 
-bindkey "^[[F" end-of-line
-bindkey "^[[H" beginning-of-line
-bindkey    "^[[3~"          delete-char
-bindkey    "^[3;5~"         delete-char
+bindkey "^E" end-of-line
+bindkey "^A" beginning-of-line
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^N' forward-word
 bindkey '^P' backward-word
@@ -36,8 +29,6 @@ zstyle ':completion:*' menu select
 
 alias lsmp3='ls -1 --indicator-style=none *.mp3'
 alias lsepub='ls -1 -R --indicator-style=none | grep epub'
-# export GREP_COLOR="1;31"
-# alias grep='grep --color=auto'
 export LESS="-R"
 alias c='cd'
 alias l='ls'
@@ -47,8 +38,9 @@ alias vi='nvim'
 alias tmux="TERM=screen-256color-bce tmux"
 set term=screen-256color
 
-alias julia='JULIA_NUM_THREADS=4 /Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia'
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/Contents/Home/"
 
+alias julia='JULIA_NUM_THREADS=4 /Applications/Julia-1.7.app/Contents/Resources/julia/bin/julia'
 
 # Ruby
 # export GEM_HOME=$HOME/gems
@@ -59,8 +51,8 @@ export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 #----------------------------------------------------------------------#
 export PATH="$PATH:$HOME/bin"
 export TMOUT=0
-export VISUAL="nvim"
-export EDITOR="$VISUAL"
+export VISUAL="emacsclient -c"
+export EDITOR="emacsclient -t"
 
 #----------------------------------------------------------------------#
 # Alias
@@ -85,7 +77,6 @@ alias gp="git push"
 alias gs="git status"
 
 # History Search
-
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
