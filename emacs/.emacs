@@ -1022,6 +1022,12 @@ same directory as the org-buffer and insert a link to this file."
 (add-hook 'org-mode-hook (lambda ()
                            (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 
+;;;;
+;; ZIG
+;;;;
+(require 'lsp-mode)
+(setq lsp-zig-zls-executable "/Users/david/Projects/zls/zig-out/bin/zls")
+
 ;; Load all the things
 (load "ui.el")
 (load "editing.el")
