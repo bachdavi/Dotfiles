@@ -42,9 +42,15 @@
 (defalias 'workon 'pyvenv-workon)
 
 ;; Jupyter notebook stuff
-(require 'ein)
-
-(setq ein:completion-backend 'ein:use-ac-jedi-backend)
+(use-package ein
+  :pin melpa
+  :config
+  (setq ein:use-auto-complete t)
+  (setq ein:complete-on-dot t)
+  (setq ein:completion-backend 'ein:use-company-backend)
+  (setq ein:use-auto-complete-superpack nil)
+  (setq ein:use-smartrep nil)
+)
 
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
