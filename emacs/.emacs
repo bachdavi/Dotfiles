@@ -322,14 +322,20 @@
   (setq ivy-use-selectable-prompt t))
 
 ;;;;
+;; VAULT
+;;;;
+
+(defvar vault-dir "~/Dropbox/")
+
+;;;;
 ;; BIBTEX
 ;;;;
 
 (use-package org-ref)
 
-(setq bibtex-completion-bibliography '("~/Dropbox/org/ref/master.bib")
-  bibtex-completion-library-path '("~/Dropbox/org/ref/pdfs/")
-  bibtex-completion-notes-path "~/Dropbox/org/ref/notes.org"
+(setq bibtex-completion-bibliography `(,(concat (file-name-as-directory vault-dir) "org/ref/master.bib"))
+  bibtex-completion-library-path `(,(concat (file-name-as-directory vault-dir) "org/ref/pdfs/"))
+  bibtex-completion-notes-path (concat (file-name-as-directory vault-dir) "org/ref/notes.org")
   bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
 
   bibtex-completion-additional-search-fields '(keywords)
@@ -402,7 +408,7 @@
   (save-excursion
     (bibtex-beginning-of-entry)
     (let* ((key (bibtex-completion-get-key-bibtex))
-           (pdf-file-name (concat "~/Dropbox/org/ref/pdfs/" key ".pdf"))
+           (pdf-file-name (concat (concat (file-name-as-directory vault-dir) "org/ref/pdfs/") key ".pdf"))
            (file (counsel-find-file "~/Downloads")))
       (rename-file file pdf-file-name))))
 
@@ -458,7 +464,7 @@
 ;; ORG MODE
 ;;;;
 (setq org-startup-folded "overview")
-(setq org-directory "~/Dropbox/org/")
+(setq org-directory (concat (file-name-as-directory vault-dir) "org/"))
 (setq org-hide-emphasis-markers t)
 (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
 (add-hook 'org-mode-hook 'org-bullets-mode)
@@ -500,11 +506,11 @@
     (comment-string-strip line t t)))
 
 ;; AGENDA
-(setq org-agenda-files '("~/Dropbox/org/refile.org"
-                         "~/Dropbox/org/inbox.org"
-                         "~/Dropbox/org/life.org"
-                         "~/Dropbox/org/research.org"
-                         "~/Dropbox/org/clients/"))
+(setq org-agenda-files `(, (concat (file-name-as-directory vault-dir) "org/refile.org")
+                         , (concat (file-name-as-directory vault-dir) "org/inbox.org")
+                         , (concat (file-name-as-directory vault-dir) "org/life.org")
+                         , (concat (file-name-as-directory vault-dir) "org/research.org")
+                         , (concat (file-name-as-directory vault-dir) "org/clients/")))
 
 ;; Set default column view headings: Task Total-Time Time-Stamp
 (setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
@@ -620,7 +626,7 @@
     next-headline))))
 
 ;; CAPTURE
-(setq org-default-notes-file "~/Dropbox/org/refile.org")
+(setq org-default-notes-file (concat (file-name-as-directory vault-dir) "org/refile.org"))
 
 
 (add-to-list 'load-path "~/.emacs.d/customizations")
@@ -628,18 +634,18 @@
 
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
-      (quote (("t" "Todo" entry (file "~/Dropbox/org/refile.org")
-               "* TODO %?\n%U\n %a" :clock-in t :clock-resume t)
-              ("c" "Code Todo" entry (file "~/Dropbox/org/refile.org")
+       `(("t" "Todo" entry (file ,(concat (file-name-as-directory vault-dir) "org/refile.org"))
+               "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+              ("c" "Code Todo" entry (file ,(concat (file-name-as-directory vault-dir) "org/refile.org"))
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-              ("r" "Respond" entry (file "~/Dropbox/org/refile.org")
+              ("r" "Respond" entry (file ,(concat (file-name-as-directory vault-dir) "org/refile.org"))
                "* NEXT Respond to %? on %:subject\nSCHEDULED: %t\n%U\n" :clock-in t :clock-resume t)
-              ("n" "Note" entry (file "~/Dropbox/org/refile.org")
+              ("n" "Note" entry (file ,(concat (file-name-as-directory vault-dir) "org/refile.org"))
                "* %? :NOTE:\n%U\n" :clock-in t :clock-resume t)
               ("i" "Idea" entry (file org-default-notes-file)
                "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
-              ("m" "Meeting" entry (file "~/Dropbox/org/refile.org")
-               "* MEETING %u %? :MEETING:\n** Summary\n** Attendees\n** Questions\n** Notes\n** Actions\n" :clock-in t :clock-resume t))))
+              ("m" "Meeting" entry (file ,(concat (file-name-as-directory vault-dir) "org/refile.org"))
+               "* MEETING %u %? :MEETING:\n** Summary\n** Attendees\n** Questions\n** Notes\n** Actions\n" :clock-in t :clock-resume t)))
 
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
@@ -718,7 +724,7 @@
 
 (setq org-publish-project-alist
       '(("blog"
-         :base-directory "~/Dropbox/Blog/"
+         :base-directory (concat (file-name-as-directory vault-dir) "Blog/")
          :base-extension "org"
          :publishing-directory "~/Projects/eoxxs.github.io/_posts/"
          :publishing-function org-jekyll-md-export-to-md)))
@@ -770,7 +776,7 @@
 ;;;;
 (use-package deft
   :ensure t
-  :init (setq deft-directory "/Users/david/Dropbox/slip-box"
+  :init (setq deft-directory (concat (file-name-as-directory vault-dir) "slip-box")
               deft-extensions '("org" "md" "txt")
               deft-use-filename-as-title t
               deft-auto-save-interval 0)
@@ -843,7 +849,7 @@
 ;; CALIBREDB
 ;;;;
 (require 'calibredb)
-(setq calibredb-root-dir "/Users/david/Dropbox/Calibre")
+(setq calibredb-root-dir (concat (file-name-as-directory vault-dir) "Calibre"))
 (setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
 
 ;;;;
@@ -885,14 +891,14 @@ same directory as the org-buffer and insert a link to this file."
 ;;;;
 ;; JOURNAL
 ;;;;
-(setq org-journal-dir "~/Dropbox/org/journal")
+(setq org-journal-dir (concat (file-name-as-directory vault-dir) "org/journal"))
 
 (setq org-journal-file-format "%Y%m%d.org")
 
 ;;;;
 ;; DIARY
 ;;;;
-(setq diary-file "~/Dropbox/org/diary")
+(setq diary-file (concat (file-name-as-directory vault-dir) "org/diary"))
 (setq org-agenda-include-diary t)
 (setq diary-display-function 'diary-fancy-display)
 (add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
