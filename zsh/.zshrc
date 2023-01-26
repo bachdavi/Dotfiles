@@ -40,7 +40,9 @@ set term=screen-256color
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/Contents/Home/"
 
-alias julia='JULIA_NUM_THREADS=4 /Applications/Julia-1.7.app/Contents/Resources/julia/bin/julia'
+alias julia='JULIA_NUM_THREADS=4 /Applications/Julia-1.8.app/Contents/Resources/julia/bin/julia'
+
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 
 # Ruby
 # export GEM_HOME=$HOME/gems
@@ -102,3 +104,8 @@ if [ -f '/Users/david/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/david/goo
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/david/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/david/google-cloud-sdk/completion.zsh.inc'; fi
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
