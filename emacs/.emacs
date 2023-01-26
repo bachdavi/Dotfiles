@@ -10,7 +10,7 @@
 (package-initialize)
 
 (add-to-list 'exec-path "/opt/homebrew/bin/")
-(add-to-list 'exec-path "/Applications/Julia-1.6.app/Contents/Resources/julia/bin/")
+(add-to-list 'exec-path "/Applications/Julia-1.8.app/Contents/Resources/julia/bin/")
 (add-to-list 'exec-path "/Library/TeX/texbin/")
 (setenv "PATH" (concat (getenv "PATH") ":/opt/homebrew/bin"))
 
@@ -52,6 +52,7 @@
                       flyspell
                       flyspell-popup
                       gnuplot-mode
+                      git-timemachine
                       highlight-symbol
                       ivy
                       ivy-bibtex
@@ -62,6 +63,7 @@
                       lsp-mode
                       lsp-ui
                       markdown-mode
+                      magit
                       ob-ipython
                       org
                       org-bullets
@@ -78,11 +80,13 @@
                       smex
                       tide
                       undo-tree
-                      web-mode))
+                      web-mode
+                      with-editor))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
     (package-install p)))
+
 
 ;;;;
 ;; GENERIC
@@ -104,6 +108,10 @@
        :hook ((prog-mode . hl-todo-mode)
               (yaml-mode . hl-todo-mode)
               (web-mode .  hl-todo-mode)))
+
+(use-package savehist
+  :init
+  (savehist-mode))
 
 ;;;;
 ;; EVIL
@@ -160,6 +168,7 @@
     (abort-recursive-edit)))
 
 
+(define-key evil-motion-state-map (kbd "TAB") nil)
 (define-key evil-normal-state-map (kbd "M-.") nil)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [tab] 'aggressive-indent-indent-region-and-on)
@@ -182,6 +191,7 @@
 ;; UNDO-TREE
 ;;;;
 (global-undo-tree-mode)
+(setq undo-tree-auto-save-history nil)
 
 ;;;;
 ;; AUTO-COMPLETION
@@ -424,7 +434,7 @@
 (add-hook 'flyspell-mode 'auto-fill-mode)
 
 ;; Set shortcut for auto correction
-(global-set-key (kbd "C-M-i") 'flyspell-auto-correct-word)
+(global-set-key (kbd "M-i") 'flyspell-auto-correct-word)
 
 ;; Use flyspell for comments
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
@@ -680,11 +690,11 @@
       org-confirm-babel-evaluate nil
       org-support-shift-select 'always)
 
-(setq inferior-julia-program-name "/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia")
+(setq inferior-julia-program-name "/Applications/Julia-1.8.app/Contents/Resources/julia/bin/julia")
 
 (add-hook 'ob-async-pre-execute-src-block-hook
           '(lambda ()
-             (setq inferior-julia-program-name "/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia")))
+             (setq inferior-julia-program-name "/Applications/Julia-1.8.app/Contents/Resources/julia/bin/julia")))
 
 ;; Org Babel julia support
 (load "ob-julia.el")
@@ -917,6 +927,7 @@ same directory as the org-buffer and insert a link to this file."
 ;;;;
 (setq elfeed-feeds
       '("http://nullprogram.com/feed/"
+        "feed://www.milans.name/forum/files/feed.xml"
         "https://thume.ca/atom.xml"
         "https://jvns.ca/atom.xml"
         "https://oremacs.com/atom.xml"
