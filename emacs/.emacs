@@ -28,7 +28,9 @@
 
 ;; All my packages
 (defvar my-packages '(ace-window
+                      add-node-modules-path
                       aggressive-indent
+                      async
                       auctex
                       avy
                       better-defaults
@@ -71,6 +73,7 @@
                       org-ref
                       pdf-tools
                       projectile
+                      protobuf-mode
                       py-autopep8
                       python-mode
                       rainbow-delimiters
@@ -81,7 +84,9 @@
                       tide
                       undo-tree
                       web-mode
-                      with-editor))
+                      with-editor
+                      yaml-mode
+                      zig-mode))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
