@@ -112,3 +112,8 @@
               font-lock-function-name-face))))
 (put 'js2-mode 'flyspell-mode-predicate 'js-flyspell-verify)
 (put 'rjsx-mode 'flyspell-mode-predicate 'js-flyspell-verify)
+
+(use-package vue-mode
+               :config
+               ;; 0, 1, or 2, representing (respectively) none, low, and high coloring
+               (setq mmm-submode-decoration-level 0))

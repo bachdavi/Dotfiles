@@ -330,7 +330,7 @@
 ;; VAULT
 ;;;;
 
-(defvar vault-dir "~/Dropbox/")
+(defvar vault-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Vault")
 
 ;;;;
 ;; BIBTEX
@@ -441,8 +441,9 @@
       ;; force the English dictionary, support Camel Case spelling check (tested with aspell 0.6)
       ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together"))
 
-(define-key flyspell-mode-map (kbd "C-c $") #'flyspell-popup-correct)
-(add-hook 'flyspell-mode 'auto-fill-mode)
+(with-eval-after-load 'flyspell
+ (define-key flyspell-mode-map (kbd "C-c $") #'flyspell-popup-correct)
+ (add-hook 'flyspell-mode 'auto-fill-mode))
 
 ;; Set shortcut for auto correction
 (global-set-key (kbd "M-i") 'flyspell-auto-correct-word)
@@ -1012,6 +1013,15 @@ same directory as the org-buffer and insert a link to this file."
   "Untabify current buffer"
   (interactive)
   (untabify (point-min) (point-max)))
+
+(defun dba/find-isbn-by-title ()
+  ""
+  (interactive)
+  (let ((title (read-string "Title: ")))
+    (url-retrieve
+     (format "https://www.googleapis.com/books/v1/volumes?q=%s" title)
+     )))
+
 
 ;;;;
 ;; CUSTOMIZATION
